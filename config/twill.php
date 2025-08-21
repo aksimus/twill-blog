@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin_app_path' => 'cms',
     'block_editor' => [
         'use_twill_blocks' => [],
         'crops' => [

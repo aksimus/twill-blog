@@ -1,67 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# `examples/basic-page-builder`
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This example `basic-page-builder` comes with:
 
-## About Laravel
+* A page module
+* A blade based frontend
+* 2 example blocks to use in the block builder
+* A navigation module
+* A homepage setting
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Laravel
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+To install, let's open up our directory where we work from. Then we use a composer project to install a new Laravel project:
 
-## Learning Laravel
+```
+composer create-project laravel/laravel laravel-twill
+cd laravel-twill
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+In this directory you will have a full Laravel directory structure. Depending on your local development environment go ahead and link it so that you can open it in your web browser.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+If you do not have a local environment, you can use `php artisan serve` to run Laravel's built in web server.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+You will need a MySQL or SQLite database set up for this example.
 
-## Laravel Sponsors
+Open up the `.env` file in the root of the project, and fill in your database details. 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The [Laravel documentation](https://laravel.com/docs/10.x) is far more extensive about the setup procedure, if this guide went too quick, make sure to give those a read.
 
-### Premium Partners
+## Twill and this example
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Lets require Twill:
 
-## Contributing
+```
+composer require area17/twill:"^3.2"
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+And then, install this example:
 
-## Code of Conduct
+```
+php artisan twill:install basic-page-builder
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Front end
 
-## Security Vulnerabilities
+This example uses Tailwind for styling, which is compiled by Vite, so we need to install a few front end dependencies:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+npm install
+npm run build
+```
 
-## License
+# Adding entries to the database
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# twill-blog
+Everything is installed and the CSS is built, but you'll find a 404 if you visit this project in your browser - so lets add some content to your database.
+
+In your browser, go to your admin path, something like `https://admin.laravel-twill.test` if you followed this guide. And login with the details you entered when you installed Twill.
+
+Firstly, welcome to Twill CMS. You're going to love how straight forward using Twill is. 
+
+At the top of the screen you'll see a menu bar, click on "pages" and then click on "Add new". Give the page a title and click "Create". You can now add content blocks to the page using the "Add content" button. Once you have added some page content, publish the page by toggling the switch in the status bar at the top of the right hand side toolbar and click "Update". 
+Repeat this process to add a couple more pages.
+
+Next, go to the "Settings" page and select one of your generated pages as the homepage.
+
+Lastly, lets add some items to the navigation menu. Go to the "Menu" page and click "Add new", give your menu item a name, toggle the status from "Draft" to "Live" and click "Create". In the "Content" block, you'll see an "Add Page" button which will allow you to link one of your generated pages to the menu item. 
+Repeat this to link up all the pages you made.
+
+In your browser, head back to `https://laravel-twill.test` et voilà - you'll see your content and a navigation bar.
+
+<br><br><br><br>
+Copyright © AREA 17

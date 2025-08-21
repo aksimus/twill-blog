@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
-Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
+Route::group([
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [
+		'localeSessionRedirect',
+		'localizationRedirect',
+		'localeViewPath'
+	]
+], function() {
+	Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+	Route::get('/blog/category/{slug}', [\App\Http\Controllers\BlogController::class, 'category'])->name('blog.category');
+	Route::get('/blog/tag/{slug}', [\App\Http\Controllers\BlogController::class, 'tag'])->name('blog.tag');
+	Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.post');
+
+	Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
+	Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
+});

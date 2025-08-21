@@ -1,0 +1,114 @@
+[2025-08-21]
+Базовый комплект для быстрого старта php{8.4} + laravel{11}
+
+
+PHP_VERSION=8.4.10 docker compose up -d --build
+
+
+
+docker exec -it  tmpl-laravel_11-scaffold-app-1  bash
+внутри
+composer create-project laravel/laravel . "11.31"
+
+опционально: скопировать composer.json из laravel-samples в котором установлены twill и localization, удалить composer.lock и запустить composer install
+
+
+
+скопировать .env из laravel-samples
+
+
+php artisan key:generate
+php artisan migrate --graceful
+php artisan storage:link
+php artisan config:clear
+
+
+#Вход в БД http://localhost:8036/
+db
+dbuser
+dbpassword
+
+##проверка БД в тинкер
+\DB::select('SELECT version() as v')
+
+
+
+
+#Инициалиировать git
+
+  git config --global user.email "akarolik@gmail.com"
+  git config --global user.name "Alex Karolik"
+
+Добавить пару строк в .gitignore
+/.public/assets/
+/storage/
+
+echo "# twill-blog" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+
+#закинуть все в github (пример)
+
+
+git remote add origin https://aksimus@github.com/aksimus/twill-blog.git
+
+где токен получить в https://github.com/settings/tokens
+
+##
+git push -u origin main
+
+
+#проверить email через mailhog
+
+
+##в тинкер
+Mail::raw('This is a test email from Tinker.', function ($message) {     $message->to('akarolik@gmail.com')->subject('Test Email'); });
+
+
+Сборка фронтэнда
+docker run --rm --interactive --tty --volume ./src:/var/www/app node:21 sh -c "cd /var/www/app && node -v && npm install && npm run build"
+
+
+
+
+
+
+
+
+
+Multilang
+
+
+Полезные дополнения 
+TWILL CMS
+
+
+php artisan twill:install
+http://localhost/cms
+
+
+
+
+CODEX prompt
+
+create simple multilingual blog functionality  based on Twill  CMS https://twillcms.com/guides/page-builder-with-blade/index.html
+
+already installed 
+        "area17/twill": "^3.4",
+        "laravel/framework": "^11.31",
+        "mcamara/laravel-localization": "^2.3"
+
+As example take a look at implementation Pages as twill module Pages in commit 604bbba3dcf6152eac89736942931299aa230dca;
+Frontend Blog functionality:
+
+- multilingual ( en, es, ru)  . en - default should be without prefix e.g. /blog /es/blog /ru/blog
+
+- category page  => fields: title + slug + rich text description: e.g. /blog/category/{slug} /es/blog/category/{slug} /ru/blog/category/{slug}
+- tag page  =>  title + slug + rich text description:   e.g. /blog/tag/{slug} /es/blog/tag/{slug} /ru/blog/tag/{slug}
+
+- post page => title + slug + rich text description + main category + tags list:   e.g. /blog/{slug} /es/blog/{slug} /ru/blog/{slug}
+
+
+Blog administration panel Twill CMS based, available on /cms url

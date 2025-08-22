@@ -19,6 +19,7 @@ done
     - link rel="canonical"
     - другие
 - тесты ./vendor/bin/phpunit --filter BlogUrlTest
+- seeder php artisan blog:seed-test-data
 
 #planning ( next steps)
 
@@ -26,5 +27,10 @@ done
 - адаптация под SEO - настраиваемые мета теги
 - возможность вставки видео и галлереии изображений на страницу
 - добавление микроразметки
+
+##добаботка модуля blogCategory, BlogTag
+- добавление пагинации
+- добавление генерации содержания
+
 
 

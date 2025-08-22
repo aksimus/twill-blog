@@ -25,4 +25,12 @@ class BlogCategory extends Model
 	public $slugAttributes = [
 		'title',
 	];
+
+	/**
+	 * Get the posts for this category
+	 */
+	public function posts()
+	{
+		return $this->hasMany(BlogPost::class, 'blog_category_id');
+	}
 } 

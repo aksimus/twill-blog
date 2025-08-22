@@ -9,10 +9,17 @@ use Illuminate\Contracts\View\View;
 
 class BlogController extends Controller
 {
-	public function index(BlogPostRepository $posts): View
+	public function index(BlogPostRepository $posts, BlogCategoryRepository $categories): View
 	{
-		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['published' => true, 'visible' => true], orders: ['created_at' => 'desc'], perPage: 10);
-		return view('site.blog.index', compact('items'));
+		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['published' => true], orders: ['created_at' => 'desc'], perPage: 10);
+		
+		// Get categories with posts count
+		$allCategories = $categories->get(scopes: ['published' => true], orders: ['title' => 'asc']);
+		$allCategories->each(function($category) {
+			$category->posts_count = $category->posts()->where('published', true)->count();
+		});
+		
+		return view('site.blog.index', compact('items', 'allCategories'));
 	}
 
 	public function category(string $slug, BlogCategoryRepository $categories, BlogPostRepository $posts): View

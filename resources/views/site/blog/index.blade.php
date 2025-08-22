@@ -24,6 +24,9 @@
             <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Blog') }}</h1>
             <p class="text-lg text-gray-600 mb-8">{{ __('Discover our latest articles, insights, and stories.') }}</p>
             
+            <!-- Categories Widget -->
+            <x-blog-categories-widget :allCategories="$allCategories" />
+            
             <!-- Blog Navigation -->
             <div class="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-lg">
                 <div class="text-sm text-gray-600">

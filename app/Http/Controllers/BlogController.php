@@ -26,7 +26,10 @@ class BlogController extends Controller
 	{
 		$category = $categories->forSlug($slug);
 		if (!$category) abort(404);
-		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['blog_category_id' => $category->id, 'published' => true, 'visible' => true], orders: ['created_at' => 'desc'], perPage: 10);
+		
+		$perPage = config('blog.post_per_page', 2);
+		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['blog_category_id' => $category->id, 'published' => true], orders: ['created_at' => 'desc'], perPage: $perPage);
+		
 		return view('site.blog.category', compact('category', 'items'));
 	}
 
@@ -34,8 +37,28 @@ class BlogController extends Controller
 	{
 		$tag = $tags->forSlug($slug);
 		if (!$tag) abort(404);
+		
+		$perPage = config('blog.post_per_page', 2);
+		
+		// Get posts that have this tag, with pagination
 		$items = $posts->get(with: ['blogTags'], orders: ['created_at' => 'desc'], perPage: -1);
-		$items = $items->filter(fn($p) => $p->blogTags->contains('id', $tag->id));
+		$filteredItems = $items->filter(fn($p) => $p->blogTags->contains('id', $tag->id));
+		
+		// Manually paginate the filtered results
+		$currentPage = request()->get('page', 1);
+		$perPage = config('blog.post_per_page', 2);
+		$offset = ($currentPage - 1) * $perPage;
+		$paginatedItems = $filteredItems->slice($offset, $perPage);
+		
+		// Create a LengthAwarePaginator instance
+		$items = new \Illuminate\Pagination\LengthAwarePaginator(
+			$paginatedItems,
+			$filteredItems->count(),
+			$perPage,
+			$currentPage,
+			['path' => request()->url(), 'query' => request()->query()]
+		);
+		
 		return view('site.blog.tag', compact('tag', 'items'));
 	}
 

@@ -112,6 +112,41 @@
             </div>
         @endforelse
 
+        <!-- Pagination -->
+        @if($items->hasPages())
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm text-gray-600">
+                        {{ __('Showing') }} {{ $items->firstItem() }} - {{ $items->lastItem() }} {{ __('of') }} {{ $items->total() }} {{ __('posts') }}
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        @if($items->onFirstPage())
+                            <span class="px-3 py-2 text-gray-400 bg-gray-100 rounded-md cursor-not-allowed">
+                                {{ __('Previous') }}
+                            </span>
+                        @else
+                            <a href="@localizedUrl('blog/category/' . $category->getSlug(), ['page' => $items->currentPage() - 1])" 
+                               class="px-3 py-2 text-blue-600 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+                                {{ __('Previous') }}
+                            </a>
+                        @endif
+                        
+                        @if($items->hasMorePages())
+                            <a href="@localizedUrl('blog/category/' . $category->getSlug(), ['page' => $items->currentPage() + 1])" 
+                               class="px-3 py-2 text-blue-600 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+                                {{ __('Next') }}
+                            </a>
+                        @else
+                            <span class="px-3 py-2 text-gray-400 bg-gray-100 rounded-md cursor-not-allowed">
+                                {{ __('Next') }}
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <!-- Back to Blog Link -->
         <div class="mt-8 pt-6 border-t border-gray-200">
             <a href="{{ route('blog.index') }}" 

@@ -1,12 +1,57 @@
-<nav class="mb-10 border-b border-b-primary md:sticky md:z-10 md:top-0 md:py-5 md:bg-white ">
-    <ul class="px-5 md:flex md:flex-row md:flex-nowrap md:justify-center md:px-0">
-        @foreach($links as $link)
-            <li class="py-5 border-t border-t-secondary first:border-t-0 md:py-0 md:px-5 md:border-t-0 md:border-l md:border-l-secondary md:first:border-l-0">
-                <a href="{{ url(app()->getLocale() !== config('app.locale') ? '/'.app()->getLocale().'/'.$link->getRelated('page')->first()->slug : '/'.$link->getRelated('page')->first()->slug) }}">
-                    {{$link->title}}
+<nav class="mb-10 border-b border-b-primary md:sticky md:z-10 md:top-0 md:py-5 md:bg-white">
+    <div class="px-5 md:px-0">
+        <!-- Main Navigation -->
+        <div class="md:flex md:flex-row md:flex-nowrap md:justify-center md:items-center">
+            <!-- Logo/Home Link -->
+            <div class="py-5 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1)) : url('/') }}" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                    {{ config('app.name', 'Laravel') }}
                 </a>
-            </li>
-        @endforeach
-    </ul>
+            </div>
+
+            <!-- Main Navigation Links -->
+            <div class="md:flex md:flex-row md:flex-nowrap md:items-center">
+                <!-- Home -->
+                <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1)) : url('/') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                        {{ __('Welcome to Our Website') }}
+                    </a>
+                </div>
+
+                <!-- Features -->
+                <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/features') : url('/features') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                        {{ __('Key Features') }}
+                    </a>
+                </div>
+
+                <!-- About -->
+                <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/about') : url('/about') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                        {{ __('About') }}
+                    </a>
+                </div>
+
+                <!-- Blog -->
+                <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/blog') : url('/blog') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                        {{ __('Blog') }}
+                    </a>
+                </div>
+
+                <!-- Dynamic Twill Menu Links -->
+                @if(isset($links) && $links->count() > 0)
+                    @foreach($links as $link)
+                        <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
+                            <a href="{{ url(request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? '/'.request()->segment(1).'/'.$link->getRelated('page')->first()->slug : '/'.$link->getRelated('page')->first()->slug) }}" 
+                               class="text-gray-700 hover:text-blue-600 transition-colors">
+                                {{$link->title}}
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
 </nav>
 

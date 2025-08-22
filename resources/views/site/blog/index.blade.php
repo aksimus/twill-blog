@@ -23,6 +23,23 @@
         <div class="mt-16">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Blog') }}</h1>
             <p class="text-lg text-gray-600 mb-8">{{ __('Discover our latest articles, insights, and stories.') }}</p>
+            
+            <!-- Blog Navigation -->
+            <div class="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-lg">
+                <div class="text-sm text-gray-600">
+                    <span class="font-medium">{{ __('Categories') }}:</span>
+                    <a href="{{ route('blog.index') }}" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
+                        {{ __('All') }}
+                    </a>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    <span class="font-medium">{{ __('Popular Tags') }}:</span>
+                    <a href="{{ route('blog.index') }}" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
+                        {{ __('View All') }}
+                    </a>
+                </div>
+            </div>
         </div>
 
         @forelse($items as $post)

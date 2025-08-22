@@ -18,6 +18,8 @@ class BlogPost extends Model
 	protected $fillable = [
 		'published',
 		'blog_category_id',
+		'blogCategory',
+		'blogTags',
 	];
 
 	public $translatedAttributes = [

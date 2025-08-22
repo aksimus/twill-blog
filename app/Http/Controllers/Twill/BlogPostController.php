@@ -46,6 +46,7 @@ class BlogPostController extends BaseModuleController
 				->modules(['blogTags'])
 				->label('Tags')
 				->name('blogTags')
+				->max(10)
 		);
 
 		$form->add(

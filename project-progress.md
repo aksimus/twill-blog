@@ -18,10 +18,10 @@ done
     - link rel="alternate" hreflang="{lang}"
     - link rel="canonical"
     - другие
-
+- тесты ./vendor/bin/phpunit --filter BlogUrlTest
 
 #planning ( next steps)
-- тесты
+
 ##добаботка модуля pages
 - адаптация под SEO - настраиваемые мета теги
 - возможность вставки видео и галлереии изображений на страницу

@@ -19,7 +19,7 @@ class SeedBlogTestData extends Command
      *
      * @var string
      */
-    protected $description = 'Seed the database with blog test data for multilingual testing';
+    protected $description = 'Seed the database with comprehensive multilingual blog test data (5 categories, 10 tags, 20 posts)';
 
     /**
      * Execute the console command.
@@ -34,27 +34,23 @@ class SeedBlogTestData extends Command
             $seeder = new BlogTestDataSeeder();
             $seeder->run();
             
-            $this->info('🎉 Blog test data seeded successfully!');
+            $this->info('Blog test data seeded successfully!');
             $this->info('');
-            $this->info('📊 Summary:');
-            $this->info("   - Categories: 2 (Technology News, Science)");
-            $this->info("   - Tags: 2 (AI, Machine Learning)");
-            $this->info("   - Posts: 3 (AI Breakthrough, ML Trends, Quantum Computing)");
+            $this->info('Created:');
+            $this->info('- 5 categories (Technology: 0 posts, Science: 5 posts, Business: 10 posts, Health: 5 posts, Entertainment: 0 posts)');
+            $this->info('- 10 tags (AI, ML, Web Dev, Data Science, Cybersecurity, Cloud, Mobile, Blockchain, IoT, VR)');
+            $this->info('- 20 blog posts with random tag attachments (0-10 tags per post)');
             $this->info('');
-            $this->info('🌍 All content is available in: English (en), Spanish (es), Russian (ru)');
+            $this->info('Test URLs:');
+            $this->info('- Blog index: /blog');
+            $this->info('- Categories: /blog/category/science, /blog/category/business, /blog/category/health');
+            $this->info('- Tags: /blog/tag/artificial-intelligence, /blog/tag/machine-learning');
+            $this->info('- Posts: /blog/the-future-of-quantum-computing, /blog/digital-transformation-strategies');
             $this->info('');
-            $this->info('🔗 Test URLs:');
-            $this->info('   - Blog index: /blog, /es/blog, /ru/blog');
-            $this->info('   - Category: /blog/category/technology-news, /es/blog/category/noticias-de-tecnologia');
-            $this->info('   - Tag: /blog/tag/artificial-intelligence, /es/blog/tag/inteligencia-artificial');
-            $this->info('   - Post: /blog/ai-breakthrough-in-2024, /es/blog/avance-de-ia-en-2024');
-            $this->info('');
-            $this->info('📝 You can now test the multilingual functionality:');
-            $this->info('   - Visit /blog, /es/blog, /ru/blog');
-            $this->info('   - Test category pages with different languages');
-            $this->info('   - Test tag pages with different languages');
-            $this->info('   - Test individual post pages with different languages');
-            $this->info('   - Use the language switcher on any page');
+            $this->info('Multilingual support:');
+            $this->info('- English: /blog (no prefix)');
+            $this->info('- Spanish: /es/blog');
+            $this->info('- Russian: /ru/blog');
             
         } catch (\Exception $e) {
             $this->error('❌ Error seeding blog test data: ' . $e->getMessage());

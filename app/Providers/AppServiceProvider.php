@@ -5,6 +5,8 @@ namespace App\Providers;
 use A17\Twill\Facades\TwillAppSettings;
 use A17\Twill\Services\Settings\SettingsGroup;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use App\Helpers\UrlHelper;
 use A17\Twill\Facades\TwillNavigation;
 use A17\Twill\View\Components\Navigation\NavigationLink;
 
@@ -14,8 +16,13 @@ class AppServiceProvider extends ServiceProvider
 	{
 	}
 
-	public function boot()
+	public function boot(): void
 	{
+		// Register Blade directive for localized URLs
+		Blade::directive('localizedUrl', function ($expression) {
+			return "<?php echo \\App\\Helpers\\UrlHelper::localizedUrl($expression); ?>";
+		});
+
 		TwillNavigation::addLink(
 			NavigationLink::make()->forModule('pages')
 		);

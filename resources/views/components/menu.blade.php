@@ -4,7 +4,7 @@
         <div class="md:flex md:flex-row md:flex-nowrap md:justify-center md:items-center">
             <!-- Logo/Home Link -->
             <div class="py-5 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1)) : url('/') }}" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                <a href="@localizedUrl()" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
@@ -13,28 +13,28 @@
             <div class="md:flex md:flex-row md:flex-nowrap md:items-center">
                 <!-- Home -->
                 <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1)) : url('/') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                    <a href="@localizedUrl()" class="text-gray-700 hover:text-blue-600 transition-colors">
                         {{ __('Welcome to Our Website') }}
                     </a>
                 </div>
 
                 <!-- Features -->
                 <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/features') : url('/features') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                    <a href="@localizedUrl('features')" class="text-gray-700 hover:text-blue-600 transition-colors">
                         {{ __('Key Features') }}
                     </a>
                 </div>
 
                 <!-- About -->
                 <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/about') : url('/about') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                    <a href="@localizedUrl('about')" class="text-gray-700 hover:text-blue-600 transition-colors">
                         {{ __('About') }}
                     </a>
                 </div>
 
                 <!-- Blog -->
                 <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                    <a href="{{ request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? url('/' . request()->segment(1) . '/blog') : url('/blog') }}" class="text-gray-700 hover:text-blue-600 transition-colors">
+                    <a href="@localizedUrl('blog')" class="text-gray-700 hover:text-blue-600 transition-colors">
                         {{ __('Blog') }}
                     </a>
                 </div>
@@ -43,7 +43,7 @@
                 @if(isset($links) && $links->count() > 0)
                     @foreach($links as $link)
                         <div class="py-3 md:py-0 md:px-5 md:border-r md:border-r-secondary">
-                            <a href="{{ url(request()->segment(1) && in_array(request()->segment(1), ['es', 'ru']) ? '/'.request()->segment(1).'/'.$link->getRelated('page')->first()->slug : '/'.$link->getRelated('page')->first()->slug) }}" 
+                            <a href="@localizedUrl($link->getRelated('page')->first()->slug)" 
                                class="text-gray-700 hover:text-blue-600 transition-colors">
                                 {{$link->title}}
                             </a>

@@ -25,4 +25,12 @@ class BlogTag extends Model
 	public $slugAttributes = [
 		'title',
 	];
+
+	/**
+	 * Get the posts for this tag
+	 */
+	public function blogPosts()
+	{
+		return $this->belongsToMany(BlogPost::class, 'blog_post_blog_tag', 'blog_tag_id', 'blog_post_id');
+	}
 } 

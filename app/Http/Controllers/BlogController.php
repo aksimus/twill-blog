@@ -39,6 +39,18 @@ class BlogController extends Controller
 		return view('site.blog.tag', compact('tag', 'items'));
 	}
 
+	public function tags(BlogTagRepository $tags): View
+	{
+		$allTags = $tags->get(scopes: ['published' => true], orders: ['title' => 'asc']);
+		
+		// Add posts count for each tag
+		$allTags->each(function($tag) {
+			$tag->posts_count = $tag->blogPosts()->where('published', true)->count();
+		});
+		
+		return view('site.blog.tags', compact('allTags'));
+	}
+
 	public function show(string $slug, BlogPostRepository $posts): View
 	{
 		$item = $posts->forSlug($slug, with: ['category', 'blogTags']);

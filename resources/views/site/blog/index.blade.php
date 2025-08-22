@@ -38,7 +38,7 @@
                 
                 <div class="text-sm text-gray-600">
                     <span class="font-medium">{{ __('Popular Tags') }}:</span>
-                    <a href="{{ route('blog.index') }}" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
+                    <a href="@localizedUrl('blog/tags')" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
                         {{ __('View All') }}
                     </a>
                 </div>

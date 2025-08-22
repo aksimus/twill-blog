@@ -17,11 +17,19 @@ class Page extends Model
         'published',
         'title',
         'description',
+        'h1_header',
+        'meta_description',
+        'meta_keywords',
+        'content',
     ];
 
     public $translatedAttributes = [
         'title',
         'description',
+        'h1_header',
+        'meta_description',
+        'meta_keywords',
+        'content',
     ];
 
     public $slugAttributes = [

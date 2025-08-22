@@ -14,11 +14,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+// Use Laravel Localization but without problematic middleware
 Route::group([
 	'prefix' => LaravelLocalization::setLocale(),
 	'middleware' => [
-		'localeSessionRedirect',
-		'localizationRedirect',
 		'localeViewPath'
 	]
 ], function() {

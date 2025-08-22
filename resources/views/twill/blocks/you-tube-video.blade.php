@@ -1,0 +1,73 @@
+@twillBlockTitle('YouTube Video')
+@twillBlockIcon('video')
+@twillBlockGroup('media')
+
+<x-twill::input
+    name="title"
+    label="Video Title"
+    placeholder="Enter video title"
+    :translated="true"
+/>
+
+<x-twill::input
+    name="youtube_id"
+    label="YouTube Video ID"
+    placeholder="e.g., dQw4w9WgXcQ"
+    note="Extract from YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    :required="true"
+/>
+
+<x-twill::input
+    name="description"
+    label="Video Description"
+    placeholder="Brief description of the video"
+    :translated="true"
+/>
+
+<x-twill::select
+    name="load_type"
+    label="Load Type"
+    :options="[
+        ['value' => 'immediate', 'label' => 'Load Player Immediately'],
+        ['value' => 'cover_modal', 'label' => 'Show Cover Image + Modal Popup']
+    ]"
+    default="immediate"
+    note="Choose how the video should be loaded"
+/>
+
+<x-twill::select
+    name="aspect_ratio"
+    label="Aspect Ratio"
+    :options="[
+        ['value' => '16:9', 'label' => '16:9 (Widescreen)'],
+        ['value' => '4:3', 'label' => '4:3 (Standard)'],
+        ['value' => '1:1', 'label' => '1:1 (Square)'],
+        ['value' => '21:9', 'label' => '21:9 (Ultrawide)']
+    ]"
+    default="16:9"
+/>
+
+<x-twill::checkbox
+    name="autoplay"
+    label="Autoplay"
+    note="Video will start playing automatically (may be blocked by browsers)"
+/>
+
+<x-twill::checkbox
+    name="show_controls"
+    label="Show Player Controls"
+    default="true"
+/>
+
+<x-twill::checkbox
+    name="show_info"
+    label="Show Video Info"
+    default="true"
+/>
+
+<x-twill::checkbox
+    name="responsive"
+    label="Responsive Design"
+    default="true"
+    note="Video will scale with container width"
+/>

@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Add blog test data seeder
+        // Add test data seeders
         $this->call([
+            PageTestDataSeeder::class,
             BlogTestDataSeeder::class,
         ]);
     }

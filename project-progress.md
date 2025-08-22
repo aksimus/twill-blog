@@ -3,11 +3,14 @@
 done
 
 - установлен laravel + twill + mcamara/laravel-localization
-- добавлены Twill-модули  pages, blogPost, blogCategory, BlogTag
+- добавлены Twill-модули  Page, blogPost, blogCategory, BlogTag
 - реализована админка простейшего блога
 
-planning ( next steps)
 
+
+
+#twill_blog_v02  //2025-08-22
+done
 - локализация разделов блога и страниц без префикса для дефолтного языка
 - UI: переключатель языков
 - UI: базовая навигация между разделами блога
@@ -15,4 +18,13 @@ planning ( next steps)
     - link rel="alternate" hreflang="{lang}"
     - link rel="canonical"
     - другие
+
+
+#planning ( next steps)
+- тесты
+##добаботка модуля pages
+- адаптация под SEO - настраиваемые мета теги
+- возможность вставки видео и галлереии изображений на страницу
+- добавление микроразметки
+
 

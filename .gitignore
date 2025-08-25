@@ -24,3 +24,4 @@ yarn-error.log
 
 /public/assets/
 /storage/
+.DS_Store

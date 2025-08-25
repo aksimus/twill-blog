@@ -20,6 +20,8 @@ class BlogAuthorController extends BaseModuleController
      */
     protected function setUpController(): void
     {
+
+        $this->setPermalinkBase('blog/author');
     }
 
     /**

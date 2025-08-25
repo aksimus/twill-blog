@@ -1,0 +1,17 @@
+// Переменные и настройки
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap';
+
+// Silicon Theme
+@import 'theme';
+
+// Компоненты
+@import 'components';
+
+// Утилиты
+@import 'utilities';
+
+// Или если у вас другая структура файлов, то:
+// @import 'your-existing-files';

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
   <head>
+  <base href="/">
     @include('layouts.partials.head')
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
   </head>
 
   <body>

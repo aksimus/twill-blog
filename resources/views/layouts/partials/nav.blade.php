@@ -4,7 +4,7 @@
     <div class="dropdown-menu p-0">
       <div class="d-lg-flex">
         <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-          <img src="assets/img/landings.jpg" alt="Landings">
+          <img src="/assets/img/landings.jpg" alt="Landings">
         </div>
         <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
           <ul class="list-unstyled mb-0">

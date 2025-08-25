@@ -3,9 +3,21 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
-        laravel([
-            'resources/css/app.css',
-            'resources/js/app.js',
-        ]),
+        laravel({
+            input: [
+                'resources/scss/app.scss',  // Изменено с css на scss
+                'resources/js/app.js'
+            ],
+            refresh: true,
+        }),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': 'node_modules/bootstrap',
+            '~boxicons': 'node_modules/boxicons',
+            '~lightgallery': 'node_modules/lightgallery',
+            '~jarallax': 'node_modules/jarallax',
+            '~swiper': 'node_modules/swiper'
+        }
+    }
 });

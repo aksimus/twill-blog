@@ -36,15 +36,26 @@ done
 - возможность вставки Youtube видео и галлереии изображений на страницу ( Yotube twill block)
 
 
-#planning ( next steps) -
+
 #twill_blog_v05  //2025-08-25
+done
+authors module
+
+
+
+
+
+#planning ( next steps) - twill_blog_v06
+
+
+
 добавляем в блог тему Silicon https://silicon.createx.studio/docs/getting-started.html
 
 
 ##добаботка модуля blogCategory, BlogTag
 
 - добавление генерации Содержания на основе хеадеров
-- другие контент блоки
+- другие контент блоки: цитата, pros & cons, 
 - добавление микроразметки
 
 

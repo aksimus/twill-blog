@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
 	public function index(BlogPostRepository $posts, BlogCategoryRepository $categories): View
 	{
-		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['published' => true], orders: ['created_at' => 'desc'], perPage: 10);
+		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['published' => true], orders: ['created_at' => 'desc'], perPage: 10);
 		
 		// Get categories with posts count
 		$allCategories = $categories->get(scopes: ['published' => true], orders: ['title' => 'asc']);
@@ -28,7 +28,7 @@ class BlogController extends Controller
 		if (!$category) abort(404);
 		
 		$perPage = config('blog.post_per_page', 2);
-		$items = $posts->get(with: ['category', 'blogTags'], scopes: ['blog_category_id' => $category->id, 'published' => true], orders: ['created_at' => 'desc'], perPage: $perPage);
+		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['blog_category_id' => $category->id, 'published' => true], orders: ['created_at' => 'desc'], perPage: $perPage);
 		
 		return view('site.blog.category', compact('category', 'items'));
 	}
@@ -41,7 +41,7 @@ class BlogController extends Controller
 		$perPage = config('blog.post_per_page', 2);
 		
 		// Get posts that have this tag, with pagination
-		$items = $posts->get(with: ['blogTags'], orders: ['created_at' => 'desc'], perPage: -1);
+		$items = $posts->get(with: ['blogTags', 'author'], orders: ['created_at' => 'desc'], perPage: -1);
 		$filteredItems = $items->filter(fn($p) => $p->blogTags->contains('id', $tag->id));
 		
 		// Manually paginate the filtered results
@@ -76,8 +76,29 @@ class BlogController extends Controller
 
 	public function show(string $slug, BlogPostRepository $posts): View
 	{
-		$item = $posts->forSlug($slug, with: ['category', 'blogTags']);
-		if (!$item) abort(404);
-		return view('site.blog.post', compact('item'));
+		$post = $posts->forSlug($slug, with: ['category', 'blogTags', 'author']);
+		if (!$post) abort(404);
+		
+		// Get related posts from the same category
+		$relatedPosts = collect();
+		if ($post->category) {
+			$relatedPosts = $posts->get(
+				with: ['category', 'author'], 
+				scopes: ['blog_category_id' => $post->category->id, 'published' => true], 
+				orders: ['created_at' => 'desc'], 
+				perPage: 3
+			)->filter(fn($relatedPost) => $relatedPost->id !== $post->id)->take(3);
+		}
+		
+		// Add reading time estimation (rough estimate: 200 words per minute)
+		$wordCount = str_word_count(strip_tags($post->description ?? ''));
+		$readingTime = max(1, round($wordCount / 200));
+		$post->reading_time = $readingTime . ' min read';
+		
+		// Add social media counts (placeholder values)
+		$post->likes_count = rand(5, 25);
+		$post->shares_count = rand(2, 10);
+		
+		return view('site.blog.post', compact('post', 'relatedPosts'));
 	}
 } 

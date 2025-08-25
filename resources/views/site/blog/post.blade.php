@@ -1,123 +1,164 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="{{ asset('css/language-switcher.css') }}">
-    
-    <x-seo-meta 
-        :title="$item->title"
-        :description="$item->description"
-        type="article"
-        :publishedTime="$item->created_at->toISOString()"
-        :modifiedTime="$item->updated_at->toISOString()"
-    />
-    
-    @vite('resources/css/app.css')
-</head>
-<body>
-    <x-menu/>
-    
-    <x-language-switcher />
-    
-    <div class="mx-auto max-w-4xl px-5 md:px-0">
-        <!-- Breadcrumb Navigation -->
-        <nav class="mt-16 mb-8" aria-label="Breadcrumb">
-            <ol class="flex items-center space-x-2 text-sm text-gray-500">
-                <li>
-                    <a href="{{ route('blog.index') }}" class="hover:text-blue-600 transition-colors">
-                        {{ __('Blog') }}
-                    </a>
-                </li>
-                <li class="flex items-center">
-                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    @if($item->category)
-                        <a href="{{ route('blog.category', $item->category->getSlug()) }}" 
-                           class="hover:text-blue-600 transition-colors">
-                            {{ $item->category->title }}
-                        </a>
-                        <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                    @endif
-                    <span class="text-gray-900 font-medium">{{ $item->title }}</span>
-                </li>
-            </ol>
-        </nav>
+@extends('layouts.blog-layout')
 
-        <!-- Post Header -->
-        <header class="mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ $item->title }}</h1>
-            
-            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                <time datetime="{{ $item->created_at->toISOString() }}">
-                    {{ $item->created_at->format('M j, Y') }}
-                </time>
-                
-                @if($item->category)
-                    <span class="flex items-center gap-1">
-                        <span class="text-gray-400">•</span>
-                        <a href="{{ route('blog.category', $item->category->getSlug()) }}" 
-                           class="text-blue-600 hover:text-blue-800 transition-colors">
-                            {{ $item->category->title }}
-                        </a>
-                    </span>
-                @endif
-            </div>
+@section('title', $post->title ?? 'Blog Post')
 
-            @if($item->description)
-                <div class="text-lg text-gray-600 mb-6">
-                    {!! $item->description !!}
-                </div>
-            @endif
-        </header>
+@section('meta')
+<meta name="description" content="{{ $post->meta_description ?? $post->description ?? 'Blog post' }}">
+<meta name="keywords" content="{{ $post->meta_keywords ?? '' }}">
+@endsection
 
-        <!-- Post Content -->
-        <article class="prose prose-lg max-w-none mb-12">
-            {!! $item->renderBlocks() !!}
-        </article>
+@section('content')
+  <!-- Breadcrumb -->
+  <x-breadcrumb :items="[
+    ['url' => route('home'), 'title' => 'Home'],
+    ['url' => route('blog.index'), 'title' => 'Blog'],
+    ['url' => '#', 'title' => $post->title ?? 'Single Post']
+  ]" />
 
-        <!-- Post Footer -->
-        <footer class="border-t border-gray-200 pt-8">
-            <!-- Tags -->
-            @if($item->blogTags && $item->blogTags->count() > 0)
-                <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ __('Tags') }}</h3>
-                    <div class="flex flex-wrap gap-2">
-                        @foreach($item->blogTags as $tag)
-                            <a href="{{ route('blog.tag', $tag->getSlug()) }}" 
-                               class="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors">
-                                {{ $tag->title }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+  <!-- Post title + Meta  -->
+  <section class="container mt-4 pt-lg-2 pb-3">
+    <h1 class="pb-3" style="max-width: 970px;">{{ $post->title ?? 'This Long-Awaited Technology May Finally Change the World' }}</h1>
+    <x-blog-post-meta :post="$post ?? null" />
+  </section>
 
-            <!-- Navigation Links -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-between">
-                @if($item->category)
-                    <a href="{{ route('blog.category', $item->category->getSlug()) }}" 
-                       class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        {{ __('Back to') }} {{ $item->category->title }}
-                    </a>
-                @endif
-                
-                <a href="{{ route('blog.index') }}" 
-                   class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                    {{ __('Back to Blog') }}
-                </a>
-            </div>
-        </footer>
+  @if($post->featured_image)
+    <!-- Post image (parallax) -->
+    <div class="jarallax mb-lg-5 mb-4" data-jarallax data-speed="0.35" style="height: 36.45vw; min-height: 300px;">
+      <div class="jarallax-img" style="background-image: url({{ $post->featured_image }});"></div>
     </div>
-</body>
-</html> 
+  @endif
+
+  <!-- Post content + Sharing -->
+  <section class="container mb-5 pt-4 pb-2 py-mg-4">
+    <div class="row gy-4">
+      <!-- Content -->
+      <x-blog-post-content :post="$post ?? null" />
+
+      <!-- Sharing -->
+      <x-blog-post-sidebar :post="$post ?? null" />
+    </div>
+  </section>
+
+  <!-- Subscription form + Sharing -->
+  <section class="container mb-4 pb-2 mb-md-5 pb-lg-5">
+    <div class="row gy-5">
+      <!-- Subscription form + Sharing -->
+      <div class="col-lg-3 position-relative">
+        <div class="sticky-top ms-xl-5 ms-lg-4 ps-xxl-4" style="top: 70px !important;">
+          <div class="row gy-lg-5 gy-4 justify-content-center text-lg-start text-center">
+            <!-- Subscription form -->
+            <div class="col-lg-12 col-sm-7 col-11">
+              <h6 class="fs-lg">Enjoy this post? Join our newsletter</h6>
+              <form class="needs-validation" novalidate>
+                <div class="input-group mb-3">
+                  <i class="bx bx-envelope position-absolute start-0 top-50 translate-middle-y zindex-5 ms-3 text-muted d-lg-inline-block d-none"></i>
+                  <input type="email" placeholder="Your Email" class="form-control ps-lg-5 rounded text-lg-start text-center" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+              </form>
+            </div>
+
+            <!-- Sharing -->
+            <div class="col-lg-12 col-sm-7 col-11">
+              <h6 class="fs-lg">Don't forget to share it</h6>
+              <div class="mb-4 pb-lg-3">
+                <a href="#" class="btn btn-icon btn-secondary btn-linkedin me-2 mb-2" aria-label="LinkedIn">
+                  <i class="bx bxl-linkedin"></i>
+                </a>
+                <a href="#" class="btn btn-icon btn-secondary btn-facebook me-2 mb-2" aria-label="Facebook">
+                  <i class="bx bxl-facebook"></i>
+                </a>
+                <a href="#" class="btn btn-icon btn-secondary btn-twitter me-2 mb-2" aria-label="Twitter">
+                  <i class="bx bxl-twitter"></i>
+                </a>
+                <a href="#" class="btn btn-icon btn-secondary btn-instagram me-2 mb-2" aria-label="Instagram">
+                  <i class="bx bxl-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @if(isset($relatedPosts) && $relatedPosts->count() > 0)
+    <!-- Related articles (Slider below lg breakpoint) -->
+    <section class="container mb-5 pt-md-4">
+      <div class="d-flex flex-sm-row flex-column align-items-center justify-content-between mb-4 pb-1 pb-md-3">
+        <h2 class="h1 mb-sm-0">Related Articles</h2>
+        <a href="{{ route('blog.index') }}" class="btn btn-lg btn-outline-primary ms-4">
+          All posts
+          <i class="bx bx-right-arrow-alt ms-1 me-n1 lh-1 lead"></i>
+        </a>
+      </div>
+
+      <div class="swiper mx-n2" data-swiper-options='{
+        "slidesPerView": 1,
+        "spaceBetween": 8,
+        "pagination": {
+          "el": ".swiper-pagination",
+          "clickable": true
+        },
+        "breakpoints": {
+          "500": {
+            "slidesPerView": 2
+          },
+          "1000": {
+            "slidesPerView": 3
+          }
+        }
+      }'>
+        <div class="swiper-wrapper">
+          @foreach($relatedPosts as $relatedPost)
+            <div class="swiper-slide h-auto pb-3">
+              <article class="card border-0 shadow-sm h-100 mx-2">
+                <div class="position-relative">
+                  <a href="{{ route('blog.post', $relatedPost->getSlug()) }}" class="position-absolute top-0 start-0 w-100 h-100" aria-label="Read more"></a>
+                  <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later" aria-label="Read later">
+                    <i class="bx bx-bookmark"></i>
+                  </a>
+                  @if($relatedPost->featured_image)
+                    <img src="{{ $relatedPost->featured_image }}" class="card-img-top" alt="{{ $relatedPost->title }}">
+                  @else
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                      <i class="bx bx-image fs-1 text-white"></i>
+                    </div>
+                  @endif
+                </div>
+                <div class="card-body pb-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    @if($relatedPost->category)
+                      <a href="{{ route('blog.category', $relatedPost->category->getSlug()) }}" class="badge fs-sm text-nav bg-secondary text-decoration-none">{{ $relatedPost->category->title }}</a>
+                    @endif
+                    <span class="fs-sm text-muted">{{ $relatedPost->created_at->format('M d, Y') }}</span>
+                  </div>
+                  <h3 class="h5 mb-0">
+                    <a href="{{ route('blog.post', $relatedPost->getSlug()) }}">{{ $relatedPost->title }}</a>
+                  </h3>
+                </div>
+                <div class="card-footer py-4">
+                  @if($relatedPost->author)
+                    <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
+                      @if($relatedPost->author->avatar)
+                        <img src="{{ $relatedPost->author->avatar }}" class="rounded-circle me-3" width="48" alt="{{ $relatedPost->author->name }}">
+                      @else
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                          <i class="bx bx-user fs-4 text-white"></i>
+                        </div>
+                      @endif
+                      {{ $relatedPost->author->name }}
+                    </a>
+                  @endif
+                </div>
+              </article>
+            </div>
+          @endforeach
+        </div>
+
+        <!-- Pagination (bullets) -->
+        <div class="swiper-pagination position-relative pt-2 pt-sm-3 mt-4"></div>
+      </div>
+    </section>
+  @endif
+@endsection

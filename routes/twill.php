@@ -7,3 +7,5 @@ TwillRoutes::module('menuLinks');
 TwillRoutes::module('blogCategories');
 TwillRoutes::module('blogTags');
 TwillRoutes::module('blogPosts');
+
+TwillRoutes::module('blogAuthors');

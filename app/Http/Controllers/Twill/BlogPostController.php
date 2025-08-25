@@ -13,7 +13,7 @@ use A17\Twill\Services\Forms\Form;
 class BlogPostController extends BaseModuleController
 {
 	protected $moduleName = 'blogPosts';
-	protected $request = \App\Http\Requests\Twill\BlogPostRequest::class;
+	protected $request = \App\Http\Requests\BlogPostRequest::class;
 
 	protected function setUpController(): void
 	{
@@ -38,6 +38,14 @@ class BlogPostController extends BaseModuleController
 				->modules(['blogCategories'])
 				->label('Main category')
 				->name('blogCategory')
+				->max(1)
+		);
+
+		$form->add(
+			Browser::make()
+				->modules(['blogAuthors'])
+				->label('Author')
+				->name('blogAuthor')
 				->max(1)
 		);
 

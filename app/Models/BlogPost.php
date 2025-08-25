@@ -18,7 +18,9 @@ class BlogPost extends Model
 	protected $fillable = [
 		'published',
 		'blog_category_id',
+		'blog_author_id',
 		'blogCategory',
+		'blogAuthor',
 		'blogTags',
 	];
 
@@ -34,6 +36,11 @@ class BlogPost extends Model
 	public function category(): BelongsTo
 	{
 		return $this->belongsTo(BlogCategory::class, 'blog_category_id');
+	}
+
+	public function author(): BelongsTo
+	{
+		return $this->belongsTo(BlogAuthor::class, 'blog_author_id');
 	}
 
 	public function blogTags(): BelongsToMany

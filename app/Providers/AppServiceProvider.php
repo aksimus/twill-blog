@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
 			NavigationLink::make()->forModule('blogCategories')->title('Blog Categories')
 		);
 		TwillNavigation::addLink(
+			NavigationLink::make()->forModule('blogAuthors')->title('Blog Authors')
+		);
+		TwillNavigation::addLink(
 			NavigationLink::make()->forModule('blogTags')->title('Blog Tags')
 		);
 		TwillNavigation::addLink(

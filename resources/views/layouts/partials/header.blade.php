@@ -1,8 +1,7 @@
 <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
   <div class="container px-3">
-    <a href="{{ route('home') }}" class="navbar-brand pe-3">
-      <img src="/assets/img/logo.svg" width="47" alt="Silicon">
-      Silicon
+    <a href="{{ route('frontend.home') }}" class="navbar-brand pe-3">
+      <img src="/assets/img/logo.png" width="200" alt="Logo">
     </a>
     <div id="navbarNav" class="offcanvas offcanvas-end">
       <div class="offcanvas-header border-bottom">
@@ -19,10 +18,8 @@
         </a>
       </div>      
     </div>
-    <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-      <input type="checkbox" class="form-check-input" id="theme-mode">
-      <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
-      <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+    <div class="language-switcher-header pe-lg-1 ms-auto me-4">
+      <x-language-switcher />
     </div>
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

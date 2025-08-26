@@ -23,24 +23,41 @@ class AppServiceProvider extends ServiceProvider
 			return "<?php echo \\App\\Helpers\\UrlHelper::localizedUrl($expression); ?>";
 		});
 
+		// Main modules
 		TwillNavigation::addLink(
 			NavigationLink::make()->forModule('pages')
 		);
+		
 		TwillNavigation::addLink(
 			NavigationLink::make()->forModule('menuLinks')->title('Menu')
 		);
+
+		// Blog-related modules (visually grouped by consistent naming)
 		TwillNavigation::addLink(
-			NavigationLink::make()->forModule('blogCategories')->title('Blog Categories')
+			NavigationLink::make()
+				->forModule('blogPosts')
+				->title('📝 Blog Posts')
 		);
+
 		TwillNavigation::addLink(
-			NavigationLink::make()->forModule('blogAuthors')->title('Blog Authors')
+			NavigationLink::make()
+				->forModule('blogCategories')
+				->title('📂 Blog Categories')
 		);
+
 		TwillNavigation::addLink(
-			NavigationLink::make()->forModule('blogTags')->title('Blog Tags')
+			NavigationLink::make()
+				->forModule('blogTags')
+				->title('🏷️ Blog Tags')
 		);
+
 		TwillNavigation::addLink(
-			NavigationLink::make()->forModule('blogPosts')->title('Blog Posts')
+			NavigationLink::make()
+				->forModule('blogAuthors')
+				->title('👤 Blog Authors')
 		);
+
+		// App settings
 		TwillAppSettings::registerSettingsGroup(
 			SettingsGroup::make()->name('homepage')->label('Homepage')
 		);

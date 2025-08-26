@@ -108,4 +108,67 @@
       transform: rotate(360deg);
     }
   }
+
+  /* Header Language Switcher Styles */
+  .language-switcher-header .language-switcher {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .language-switcher-header .language-switcher .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    color: #495057;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .language-switcher-header .language-switcher .btn:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    color: #212529;
+  }
+  
+  .language-switcher-header .language-switcher .btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+    border-color: #6366f1;
+  }
+  
+  .language-switcher-header .language-switcher .dropdown-menu {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    min-width: 160px;
+    margin-top: 0.25rem;
+  }
+  
+  .language-switcher-header .language-switcher .dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .language-switcher-header .language-switcher .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+  
+  .language-switcher-header .language-switcher .dropdown-item:active {
+    background-color: #6366f1;
+    color: #fff;
+  }
+  
+  /* Ensure proper spacing and alignment */
+  .language-switcher-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 </style> 

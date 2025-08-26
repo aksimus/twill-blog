@@ -30,6 +30,6 @@ Route::group([
 
 	// Page routes
 	Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
-	Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('home'); // Alias for home
+	//Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('home'); // Alias for home
 	Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
 });

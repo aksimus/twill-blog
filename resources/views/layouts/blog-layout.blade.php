@@ -4,6 +4,8 @@
   <base href="/">
     @include('layouts.partials.head')
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @yield('seo')
+    
   </head>
 
   <body>

@@ -1,28 +1,29 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="{{ asset('css/language-switcher.css') }}">
-    
-    <x-seo-meta 
+@extends('layouts.blog-layout')
+
+@section('seo')
+<x-seo-meta 
         :title="$item->title"
         :description="$item->meta_description ?: $item->description"
         type="article"
         :keywords="$item->meta_keywords"
     />
-    
-    @vite('resources/css/app.css')
-</head>
-<body>
-    <x-menu/>
-    
-    <x-language-switcher />
-    
-    <div class="mx-auto max-w-2xl px-5 md:px-0">
-        <div class="prose md:prose-lg lg:prose-xl prose-a:font-normal mt-16 first:mt-0">
-            @if($item->hasImage('cover'))
+@endsection
+@section('content')
+
+
+    <!-- Post image (parallax) -->
+    <div class="jarallax mb-lg-5 mb-4" data-jarallax data-speed="0.35" style="height: 36.45vw; min-height: 300px;">
+      <div class="jarallax-img" style="background-image: url('/assets/img/highway.jpg');"></div>
+    </div>
+
+
+  <!-- Post content + Sharing -->
+  <section class="container mb-5 pt-4 pb-2 py-mg-4">
+    <div class="row gy-4">
+      <!-- Content -->
+
+
+      @if($item->hasImage('cover'))
                 <img src="{{ $item->image('cover') }}" alt="{{ $item->imageAltText('cover') }}" />
             @endif
 
@@ -42,6 +43,10 @@
         </div>
 
         {!! $item->renderBlocks() !!}
+
+
+
     </div>
-</body>
-</html>
+  </section>
+@endsection
+

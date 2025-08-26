@@ -42,7 +42,7 @@
     }
     
     // Define which routes support language switching
-    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.post', 'frontend.home', 'frontend.page'];
+    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.tags', 'blog.post', 'frontend.home', 'frontend.page'];
     
     // Use the content language switcher service
     $contentLanguageService = app(ContentLanguageSwitcherService::class);

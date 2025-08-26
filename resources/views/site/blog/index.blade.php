@@ -1,123 +1,110 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="{{ asset('css/language-switcher.css') }}">
-    
-    <x-seo-meta 
-        title="{{ __('Blog') }}"
-        description="{{ __('Discover our latest articles, insights, and stories.') }}"
-        type="website"
-    />
-    
-    @vite('resources/css/app.css')
-</head>
-<body>
-    <x-menu/>
-    
-    <x-language-switcher />
-    
-    <div class="mx-auto max-w-4xl px-5 md:px-0">
-        <div class="mt-16">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Blog') }}</h1>
-            <p class="text-lg text-gray-600 mb-8">{{ __('Discover our latest articles, insights, and stories.') }}</p>
-            
-            <!-- Categories Widget -->
-            <x-blog-categories-widget :allCategories="$allCategories" />
-            
-            <!-- Blog Navigation -->
-            <div class="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-lg">
-                <div class="text-sm text-gray-600">
-                    <span class="font-medium">{{ __('Categories') }}:</span>
-                    <a href="{{ route('blog.index') }}" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
-                        {{ __('All') }}
-                    </a>
-                </div>
-                
-                <div class="text-sm text-gray-600">
-                    <span class="font-medium">{{ __('Popular Tags') }}:</span>
-                    <a href="@localizedUrl('blog/tags')" class="ml-2 text-blue-600 hover:text-blue-800 transition-colors">
-                        {{ __('View All') }}
-                    </a>
-                </div>
-            </div>
+@extends('layouts.blog-layout')
+
+@section('title', __('Blog'))
+
+@section('meta')
+<meta name="description" content="{{ __('Discover our latest articles, insights, and stories.') }}">
+@endsection
+
+@section('content')
+  <div class="container mt-4 pt-lg-2 pb-3">
+    <div class="row">
+      <div class="col-lg-8">
+        <h1 class="h1 mb-4">{{ __('Blog') }}</h1>
+        <p class="fs-lg text-muted mb-5">{{ __('Discover our latest articles, insights, and stories.') }}</p>
+        
+        <!-- Categories Widget -->
+        <x-blog-categories-widget :allCategories="$allCategories" />
+        
+        <!-- Blog Navigation -->
+        <div class="d-flex flex-wrap gap-3 mb-5 p-4 bg-light rounded-3">
+          <div class="text-sm text-muted">
+            <span class="fw-semibold">{{ __('Categories') }}:</span>
+            <a href="{{ route('blog.index') }}" class="ms-2 text-primary text-decoration-none">
+              {{ __('All') }}
+            </a>
+          </div>
+          
+          <div class="text-sm text-muted">
+            <span class="fw-semibold">{{ __('Popular Tags') }}:</span>
+            <a href="@localizedUrl('blog/tags')" class="ms-2 text-primary text-decoration-none">
+              {{ __('View All') }}
+            </a>
+          </div>
         </div>
 
         @forelse($items as $post)
-            <article class="mb-8 p-6 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <header class="mb-4">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">
-                        <a href="{{ route('blog.post', $post->getSlug()) }}" 
-                           class="hover:text-blue-600 transition-colors">
-                            {{ $post->title }}
-                        </a>
-                    </h2>
-                    
-                    <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                        <time datetime="{{ $post->created_at->toISOString() }}">
-                            {{ $post->created_at->format('M j, Y') }}
-                        </time>
-                        
-                        @if($post->category)
-                            <span class="flex items-center gap-1">
-                                <span class="text-gray-400">•</span>
-                                <a href="{{ route('blog.category', $post->category->getSlug()) }}" 
-                                   class="text-blue-600 hover:text-blue-800 transition-colors">
-                                    {{ $post->category->title }}
-                                </a>
-                            </span>
-                        @endif
-                    </div>
-                </header>
-
-                @if($post->description)
-                    <div class="text-gray-700 mb-4 leading-relaxed">
-                        {!! \Illuminate\Support\Str::limit($post->description, 200) !!}
-                    </div>
-                @endif
-
-                @if($post->blogTags && $post->blogTags->count() > 0)
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        @foreach($post->blogTags as $tag)
-                            <a href="{{ route('blog.tag', $tag->getSlug()) }}" 
-                               class="inline-block px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors">
-                                {{ $tag->title }}
-                            </a>
-                        @endforeach
-                    </div>
-                @endif
-
-                <footer class="flex items-center justify-between">
-                    <a href="{{ route('blog.post', $post->getSlug()) }}" 
-                       class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
-                        {{ __('Read more') }}
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </footer>
-            </article>
-        @empty
-            <div class="text-center py-12">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-                    </svg>
+          <article class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+              <header class="mb-3">
+                <h2 class="h4 mb-2">
+                  <a href="{{ route('blog.post', $post->getSlug()) }}" 
+                     class="text-decoration-none">
+                    {{ $post->title }}
+                  </a>
+                </h2>
+                
+                <div class="d-flex align-items-center gap-3 text-sm text-muted mb-3">
+                  <time datetime="{{ $post->created_at->toISOString() }}">
+                    {{ $post->created_at->format('M j, Y') }}
+                  </time>
+                  
+                  @if($post->category)
+                    <span class="d-flex align-items-center gap-1">
+                      <span class="text-muted">•</span>
+                      <a href="{{ route('blog.category', $post->category->getSlug()) }}" 
+                         class="text-primary text-decoration-none">
+                        {{ $post->category->title }}
+                      </a>
+                    </span>
+                  @endif
                 </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-2">{{ __('No posts found') }}</h3>
-                <p class="text-gray-600">{{ __('The blog is empty. Check back soon for new content!') }}</p>
+              </header>
+
+              @if($post->description)
+                <div class="text-muted mb-4">
+                  {!! \Illuminate\Support\Str::limit($post->description, 200) !!}
+                </div>
+              @endif
+
+              @if($post->blogTags && $post->blogTags->count() > 0)
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  @foreach($post->blogTags as $tag)
+                    <a href="{{ route('blog.tag', $tag->getSlug()) }}" 
+                       class="badge bg-primary-subtle text-primary text-decoration-none">
+                      {{ $tag->title }}
+                    </a>
+                  @endforeach
+                </div>
+              @endif
+
+              <footer class="d-flex align-items-center justify-content-between">
+                <a href="{{ route('blog.post', $post->getSlug()) }}" 
+                   class="btn btn-outline-primary btn-sm">
+                  {{ __('Read more') }}
+                  <i class="bx bx-right-arrow-alt ms-1"></i>
+                </a>
+              </footer>
             </div>
+          </article>
+        @empty
+          <div class="text-center py-5">
+            <div class="text-muted mb-4">
+              <i class="bx bx-file-blank display-4"></i>
+            </div>
+            <h3 class="h4 mb-2">{{ __('No posts found') }}</h3>
+            <p class="text-muted">{{ __('The blog is empty. Check back soon for new content!') }}</p>
+          </div>
         @endforelse
 
         @if($items->hasPages())
-            <div class="mt-8 text-center">
-                <div class="text-sm text-gray-600">
-                    {{ __('Showing') }} {{ $items->firstItem() ?? 0 }} {{ __('of') }} {{ $items->total() }} {{ __('posts') }}
-                </div>
+          <div class="mt-5 text-center">
+            <div class="text-sm text-muted">
+              {{ __('Showing') }} {{ $items->firstItem() ?? 0 }} {{ __('of') }} {{ $items->total() }} {{ __('posts') }}
             </div>
+          </div>
         @endif
+      </div>
     </div>
-</body>
-</html> 
+  </div>
+@endsection

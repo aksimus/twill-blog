@@ -10,8 +10,9 @@
 @section('content')
   <!-- Breadcrumb -->
   <x-breadcrumb :items="[
-    ['url' => route('home'), 'title' => 'Home'],
+    ['url' => route('frontend.home'), 'title' => 'Home'],
     ['url' => route('blog.index'), 'title' => 'Blog'],
+    ...($post->category ? [['url' => route('blog.category', $post->category->getSlug()), 'title' => $post->category->title]] : []),
     ['url' => '#', 'title' => $post->title ?? 'Single Post']
   ]" />
 

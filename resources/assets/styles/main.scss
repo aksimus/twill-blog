@@ -1,0 +1,153 @@
+/* fira-sans-regular - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.eot');
+  src: local('Fira Sans Regular'), local('FiraSans-Regular'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.eot?#iefix') format('embedded-opentype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.woff2') format('woff2'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.woff') format('woff'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.ttf') format('truetype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-regular.svg#FiraSans') format('svg');
+}
+
+/* fira-sans-italic - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.eot');
+  src: local('Fira Sans Italic'), local('FiraSans-Italic'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.eot?#iefix') format('embedded-opentype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.woff2') format('woff2'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.woff') format('woff'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.ttf') format('truetype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-italic.svg#FiraSans') format('svg');
+}
+
+/* fira-sans-500 - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.eot');
+  src: local('Fira Sans Medium'), local('FiraSans-Medium'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.eot?#iefix') format('embedded-opentype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.woff2') format('woff2'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.woff') format('woff'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.ttf') format('truetype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-500.svg#FiraSans') format('svg');
+}
+
+/* fira-sans-700 - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: bold;
+  font-weight: 700;
+  src: url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.eot');
+  src: local('Fira Sans Bold'), local('FiraSans-Bold'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.eot?#iefix') format('embedded-opentype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.woff2') format('woff2'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.woff') format('woff'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.ttf') format('truetype'),
+    url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.svg#FiraSans') format('svg');
+}
+
+:root {
+  --charcoal-grey: hsl(214, 14%, 20%);
+  --brown-grey: hsl(0, 0%, 61%);
+  --white: hsl(0, 0%, 99%);
+  --deep-sky-blue: hsl(210, 82%, 51%);
+  --orangey-yellow: hsl(37, 91%, 55%);
+  --orangey-red: hsl(8, 100%, 61%);
+  --teal-green: hsl(141, 67%, 40%);
+  --very-light-grey: hsl(0, 0%, 80%);
+  --off-white: hsl(37, 100%, 95%);
+  --very-light-pink: hsl(7, 100%, 95%);
+  --very-light-blue: hsl(209, 100%, 94%);
+  --ice: hsl(140, 60%, 92%);
+
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+
+  font-family: "Fira Sans", "Arial", "sans-serif";
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+
+small {
+  font-size: 11px;
+}
+
+input, textarea, button {
+  font-family: "Fira Sans", "Arial", "sans-serif";
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--charcoal-grey);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+hr {
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  border: 0;
+  border-top: 1px solid hsla(0, 0%, 0%, .1);
+}
+
+/* Import Font Awesome Icons Set */
+@import '~font-awesome/css/font-awesome.min.css';
+@import './icons.scss';
+
+/* Import fe-lib styles */
+@import '~fe-lib/dist/lib.css';
+
+@import "shell/shell";

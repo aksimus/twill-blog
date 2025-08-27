@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "login": "/api/login",
+    "register": "/api/register",
+    "logout": "/api/logout",
+    "user": "/api/user",
+    "confirm": "/api/confirm",
+    "refresh": "/api/refresh",
+    "password_reset_link":"/api/password-reset-link",
+    "password_reset_confirm":"/api/password-reset-confirm"
+  },
+  "account": {
+    "key": "/api/account/billing/key",
+    "billing": "/api/account/billing",
+    "card": "/api/account/billing/card",
+    "upgrade": "/api/account/billing/subscription",
+    "subscription": "/api/account/billing/subscription",
+    "coupon": "/api/account/billing/subscription/coupon",
+    "user": "/api/account/user"
+  },
+  "formGroup": {
+    "trip": "/api/trip",
+    "fuel": "/api/fuel",
+    "reports": "/api/reports",
+    "rates": "/api/rates",
+    "demoRates": "/api/demo-rates",
+    "equipment": "/api/equipment",
+    "emails": "/api/emails"
+  },
+
+  "support": {
+    "requestLimitsUpgrade": "/api/support/limits-upgrade"
+  },
+
+  "geo": {
+    "search": "/api/geo/search",
+    "street": "/api/geo/address",
+    "zip": "/api/geo/zip"
+  },
+
+  "frontPage": "api/calc",
+
+  "requestTraining": "/api/training",
+  "features": "api/features"
+}

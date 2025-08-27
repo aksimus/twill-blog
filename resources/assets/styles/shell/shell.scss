@@ -1,0 +1,62 @@
+// Colors
+$white:  hsl(0, 0%, 100%);
+
+$green-1:  hsl(141, 46%, 52%);
+$green-2: hsl(141, 46%, 47%);
+
+$deep-sky-blue: hsl(210, 82%, 51%);
+
+$gray-1: hsl(204, 20%, 95%);
+$gray-2: hsl(204, 20%, 90%);
+$gray-3: hsl(210, 4%, 90%);
+$gray-4: hsl(201, 20%, 80%);
+$gray-5: hsl(202, 19%, 70%);
+$gray-6: hsl(201, 19%, 40%);
+$gray-7: hsl(201, 20%, 20%);
+
+// Theme
+$brand-logo: url('./img/logo.png');
+$theme-color: $white;
+$logo-border-color: $deep-sky-blue;
+
+$main-border-color: $gray-5;
+$main-background-color: $gray-3;
+
+$nav-link-color: $gray-6;
+$nav-link-hover-bg-color: $deep-sky-blue;
+$nav-link-hover-color: $gray-7;
+$nav-menu-link-color: $gray-5;
+
+$border-color: $gray-4;
+$background-header-color: $gray-1;
+$background-hover-color: $gray-1;
+
+$background-collapsed-color: $gray-2;
+
+.shell {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 55px calc(100% - 55px);
+
+  height: 100%;
+}
+
+.shell__body {
+  display: flex;
+  align-items: flex-start;
+
+  background-color: $main-background-color;
+
+  overflow: hidden;
+}
+
+.shell__main {
+  flex-grow: 1;
+  position: relative;
+
+  height: 100%;
+  overflow: hidden;
+}
+
+@import "__header";
+@import "__nav";

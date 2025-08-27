@@ -1,0 +1,143 @@
+.shell__header {
+  display: grid;
+  grid-template-columns: 200px 50px auto;
+  grid-template-rows: auto;
+
+  border-bottom: 1px solid $logo-border-color;
+}
+
+.shell__logo {
+  height: 55px;
+  background: $theme-color $brand-logo no-repeat center / 160px auto;
+  border-bottom: 1px solid $logo-border-color;
+
+  cursor: pointer;
+}
+
+.shell__navbar-toggler {
+  align-self: center;
+  justify-self: center;
+}
+
+.shell__navbar-toggler-btn {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  background: no-repeat center center;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23536c79' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+
+  border: 0;
+  outline: none;
+  appearance: none;
+
+  &:hover {
+    cursor: pointer;
+  
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%2329363d' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+
+.shell__account-info {
+  align-self: center;
+  justify-self: end;
+}
+
+.shell__account-info-user {
+  display: flex;
+  color: $nav-link-color;
+  text-decoration: none;
+  outline: none;
+}
+
+.shell__account-info-user:hover {
+  color: $nav-link-hover-color;
+}
+
+.shell__account-info-name {
+  align-self: center;
+}
+
+.shell__account-info-avatar {
+  height: 35px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.shell__dropdown-accnt {
+  position: absolute;
+  top: 47px;
+  right: 0;
+
+  min-width: 180px;
+
+  z-index: 1024;
+  
+  border: 1px solid $border-color;
+  border-bottom: 0;
+  background-color: $white;
+}
+
+.shell__dropdown-accnt-header {
+  padding: 8px 20px;
+
+  border-bottom: 1px solid $border-color;
+  background-color: $background-header-color;
+
+  font-size: 12px;
+  line-height: 1.5;
+  color: $nav-link-color;
+  text-align: center;
+}
+
+.shell__dropdown-accnt-item {
+  display: block;
+  padding: 10px 20px;
+
+  border-bottom: 1px solid $border-color;
+  color: $nav-link-color;
+  text-decoration: none;
+
+  i {
+    width: 20px;
+    margin-right: 8px;
+  }
+}
+
+.shell__dropdown-accnt-item:focus, 
+.shell__dropdown-accnt-item:hover {
+  outline: none;
+  background-color: $background-hover-color;
+}
+
+// minimized state
+.shell__header--minimized {
+  grid-template-columns: 50px 50px auto;
+
+  .shell__logo {
+    background: $theme-color $brand-logo no-repeat center center / 70px auto;
+  }
+}
+
+// mobile state
+@media (max-width: 992px) {
+  .shell__header {
+    grid-template-columns: 50px auto 200px auto;
+    grid-template-areas:
+      "toggler . logo user";
+
+    background-color: $theme-color;
+    border-bottom: 1px solid $logo-border-color;
+  }
+
+  .shell__navbar-toggler {
+    grid-area: toggler;
+  }
+
+  .shell__logo {
+    grid-area: logo;
+  }
+
+  .shell__account-info {
+    grid-area: user;
+  }
+}

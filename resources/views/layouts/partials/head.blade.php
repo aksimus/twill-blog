@@ -11,7 +11,7 @@
 
 <!-- Theme switcher (color modes) -->
 <script src="/assets/js/theme-switcher.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_maps.api_key')}}&language=en"></script>
 <!-- Favicon and Touch Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">

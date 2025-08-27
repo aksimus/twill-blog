@@ -1,8 +1,6 @@
 <template>
-  <div ref="homeShell">
 
-
-
+  <home-shell ref="homeShell">
     <div
       slot="image-section"
       class="front-page__demo"
@@ -111,7 +109,6 @@
         <div><small>* enter trip details to start IFTA calculation</small></div>
       </div>
     </div>
-
 
     <c-modal
       v-model="modalState"
@@ -249,7 +246,7 @@
       v-if="modalRouteMapState"
       v-model="modalRouteMapState"
       :trip-id="tripId" />
-  </div>
+</home-shell>
 </template>
 
 <script>
@@ -259,6 +256,7 @@ import { mapFields } from 'vuex-map-fields';
 
 
 import demoTripMap from './components/Front/DemoTripMap.vue';
+import HomeShell from './components/HomeShell.vue';
 
 
 const vuexModuleFrontPage = 'frontPage';
@@ -267,6 +265,7 @@ export default {
   name: 'FrontpageDemoWidget',
 
   components: {
+    HomeShell,
     demoTripMap,
   },
 
@@ -460,12 +459,13 @@ export default {
 
       // fbq - global function of google tag manager
       // eslint-disable-next-line no-undef
+      if(0){
       fbq('track', 'ViewContent', {
         value: 1,
         content_ids: 'demo-recalc-step2',
         content_type: 'demo',
       });
-
+    }
       const fuelPurchases = this.stateListItems
         .map(item => ({ state: item.state, fuel_units: item.fuel_units }))
         .filter(item => Number(item.fuel_units));
@@ -488,12 +488,13 @@ export default {
 
       // fbq - global function of google tag manager
       // eslint-disable-next-line no-undef
+      if(0){
       fbq('track', 'ViewContent', {
         value: 1,
         content_ids: 'demo-recalc-step1',
         content_type: 'demo',
       });
-
+    }
       const route = { route: [this.pickup, this.delivery] };
       await this.startRouteCalculation(route);
 

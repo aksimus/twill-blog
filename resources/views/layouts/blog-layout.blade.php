@@ -13,13 +13,13 @@
     @include('layouts.partials.page-loading')
 
     <!-- Page wrapper for sticky footer -->
-    <main class="page-wrapper">
+    <div class="page-wrapper">
       <!-- Navbar -->
       @include('layouts.partials.header')
 
       <!-- Main Content -->
       @yield('content')
-    </main>
+  </div>
 
     <!-- Footer -->
     @include('layouts.partials.footer')

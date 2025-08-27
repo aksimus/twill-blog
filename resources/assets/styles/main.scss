@@ -54,7 +54,7 @@
     url('./styles/fonts/fira-sans/fira-sans-v9-latin-700.svg#FiraSans') format('svg');
 }
 
-:root {
+.home-shell__image_wrapper {
   --charcoal-grey: hsl(214, 14%, 20%);
   --brown-grey: hsl(0, 0%, 61%);
   --white: hsl(0, 0%, 99%);
@@ -68,17 +68,9 @@
   --very-light-blue: hsl(209, 100%, 94%);
   --ice: hsl(140, 60%, 92%);
 
-  width: 100%;
-  height: 100%;
-}
-
-* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
   width: 100%;
   height: 100%;
 
@@ -91,6 +83,8 @@ body {
   letter-spacing: normal;
   color: var(--charcoal-grey);
 }
+
+
 
 small {
   font-size: 11px;
@@ -150,4 +144,4 @@ hr {
 /* Import fe-lib styles */
 @import '~fe-lib/dist/lib.css';
 
-@import "shell/shell";
+//@import "shell/shell";

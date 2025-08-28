@@ -28,6 +28,10 @@ Route::group([
 	Route::get('/blog/tag/{slug}', [\App\Http\Controllers\BlogController::class, 'tag'])->name('blog.tag');
 	Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.post');
 
+	// Rates routes
+	Route::get('/rates', [\App\Http\Controllers\RatesController::class, 'index'])->name('rates.index');
+	Route::get('/rates/{year}/{quarter}', [\App\Http\Controllers\RatesController::class, 'show'])->name('rates.show');
+
 	// Page routes
 	Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
 	//Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('home'); // Alias for home

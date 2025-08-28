@@ -298,7 +298,7 @@ $currentFaq = $faq[$currentLocale] ?? $faq['en'];
 
 
 <div class="front-page__rates-link">
-  <a href="/rates/">{{ __('homepage.footer.rates_link') }}</a>
+  <a href="{{ route('rates.index') }}">{{ __('homepage.footer.rates_link') }}</a>
 </div>
 
 <div class="front-page__faq">

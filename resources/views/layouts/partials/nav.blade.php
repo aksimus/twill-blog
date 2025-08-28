@@ -30,6 +30,11 @@
     </ul>
   </li>
   
+  <!-- Rates -->
+  <li class="nav-item">
+    <a href="@localizedUrl('rates')" class="nav-link">{{ __('Rates') }}</a>
+  </li>
+  
   <!-- Dynamic Twill Menu Links -->
   @if(isset($links) && $links->count() > 0)
     @foreach($links as $link)

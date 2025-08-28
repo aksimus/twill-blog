@@ -58,5 +58,18 @@
     "homepage.promo.deadline": "IFTA Q3 2025 deadline is October 31st! Log your trips now — the rates are already available!",
     "homepage.video.title": "Watch How it works",
     "homepage.footer.rates_link": "View IFTA Rates",
-    "homepage.footer.faq_title": "Frequently asked questions"
+    "homepage.footer.faq_title": "Frequently asked questions",
+    "Rates": "Rates",
+    "Country": "Country",
+    "State": "State",
+    "Year": "Year",
+    "Quarter": "Quarter",
+    "Rate": "Rate",
+    "Surcharge Rate": "Surcharge Rate",
+    "No rates available": "No rates available",
+    "January to March": "January to March",
+    "April to June": "April to June",
+    "July to September": "July to September",
+    "October to December": "October to December",
+    "Rates are being loaded from external source. Please try again in a moment.": "Rates are being loaded from external source. Please try again in a moment."
 }

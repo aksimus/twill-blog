@@ -39,7 +39,7 @@
         }
     }
     
-    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.post', 'frontend.home', 'frontend.page'];
+    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.post', 'frontend.home', 'frontend.page', 'rates.index', 'rates.show'];
     $contentLanguageService = app(ContentLanguageSwitcherService::class);
     $supportedLocales = array_keys(LaravelLocalization::getSupportedLocales());
     $currentLocale = app()->getLocale();

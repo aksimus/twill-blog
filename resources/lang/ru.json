@@ -58,6 +58,19 @@
     "homepage.promo.deadline": "Срок подачи отчета IFTA Q3 2025 - 31 октября! Вносите трипы уже сейчас — тарифы уже доступны!",
     "homepage.video.title": "Посмотрите как работает калькулятор",
     "homepage.footer.rates_link": "Посмотреть тарифы IFTA",
-    "homepage.footer.faq_title": "Часто задаваемые вопросы"
+    "homepage.footer.faq_title": "Часто задаваемые вопросы",
+    "Rates": "Тарифы",
+    "Country": "Страна",
+    "State": "Штат",
+    "Year": "Год",
+    "Quarter": "Квартал",
+    "Rate": "Тариф",
+    "Surcharge Rate": "Дополнительный тариф",
+    "No rates available": "Тарифы недоступны",
+    "January to March": "Январь - Март",
+    "April to June": "Апрель - Июнь",
+    "July to September": "Июль - Сентябрь",
+    "October to December": "Октябрь - Декабрь",
+    "Rates are being loaded from external source. Please try again in a moment.": "Тарифы загружаются из внешнего источника. Пожалуйста, попробуйте еще раз через мгновение."
 
 } 

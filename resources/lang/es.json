@@ -58,6 +58,19 @@
     "homepage.promo.deadline": "¡La fecha límite del Q3 2025 de IFTA es el 31 de octubre! ¡Registra tus viajes ahora — las tarifas ya están disponibles!",
     "homepage.video.title": "Mira cómo funciona",
     "homepage.footer.rates_link": "Ver Tarifas IFTA",
-    "homepage.footer.faq_title": "Preguntas frecuentes"
+    "homepage.footer.faq_title": "Preguntas frecuentes",
+    "Rates": "Tarifas",
+    "Country": "País",
+    "State": "Estado",
+    "Year": "Año",
+    "Quarter": "Trimestre",
+    "Rate": "Tarifa",
+    "Surcharge Rate": "Tarifa Adicional",
+    "No rates available": "No hay tarifas disponibles",
+    "January to March": "Enero a Marzo",
+    "April to June": "Abril a Junio",
+    "July to September": "Julio a Septiembre",
+    "October to December": "Octubre a Diciembre",
+    "Rates are being loaded from external source. Please try again in a moment.": "Las tarifas se están cargando desde una fuente externa. Por favor, inténtelo de nuevo en un momento."
     
 } 

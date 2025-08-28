@@ -38,11 +38,22 @@
                     $routeParams['slug'] = $lastPart;
                 }
             }
+        } elseif (in_array($routeName, ['rates.index', 'rates.show'])) {
+            // Handle rates routes - preserve year and quarter parameters
+            $pathParts = explode('/', $path);
+            if (count($pathParts) >= 3) {
+                // For rates.show: /rates/{year}/{quarter}
+                if ($routeName === 'rates.show' && count($pathParts) >= 4) {
+                    $routeParams['year'] = $pathParts[count($pathParts) - 2];
+                    $routeParams['quarter'] = $pathParts[count($pathParts) - 1];
+                }
+                // For rates.index: no additional parameters needed
+            }
         }
     }
     
     // Define which routes support language switching
-    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.tags', 'blog.post', 'frontend.home', 'frontend.page'];
+    $localizableRoutes = ['blog.index', 'blog.category', 'blog.tag', 'blog.tags', 'blog.post', 'frontend.home', 'frontend.page', 'rates.index', 'rates.show'];
     
     // Use the content language switcher service
     $contentLanguageService = app(ContentLanguageSwitcherService::class);

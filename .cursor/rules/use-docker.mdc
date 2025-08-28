@@ -1,0 +1,12 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+the host system is macOS, php8.4 installed in docker
+
+1. for running terminal commands use docker container tmpl-laravel_11-scaffold-app-1, example
+docker exec -it tmpl-laravel_11-scaffold-app-1 php -v
+2. you can access source code directly, example  code vite.config.js
+3. to build frontend use this command docker run --rm --interactive --tty --volume .:/var/www/app  node:21 sh -c "cd /var/www/app && node -v && npm install && npm run build"
+

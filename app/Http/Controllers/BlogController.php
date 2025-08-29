@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Repositories\BlogPostRepository;
 use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogTagRepository;
+use App\Traits\HasSeoMeta;
 use Illuminate\Contracts\View\View;
 
 class BlogController extends Controller
 {
+	use HasSeoMeta;
+	
 	public function index(BlogPostRepository $posts, BlogCategoryRepository $categories): View
 	{
 		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['published' => true], orders: ['created_at' => 'desc'], perPage: 10);
@@ -18,6 +21,9 @@ class BlogController extends Controller
 		$allCategories->each(function($category) {
 			$category->posts_count = $category->posts()->where('published', true)->count();
 		});
+		
+		// Share SEO meta data
+		$this->shareSeoMeta();
 		
 		return view('site.blog.index', compact('items', 'allCategories'));
 	}
@@ -29,6 +35,9 @@ class BlogController extends Controller
 		
 		$perPage = config('blog.post_per_page', 2);
 		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['blog_category_id' => $category->id, 'published' => true], orders: ['created_at' => 'desc'], perPage: $perPage);
+		
+		// Share SEO meta data for category
+		$this->shareSeoMeta($this->getBlogCategorySeoMeta($category));
 		
 		return view('site.blog.category', compact('category', 'items'));
 	}
@@ -59,6 +68,9 @@ class BlogController extends Controller
 			['path' => request()->url(), 'query' => request()->query()]
 		);
 		
+		// Share SEO meta data for tag
+		$this->shareSeoMeta($this->getBlogTagSeoMeta($tag));
+		
 		return view('site.blog.tag', compact('tag', 'items'));
 	}
 
@@ -71,7 +83,10 @@ class BlogController extends Controller
 			$tag->posts_count = $tag->blogPosts()->where('published', true)->count();
 		});
 		
-		return view('site.blog.tags', compact('allTags'));
+		// Get SEO meta data for tags index
+		$seoMeta = $this->getSeoMeta();
+		
+		return view('site.blog.tags', compact('allTags', 'seoMeta'));
 	}
 
 	public function show(string $slug, BlogPostRepository $posts): View
@@ -98,6 +113,9 @@ class BlogController extends Controller
 		// Add social media counts (placeholder values)
 		$post->likes_count = rand(5, 25);
 		$post->shares_count = rand(2, 10);
+		
+		// Share SEO meta data for blog post
+		$this->shareSeoMeta($this->getBlogPostSeoMeta($post));
 		
 		return view('site.blog.post', compact('post', 'relatedPosts'));
 	}

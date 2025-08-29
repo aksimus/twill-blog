@@ -68,7 +68,8 @@ Mail::raw('This is a test email from Tinker.', function ($message) {     $messag
 
 
 Сборка фронтэнда
-docker run --rm --interactive --tty --volume ./src:/var/www/app node:21 sh -c "cd /var/www/app && node -v && npm install && npm run build"
+docker run --rm --interactive --tty --volume .:/var/www/app --publish 5173:5173 --publish 3001:3001 node:21 sh -c "cd /var/www/app && node -v && npm install && npm run dev"
+docker run --rm --interactive --tty --volume .:/var/www/app  node:21 sh -c "cd /var/www/app && node -v && npm install && npm run build"
 
 
 

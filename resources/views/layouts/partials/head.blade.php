@@ -1,10 +1,7 @@
 <meta charset="utf-8">
 <title>@yield('title', 'Silicon | Blog')</title>
+<!-- SEO Meta Tags are now handled by the SeoMetaService -->
 
-<!-- SEO Meta Tags -->
-@yield('meta')
-<meta name="keywords" content="bootstrap, business, creative agency, mobile app showcase, saas, fintech, finance, online courses, software, medical, conference landing, services, e-commerce, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
-<meta name="author" content="Createx Studio">
 
 <!-- Viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1">

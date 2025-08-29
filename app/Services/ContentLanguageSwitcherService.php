@@ -28,11 +28,20 @@ class ContentLanguageSwitcherService
             case 'blog.index':
                 return $this->getLocalizedIndexUrl($targetLocale);
 
+            case 'blog.tags':
+                return $this->getLocalizedBlogTagsUrl($targetLocale);
+
             case 'frontend.home':
                 return $this->getLocalizedHomeUrl($targetLocale);
 
             case 'frontend.page':
                 return $this->getLocalizedPageUrl($targetLocale, $routeParams['slug'] ?? null);
+
+            case 'rates.index':
+                return $this->getLocalizedRatesIndexUrl($targetLocale);
+
+            case 'rates.show':
+                return $this->getLocalizedRatesShowUrl($targetLocale, $routeParams);
 
             default:
                 return null;
@@ -191,8 +200,8 @@ class ContentLanguageSwitcherService
     {
         $fullPath = $slug ? "{$path}/{$slug}" : $path;
         
-        if ($locale === config('app.locale') || $locale === config('app.fallback_locale')) {
-            // Default language - no prefix
+        if ($locale === 'en') {
+            // English (default language) - no prefix
             return url($fullPath);
         }
         
@@ -225,5 +234,31 @@ class ContentLanguageSwitcherService
         }
 
         return $availableLocales;
+    }
+
+    /**
+     * Get the localized URL for rates index page
+     */
+    private function getLocalizedRatesIndexUrl(string $targetLocale): string
+    {
+        return $this->generateLocalizedUrl($targetLocale, 'rates');
+    }
+
+    /**
+     * Get the localized URL for rates show page
+     */
+    private function getLocalizedRatesShowUrl(string $targetLocale, array $routeParams): string
+    {
+        $year = $routeParams['year'] ?? '';
+        $quarter = $routeParams['quarter'] ?? '';
+        return $this->generateLocalizedUrl($targetLocale, "rates/{$year}/{$quarter}");
+    }
+
+    /**
+     * Get the localized URL for blog tags page
+     */
+    private function getLocalizedBlogTagsUrl(string $targetLocale): string
+    {
+        return $this->generateLocalizedUrl($targetLocale, 'blog/tags');
     }
 } 

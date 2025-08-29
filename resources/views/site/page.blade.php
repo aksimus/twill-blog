@@ -1,5 +1,7 @@
 @extends('layouts.blog-layout')
 
+@section('title', $item->title ?? 'Page')
+
 @section('seo')
 <x-seo-meta 
         :title="$item->title"

@@ -37,8 +37,8 @@
     "Popular Tags": "Popular Tags",
     "View All": "View All",
     "View All Categories": "View All Categories",
-    "Welcome to Our Website": "Welcome to Our Website",
-    "This is the homepage of our multilingual website built with Twill CMS.": "This is the homepage of our multilingual website built with Twill CMS.",
+    "Welcome to Our Website": "IFTA Calculator - Professional Fuel Tax Calculation Software",
+    "This is the homepage of our multilingual website built with Twill CMS.": "Professional IFTA calculation software for logistics companies. Calculate fuel taxes, track mileage, and manage compliance with our advanced IFTA calculator platform.",
     "Read Our Blog": "Read Our Blog",
     "Key Features": "Key Features",
     "24/7 Support": "24/7 Support",
@@ -71,5 +71,8 @@
     "April to June": "April to June",
     "July to September": "July to September",
     "October to December": "October to December",
-    "Rates are being loaded from external source. Please try again in a moment.": "Rates are being loaded from external source. Please try again in a moment."
+    "Rates are being loaded from external source. Please try again in a moment.": "Rates are being loaded from external source. Please try again in a moment.",
+    "homepage.seo.title": "Free IFTA calculator & state by state mileage calculator",
+    "homepage.seo.description": "How to calculate IFTA miles? Use this Free IFTA tax calculator and state by state mileage calculator.",
+    "homepage.seo.keywords": "IFTA,ifta miles,ifta calculator,ifta report,ifta rates"
 }

@@ -2,8 +2,9 @@
 
 @section('title', __('Tag') . ': ' . $tag->title)
 
-@section('meta')
-<meta name="description" content="{{ $tag->description }}">
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta />
 @endsection
 
 @section('content')

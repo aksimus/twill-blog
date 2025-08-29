@@ -1,5 +1,12 @@
 @extends('layouts.blog-layout')
 
+@section('title', __('homepage.seo.title'))
+
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta :seoMeta="$seoMeta ?? []" />
+@endsection
+
 @section('content')
 
   @include('site.homepage-promo-section')

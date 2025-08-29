@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use App\Traits\HasSeoMeta;
 
 class RatesController extends Controller
 {
+    use HasSeoMeta;
+    
     /**
      * Display rates for a specific year and quarter
      */
@@ -34,7 +37,13 @@ class RatesController extends Controller
         // Get navigation data for other quarters/years
         $navigation = $this->getNavigationData($year, $quarter);
 
-        return view('site.rates.show', compact('year', 'quarter', 'quarterInfo', 'rateList', 'navigation'));
+        // Get SEO meta data for rates show page
+        $seoMeta = $this->getSeoMeta([
+            'title' => __('Exchange Rates for :year Q:quarter', ['year' => $year, 'quarter' => $quarter]),
+            'description' => __('Exchange rates for :year Q:quarter period.', ['year' => $year, 'quarter' => $quarter]),
+        ]);
+
+        return view('site.rates.show', compact('year', 'quarter', 'quarterInfo', 'rateList', 'navigation', 'seoMeta'));
     }
 
     /**
@@ -52,7 +61,10 @@ class RatesController extends Controller
         // Get latest rates
         $rateList = $this->getRateList($currentYear, $currentQuarter);
         
-        return view('site.rates.index', compact('currentYear', 'currentQuarter', 'availableYears', 'quarters', 'rateList'));
+        // Get SEO meta data for rates index page
+        $seoMeta = $this->getSeoMeta();
+        
+        return view('site.rates.index', compact('currentYear', 'currentQuarter', 'availableYears', 'quarters', 'rateList', 'seoMeta'));
     }
 
     /**

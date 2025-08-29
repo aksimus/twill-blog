@@ -2,8 +2,9 @@
 
 @section('title', __('Tags'))
 
-@section('meta')
-<meta name="description" content="{{ __('Browse all blog tags and discover content by topic.') }}">
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta :seoMeta="$seoMeta ?? []" />
 @endsection
 
 @section('content')

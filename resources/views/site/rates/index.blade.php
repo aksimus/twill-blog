@@ -1,5 +1,12 @@
 @extends('layouts.blog-layout')
 
+@section('title', __('Exchange Rates'))
+
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta :seoMeta="$seoMeta ?? []" />
+@endsection
+
 @section('content')
 <div class="rates">
     <h4>{{ __('Rates') }}</h4>

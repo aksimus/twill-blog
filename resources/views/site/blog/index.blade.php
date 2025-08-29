@@ -2,8 +2,9 @@
 
 @section('title', __('Blog'))
 
-@section('meta')
-<meta name="description" content="{{ __('Discover our latest articles, insights, and stories.') }}">
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta />
 @endsection
 
 @section('content')

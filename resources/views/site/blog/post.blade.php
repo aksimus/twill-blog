@@ -2,9 +2,9 @@
 
 @section('title', $post->title ?? 'Blog Post')
 
-@section('meta')
-<meta name="description" content="{{ $post->meta_description ?? $post->description ?? 'Blog post' }}">
-<meta name="keywords" content="{{ $post->meta_keywords ?? '' }}">
+@section('seo')
+{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
+<x-seo-meta />
 @endsection
 
 @section('content')

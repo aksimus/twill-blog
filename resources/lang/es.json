@@ -37,8 +37,8 @@
     "Popular Tags": "Etiquetas Populares",
     "View All": "Ver Todas",
     "View All Categories": "Ver Todas las Categorías",
-    "Welcome to Our Website": "Bienvenido a Nuestro Sitio Web",
-    "This is the homepage of our multilingual website built with Twill CMS.": "Esta es la página de inicio de nuestro sitio web multilingüe construido con Twill CMS.",
+    "Welcome to Our Website": "Calculadora IFTA - Software Profesional de Cálculo de Impuestos de Combustible",
+    "This is the homepage of our multilingual website built with Twill CMS.": "Software profesional de cálculo IFTA para empresas logísticas. Calcule impuestos de combustible, rastree millas y gestione el cumplimiento con nuestra plataforma avanzada de calculadora IFTA.",
     "Read Our Blog": "Leer Nuestro Blog",
     "Key Features": "Características Principales",
     "24/7 Support": "Soporte 24/7",
@@ -71,6 +71,9 @@
     "April to June": "Abril a Junio",
     "July to September": "Julio a Septiembre",
     "October to December": "Octubre a Diciembre",
-    "Rates are being loaded from external source. Please try again in a moment.": "Las tarifas se están cargando desde una fuente externa. Por favor, inténtelo de nuevo en un momento."
+    "Rates are being loaded from external source. Please try again in a moment.": "Las tarifas se están cargando desde una fuente externa. Por favor, inténtelo de nuevo en un momento.",
+    "homepage.seo.title": "Calculadora IFTA - Software Profesional de Cálculo de Impuestos de Combustible",
+    "homepage.seo.description": "Software profesional de cálculo IFTA para empresas logísticas. Calcule impuestos de combustible, rastree millas y gestione el cumplimiento con nuestra plataforma avanzada de calculadora IFTA.",
+    "homepage.seo.keywords": "calculadora IFTA, cálculo de impuestos de combustible, software logístico, cumplimiento de camiones, seguimiento de millas, reporte de impuestos de combustible, software de transporte, software IFTA"
     
 } 

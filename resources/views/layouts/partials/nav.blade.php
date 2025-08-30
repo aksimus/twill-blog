@@ -11,7 +11,7 @@
   
   <!-- About -->
   <li class="nav-item">
-    <a href="@localizedUrl('usecases')" class="nav-link">{{ __('Use Cases') }}</a>
+    <a href="@localizedUrl('use-cases')" class="nav-link">{{ __('Use Cases') }}</a>
   </li>
   
   <!-- Blog -->

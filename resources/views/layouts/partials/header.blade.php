@@ -12,9 +12,9 @@
         @include('layouts.partials.nav')
       </div>
       <div class="offcanvas-header border-top">
-        <a href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/" class="btn btn-primary w-100" target="_blank" rel="noopener">
-          <i class="bx bx-cart fs-4 lh-1 me-1"></i>
-          &nbsp;Buy now
+        <a data-vue-calculator class="btn btn-primary w-100">
+          <i class="bx bx-user fs-4 lh-1 me-1"></i>
+          &nbsp;Open Calculator
         </a>
       </div>      
     </div>
@@ -24,9 +24,9 @@
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" target="_blank" rel="noopener">
-      <i class="bx bx-cart fs-5 lh-1 me-1"></i>
-      &nbsp;Buy now
+    <a data-vue-calculator  class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" >
+      <i class="bx bx-user fs-5 lh-1 me-1"></i>
+      &nbsp;Open Calculator
     </a>
   </div>
 </header> 

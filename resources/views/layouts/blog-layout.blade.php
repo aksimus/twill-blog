@@ -24,8 +24,6 @@
     <!-- Footer -->
     @include('layouts.partials.footer')
 
-    <!-- Back to top button -->
-    @include('layouts.partials.back-to-top')
 
     <!-- Vendor Scripts -->
     @include('layouts.partials.scripts')

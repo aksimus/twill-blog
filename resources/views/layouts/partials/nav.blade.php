@@ -11,7 +11,7 @@
   
   <!-- About -->
   <li class="nav-item">
-    <a href="@localizedUrl('about')" class="nav-link">{{ __('About') }}</a>
+    <a href="@localizedUrl('usecases')" class="nav-link">{{ __('Use Cases') }}</a>
   </li>
   
   <!-- Blog -->
@@ -30,10 +30,6 @@
     </ul>
   </li>
   
-  <!-- Rates -->
-  <li class="nav-item">
-    <a href="@localizedUrl('rates')" class="nav-link">{{ __('Rates') }}</a>
-  </li>
   
   <!-- Dynamic Twill Menu Links -->
   @if(isset($links) && $links->count() > 0)
@@ -43,31 +39,5 @@
       </li>
     @endforeach
   @endif
-  
-  <!-- Account -->
-  <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ __('Account') }}</a>
-    <ul class="dropdown-menu">
-      <li><a href="#" class="dropdown-item">{{ __('Account Details') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Security') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Notifications') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Messages') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Saved Items') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('My Collections') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Payment Details') }}</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a href="#" class="dropdown-item">{{ __('Sign In') }}</a></li>
-      <li><a href="#" class="dropdown-item">{{ __('Sign Up') }}</a></li>
-    </ul>
-  </li>
-  
-  <!-- UI Kit -->
-  <li class="nav-item">
-    <a href="#" class="nav-link">{{ __('UI Kit') }}</a>
-  </li>
-  
-  <!-- Docs -->
-  <li class="nav-item">
-    <a href="#" class="nav-link">{{ __('Docs') }}</a>
-  </li>
+
 </ul>

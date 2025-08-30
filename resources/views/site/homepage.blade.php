@@ -13,9 +13,10 @@
 
     <div id="front-page-demo-widget"></div>
 
-    <main>@include('site.homepage-main-section')</main>
-    <footer>@include('site.homepage-footer-section')</footer>
-
+    <main>
+      @include('site.homepage-main-section')
+      @include('site.homepage-footer-section')
+    </main>
 
 @endsection
 

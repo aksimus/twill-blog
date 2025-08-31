@@ -1,0 +1,17 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+The project based on Twill CMS v3 as CMS and blog engine.  
+"area17/twill": "^3.4"
+Documentation can be find here https://twillcms.com/guides/page-builder-with-blade/index.html
+Always try to implement best practices suggested by Twill developers
+We are using "mcamara/laravel-localization": "^2.3" For localization. 
+EN - is default locale, prefix isn't used for this locale. 
+URL examples: /blog/tag/data-science , /es/blog/tag/ciencia-de-datos ,  /ru/blog/tag/nauka-o-dannyh
+
+
+      
+    
+        

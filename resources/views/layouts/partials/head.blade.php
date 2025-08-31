@@ -6,9 +6,10 @@
 <!-- Viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Theme switcher (color modes) -->
-<script src="/assets/js/theme-switcher.js"></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_maps.api_key')}}&language=en"></script>
+
+
 <!-- Favicon and Touch Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -25,8 +26,6 @@
 <link rel="stylesheet" media="screen" href="/assets/vendor/lightgallery/css/lightgallery-bundle.min.css">
 <link rel="stylesheet" media="screen" href="/assets/vendor/swiper/swiper-bundle.min.css">
 
-<!-- Main Theme Styles + Bootstrap -->
-<link rel="stylesheet" media="screen" href="/assets/css/theme.min.css">
 
 <!-- Page loading styles -->
 <style>

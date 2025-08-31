@@ -8,7 +8,7 @@ export default defineConfig({
         createVuePlugin(), // Add Vue 2 plugin
         laravel({
             input: [
-                'resources/scss/app.scss',  // Изменено с css на scss
+                'resources/scss/app.scss', 
                 'resources/js/app.js'
             ],
             refresh: true,

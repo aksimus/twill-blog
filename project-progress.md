@@ -46,8 +46,10 @@ authors module
 
 
 #twill_blog_v06
+добавляем в блог тему Silicon https://silicon.createx.studio/docs/getting-started.html
 ##done
-добавлена в блог тему Silicon https://silicon.createx.studio/docs/getting-started.html в сыром виде
+- натянута тема на все основные страницы блога - но требует финальных доработок под конкретную задачу
+- Contact US - twill block 
 
 
 ##todo - добаботка модуля blogCategory, BlogTag
@@ -98,6 +100,7 @@ authors module
 - встроить все в проект ifta-calculator
 -- разделение роутов на app и front
 -- подключить events.js
+
 
 
 

@@ -45,11 +45,11 @@ authors module
 
 
 
-#planning ( next steps) - twill_blog_v06
-
-
-
+#twill_blog_v06
 добавляем в блог тему Silicon https://silicon.createx.studio/docs/getting-started.html
+##done
+- натянута тема на все основные страницы блога - но требует финальных доработок под конкретную задачу
+- Contact US - twill block 
 
 
 ##добаботка модуля blogCategory, BlogTag

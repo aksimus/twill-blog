@@ -13,10 +13,6 @@
 @section('content')
 
 
-    <!-- Post image (parallax) -->
-    <div class="jarallax mb-lg-5 mb-4" data-jarallax data-speed="0.35" style="height: 36.45vw; min-height: 300px;">
-      <div class="jarallax-img" style="background-image: url('/assets/img/highway.jpg');"></div>
-    </div>
 
 
   <!-- Post content + Sharing -->

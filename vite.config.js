@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import path from 'path';  // Add this import
 import { createVuePlugin } from 'vite-plugin-vue2';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
@@ -12,7 +13,20 @@ export default defineConfig({
                 'resources/js/app.js'
             ],
             refresh: true,
+            // buildDirectory: 'assets', // Using default 'build' directory for compatibility
         }),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'resources/img/*',
+                    dest: '../img'
+                },
+                {
+                    src: 'resources/favicon.ico',
+                    dest: '../'
+                }
+            ]
+        })
     ],
     css: {
         preprocessorOptions: {

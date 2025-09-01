@@ -2,3 +2,45 @@
 // user.scss
 // Use this to write your custom SCSS
 //
+
+// Fix for navbar-toggler wrapping on small mobile screens
+@media (max-width: 480px) {
+  .header .container {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  
+  .header .navbar-brand {
+    flex-shrink: 0;
+    max-width: 120px;
+  }
+  
+  .header .navbar-brand img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .header .language-switcher-header {
+    flex-shrink: 0;
+    margin-right: 0.5rem !important;
+  }
+  
+  .header .navbar-toggler {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  
+  .header .btn-primary.btn-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .header .navbar-brand {
+    max-width: 100px;
+  }
+  
+  .header .language-switcher-header {
+    margin-right: 0.25rem !important;
+  }
+}

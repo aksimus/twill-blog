@@ -10,8 +10,10 @@
 
   <body>
     <!-- Page loading spinner -->
-    @include('layouts.partials.page-loading')
-
+     @if(0)   
+     @include('layouts.partials.page-loading')
+    @endif
+    
     <!-- Page wrapper for sticky footer -->
     <div class="page-wrapper">
       <!-- Navbar -->

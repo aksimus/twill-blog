@@ -11,4 +11,5 @@ docker exec -it tmpl-laravel_11-scaffold-app-1 php -v
 3. to build frontend use this command docker run --rm --interactive --tty --volume .:/var/www/app  node:21 sh -c "cd /var/www/app && node -v && npm install && npm run build"
 4. use curl command to try pages content, example 'curl -s http://localhost:80/blog', 'curl -s http://localhost:80/es/rates/2025/2', 'curl -s http://localhost:80/ru/blog/tags'
 5. ask me for creating and running feature tests
+6. use mcp playwright to open site in browser
 

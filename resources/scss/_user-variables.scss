@@ -3,6 +3,21 @@
 // Use this to override Bootstrap and Silicon variables
 //
 
-// Example of a variable override to change Silicon background color
-// Remove the "//" to comment it in and see it in action!
-// $body-bg: #f3f6ff;
+// IFTA Calculator styling adjustments to match reference site
+// Reference site text color: rgb(44, 50, 58) = #2c323a
+
+// Custom gray color that matches reference site text
+$ifta-text-color: #2c323a !default;
+
+// Override body color to match reference site
+$body-color: $ifta-text-color !default;
+
+// Adjust line heights to be more consistent with reference site
+// Using 1.4 instead of "normal" for Bootstrap compatibility
+$line-height-base: 1.4 !default;
+
+// Ensure paragraph text uses the correct color
+$paragraph-color: $ifta-text-color !default;
+
+// FAQ and general text color adjustments
+$text-color: $ifta-text-color !default;

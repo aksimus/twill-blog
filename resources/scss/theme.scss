@@ -34,20 +34,20 @@
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "bootstrap/scss/card";
-@import "bootstrap/scss/accordion";
-@import "bootstrap/scss/breadcrumb";
-@import "bootstrap/scss/pagination";
-@import "bootstrap/scss/badge";
-@import "bootstrap/scss/alert";
-@import "bootstrap/scss/progress";
-@import "bootstrap/scss/close";
-@import "bootstrap/scss/toasts";
-@import "bootstrap/scss/modal";
-@import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/popover";
-@import "bootstrap/scss/spinners";
-@import "bootstrap/scss/offcanvas";
-@import "bootstrap/scss/placeholders";
+// @import "bootstrap/scss/accordion"; // UNUSED - No accordion components found
+@import "bootstrap/scss/breadcrumb"; // USED - breadcrumb component exists
+// @import "bootstrap/scss/pagination"; // UNUSED - No pagination found in views  
+@import "bootstrap/scss/badge"; // USED - tag badges in blog
+// @import "bootstrap/scss/alert"; // UNUSED - No Bootstrap alerts, using custom ones
+// @import "bootstrap/scss/progress"; // UNUSED - No progress bars found
+@import "bootstrap/scss/close"; // USED - close buttons in modals
+// @import "bootstrap/scss/toasts"; // UNUSED - No toast notifications found
+@import "bootstrap/scss/modal"; // USED - modal components in Vue files
+// @import "bootstrap/scss/tooltip"; // UNUSED - No tooltips found
+// @import "bootstrap/scss/popover"; // UNUSED - No popovers found
+@import "bootstrap/scss/spinners"; // USED - page loading spinner in head.blade.php
+// @import "bootstrap/scss/offcanvas"; // UNUSED - No offcanvas components found
+@import "bootstrap/scss/placeholders"; // USED - may be used by framework
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/utilities/api";
 

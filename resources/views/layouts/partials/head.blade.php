@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>@yield('title', 'Silicon | Blog')</title>
+<title>@yield('title', 'Free IFTA calculator & state by state mileage calculator')</title>
 <!-- SEO Meta Tags are now handled by the SeoMetaService -->
 
 
@@ -22,9 +22,9 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Vendor Styles -->
-<link rel="stylesheet" media="screen" href="/assets/vendor/boxicons/css/boxicons.min.css">
-<link rel="stylesheet" media="screen" href="/assets/vendor/lightgallery/css/lightgallery-bundle.min.css">
-<link rel="stylesheet" media="screen" href="/assets/vendor/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" media="screen" href="/assets/vendor/boxicons/css/boxicons.min.css"> <!-- USED - bx icons in breadcrumb, sidebar, etc. -->
+<!-- <link rel="stylesheet" media="screen" href="/assets/vendor/lightgallery/css/lightgallery-bundle.min.css"> --> <!-- UNUSED - No lightgallery found -->
+<!-- <link rel="stylesheet" media="screen" href="/assets/vendor/swiper/swiper-bundle.min.css"> --> <!-- UNUSED - No swiper carousels found -->
 
 
 <!-- Page loading styles -->

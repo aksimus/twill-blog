@@ -50,6 +50,17 @@
   .front-page__widget > * + * {
     margin-top: 16px;
   }
+
+  /* Feature block styling - align with ifta-calculator.com */
+  .front-page__widget h4 {
+    color: #2C323A !important; /* rgb(44, 50, 58) */
+    line-height: 30px !important; /* reference site uses 30px, not 30.8px */
+  }
+
+  .front-page__widget p {
+    color: #2C323A !important; /* rgb(44, 50, 58) */
+    margin-bottom: 0 !important; /* reference site uses 0, not 20px */
+  }
   
   /* Responsive Design */
   @media (min-width: 768px) {
@@ -88,5 +99,52 @@
 
   & > * {
     color: hsl(208, 100%, 32%);
+  }
+}
+
+/* Homepage FAQ styles - align with ifta-calculator.com */
+.front-page__faq {
+  padding: 0 10px 50px;
+
+  /* FAQ main heading */
+  h4 {
+    color: #2C323A !important; /* rgb(44, 50, 58) */
+    line-height: normal !important;
+  }
+
+  .front-page__faq-item {
+    /* Question headings */
+    h6 {
+      font-weight: 500;
+      font-size: 14px;
+      color: #2C323A !important; /* rgb(44, 50, 58) */
+      line-height: normal !important;
+      display: inline-block !important;
+      margin: 0 0 8px 0;
+    }
+
+    /* Answer content */
+    > div,
+    > div p,
+    > div li,
+    > div ul,
+    > div ol {
+      font-family: "Fira Sans", Arial, "sans-serif" !important;
+      font-size: 14px !important; /* reference site */
+      line-height: normal !important; /* reference site */
+      color: #2C323A !important; /* rgb(44, 50, 58) */
+      letter-spacing: normal !important;
+      text-transform: none !important;
+      margin-top: 8px !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Links in FAQ content - match reference blue */
+    > div a,
+    > div p a {
+      color: #0000EE !important; /* rgb(0, 0, 238) - standard blue */
+      text-decoration: underline !important;
+      font-weight: 400 !important;
+    }
   }
 }

@@ -40,9 +40,9 @@ export default defineConfig({
         alias: {
             '~bootstrap': 'node_modules/bootstrap',
             '~boxicons': 'node_modules/boxicons',
-            '~lightgallery': 'node_modules/lightgallery',
-            '~jarallax': 'node_modules/jarallax',
-            '~swiper': 'node_modules/swiper',
+            // '~lightgallery': 'node_modules/lightgallery', // UNUSED - No lightgallery components found
+            '~jarallax': 'node_modules/jarallax', // USED - parallax effects in blog posts
+            '~swiper': 'node_modules/swiper', // USED - carousels in blog posts  
             'vue': 'vue/dist/vue.esm.js', // Vue 2 ESM build
             '~font-awesome': 'node_modules/font-awesome', // Add this
             '~fe-lib': 'node_modules/fe-lib',

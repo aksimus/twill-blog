@@ -14,6 +14,33 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+// Helper function to redirect to mileage routes with query preservation
+$redirectToMileage = function ($path) {
+	$queryString = request()->getQueryString();
+	$url = '/mileage' . $path . ($queryString ? '?' . $queryString : '');
+	return redirect($url);
+};
+
+Route::get('/login', function () use ($redirectToMileage) {
+	return $redirectToMileage('/login');
+})->name('login');
+
+Route::get('/register', function () use ($redirectToMileage) {
+	return $redirectToMileage('/register');
+})->name('register');
+
+//toke is not required
+
+Route::get('/password/reset/{token?}', function ($token = null) use ($redirectToMileage) {
+	return $redirectToMileage('/password/reset' . ($token ? '/' . $token : ''));
+})->name('password.reset');
+
+Route::get('/account/billing', function () use ($redirectToMileage) {
+	return $redirectToMileage('/account/billing');
+})->name('account.billing');
+
+
+
 // Use Laravel Localization but without problematic middleware
 Route::group([
 	'prefix' => LaravelLocalization::setLocale(),
@@ -37,3 +64,7 @@ Route::group([
 	//Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('home'); // Alias for home
 	Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
 });
+
+
+//
+

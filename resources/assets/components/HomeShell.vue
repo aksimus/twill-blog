@@ -35,7 +35,7 @@ export default {
     
       window.location.href = `${AUTH_URL}/login/${params}`;
   */
-  window.location.href = `/login`;
+  window.location.href = `/mileage/login`;
     },
 
     signUp() {
@@ -47,7 +47,7 @@ export default {
 
       window.location.href = `${AUTH_URL}/request-access/${params}`;
 */
-      window.location.href = `/register`;
+      window.location.href = `/mileage/register`;
     },
 
     goHome() {

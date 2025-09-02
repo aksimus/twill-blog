@@ -108,19 +108,19 @@
       },
       
       openCalculator() {
-        window.location.href = `/trips-fuel`;
+        window.location.href = `/mileage/trips-fuel`;
       },
       
       signIn(event) {
         event.preventDefault();
         // Navigate to sign in page
-        window.location.href = '/login';
+        window.location.href = '/mileage/login';
       },
       
       signUp(event) {
         event.preventDefault();
         // Navigate to sign up page
-        window.location.href = '/register';
+        window.location.href = '/mileage/register';
       }
     },
     mounted() {

@@ -3,7 +3,7 @@
   <head>
   <base href="/">
     @include('layouts.partials.head')
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @vite(['resources/scss/app.scss', 'resources/js/app.js', 'resources/js/events.js'])
     @yield('seo')
     
   </head>

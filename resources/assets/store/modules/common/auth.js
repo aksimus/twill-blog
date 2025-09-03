@@ -145,7 +145,7 @@ export default {
       }
     },
     async fetchUser({ commit, dispatch, state }) {
-      console.log('fetchUser');
+
       await dispatch('checkTokenExpiration');
 
       if (!state.user && state.token && cookies.get('timestamp')) {

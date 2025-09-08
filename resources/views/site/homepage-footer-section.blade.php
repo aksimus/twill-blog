@@ -34,8 +34,8 @@ $faq = [
         'answer' => 'The cost for IFTA sticker varies from state to state, but typically it is around $10.'
     ],
     [
-        'question' => 'What states are IFTA jurdictions?',
-        'answer' => 'IFTA jurdictions are all US states except Alaska, Hawaii and the District of Columbia and Canadian provinces and territories except Yukon Territory, Northwest Territory and Nunavut.'
+        'question' => 'What states are IFTA jurisdictions?',
+        'answer' => 'IFTA jurisdictions are all US states except Alaska, Hawaii and the District of Columbia and Canadian provinces and territories except Yukon Territory, Northwest Territory and Nunavut.'
     ],
     [
         'question' => 'What states are not part of IFTA?',
@@ -99,111 +99,111 @@ $faq = [
     ]
     ],
     'es' => [
-        [
-            'question' => '¿Qué es IFTA?',
-            'answer' => 'IFTA (El Acuerdo Internacional de Impuestos sobre Combustibles) es un acuerdo entre todos los estados de EE.UU. (excepto Alaska y Hawaii) y las provincias y territorios canadienses (excepto el Territorio de Yukon, Territorios del Noroeste y Nunavut), para simplificar el reporte del uso de combustible por transportistas motorizados que operan en más de una jurisdicción.'
-        ],
-        [
-            'question' => '¿Qué es el reporte de impuestos sobre combustible IFTA?',
-            'answer' => 'El reporte de impuestos sobre combustible IFTA es un reporte para calcular los impuestos sobre combustible adeudados o reembolsos que deben presentarse trimestralmente. Este reporte se utiliza para redistribuir los impuestos de los estados recaudadores a los estados a los que se debe.'
-        ],
-        [
-            'question' => '¿Qué son las millas no-IFTA?',
-            'answer' => 'Las jurisdicciones no-IFTA son las siguientes: Alaska, Hawaii, Distrito de Columbia (EE.UU.); Territorio de Yukon, Territorios del Noroeste, Nunavut (territorios canadienses); y todo México. Todas las millas conducidas en estas ubicaciones se consideran millas no-IFTA y deben reportarse como millas \'no-IFTA\' en el reporte IFTA. Por lo tanto, no tendrás que pagar impuestos sobre combustible IFTA por estas millas.'
-        ],
-        [
-            'question' => '¿Necesito IFTA?',
-            'answer' => 'Sí necesitas IFTA si operas tu vehículo motor calificado para propósitos comerciales en al menos dos jurisdicciones IFTA y tu vehículo cumple con cualquiera de los siguientes criterios:<br><ul><li>pesa más de 26,000 libras,</li><li>o tiene tres o más ejes en la unidad motriz,</li><li>o (menos aplicable a empresas de camiones) es un autobús que puede llevar al menos 20 pasajeros.</li></ul>'
-        ],
-        [
-            'question' => '¿Qué vehículos no califican para IFTA?',
-            'answer' => 'Un vehículo recreativo como una casa rodante o una camioneta con un camper no se considera un vehículo motor calificado cuando un individuo lo usa exclusivamente para placer personal.'
-        ],
-        [
-            'question' => '¿Cómo obtener licencia IFTA?',
-            'answer' => '<ol><li>Necesitas solicitar tu licencia IFTA con la agencia de licencias en tu jurisdicción base (es la ubicación donde tienes tu negocio con una dirección física).</li><li>Llena la solicitud en línea (o solicitud en papel en la oficina de la autoridad de licencias de tu estado).</li><li>Envía tu solicitud junto con la solicitud para las calcomanías y las tarifas. Necesitarás un conjunto de dos calcomanías (cuestan aproximadamente 10 dólares).</li><li>Te enviarán las dos calcomanías IFTA (pegatinas) para poner en tu camión. Necesitas dos calcomanías para cada vehículo calificado que operes.</li><li>Coloca estas calcomanías en el lado inferior posterior exterior de la cabina del conductor y del pasajero.</li><li>¡Ya estás listo! Recuerda que las calcomanías son válidas por un año y luego necesitarás solicitar un nuevo conjunto.</li></ol>'
-        ],
-        [
-            'question' => '¿Cuánto cuesta la calcomanía IFTA?',
-            'answer' => 'El costo de la calcomanía IFTA varía de estado a estado, pero típicamente es alrededor de $10.'
-        ],
-        [
-            'question' => '¿Qué estados son jurisdicciones IFTA?',
-            'answer' => 'Las jurisdicciones IFTA son todos los estados de EE.UU. excepto Alaska, Hawaii y el Distrito de Columbia y las provincias y territorios canadienses excepto el Territorio de Yukon, Territorios del Noroeste y Nunavut.'
-        ],
-        [
-            'question' => '¿Qué estados no son parte de IFTA?',
-            'answer' => 'Alaska, Hawaii y el Distrito de Columbia en EE.UU. y el Territorio de Yukon, Territorios del Noroeste y Nunavut en Canadá no son parte de IFTA.'
-        ],
-        [
-            'question' => '¿Cuáles son los requisitos para IFTA?',
-            'answer' => 'Necesitas operar tu vehículo motor calificado para propósitos comerciales en al menos dos jurisdicciones IFTA y tu vehículo cumple con cualquiera de los siguientes criterios:<br><ul><li>pesa más de 26,000 libras,</li><li>o tiene tres o más ejes en la unidad motriz,</li><li>o (menos aplicable a empresas de camiones) es un autobús que puede llevar al menos 20 pasajeros.</li></ul>'
-        ],
-        [
-            'question' => '¿Cómo rastreo mis millas IFTA?',
-            'answer' => '<ul><li>Mantén un cuaderno y escribe el odómetro cuando cruces las fronteras estatales.</li><li>Usa un GPS u otro dispositivo que registre millas estado por estado por trimestre.</li><li>Usa software de enrutamiento que rastree millas estatales.</li></ul>'
-        ],
-        [
-            'question' => '¿Cuál es el período de reporte IFTA?',
-            'answer' => 'El período de reporte IFTA es cada trimestre. Aquí está la lista de fechas de vencimiento del reporte IFTA para cada período de reporte:<br><ul><li>1er trimestre es de enero a marzo, fecha de vencimiento del reporte es 30 de abril.</li><li>2do trimestre es de abril a junio, fecha de vencimiento es 31 de julio.</li><li>3er trimestre es de julio a septiembre, fecha de vencimiento es 31 de octubre.</li><li>4to trimestre es de octubre a diciembre, fecha de vencimiento es 31 de enero.</li></ul>'
-        ],
-        [
-            'question' => '¿Cómo funciona el impuesto IFTA?',
-            'answer' => 'Presentas el reporte trimestral con todas las millas conducidas y combustible usado para todos los estados. Luego el programa redistribuye los impuestos pagados de los estados recaudadores a los estados a los que se debe y calcula el impuesto adeudado o reembolso de impuestos.'
-        ],
-        [
-            'question' => '¿Cómo calcular tu reporte trimestral IFTA?',
-            'answer' => 'La forma más fácil es usar software especial (como <a href="https://ifta-calculator.com" target="_blank">calculadora IFTA</a>) para calcular tu reporte trimestral IFTA. Debes proporcionar todos tus viajes (ubicación de inicio y fin) y todo el combustible comprado durante este período, todo lo demás la calculadora IFTA lo hará por sí misma y te proporcionará los números para el reporte.'
-        ],
-        [
-            'question' => '¿Cuál es la mejor manera de registrar millas por estado?',
-            'answer' => 'La mejor y más fácil manera es usar software donde puedes poner la primera y última parada de tu viaje y el software calcula el combustible por estados por sí mismo.'
-        ],
-        [
-            'question' => 'Calculadora de millas para reportes IFTA',
-            'answer' => 'Hay muchas calculadoras IFTA en línea, algunas son caras, algunas son difíciles de usar y no son amigables para el usuario en absoluto. La calculadora IFTA en <a href="https://ifta-calculator.com" target="_blank">https://ifta-calculator.com</a> es una calculadora en línea gratuita y fácil, solo necesitas proporcionar información sobre tus paradas y tus compras de combustible. Sin notas, sin conteo manual frenético, sin verificación regular del odómetro - solo tus viajes y combustible usado.'
-        ],
-        [
-            'question' => '¿Cómo ejecutar un reporte IFTA?',
-            'answer' => 'Para ejecutar un reporte IFTA necesitas software especial donde proporcionas información sobre tus viajes y combustible usado para el trimestre necesario. El software calcula los datos necesarios para el reporte - distribuye impuestos entre estados y proporciona la suma que se debe pagar o reembolsar.'
-        ],
-        [
-            'question' => '¿Cuáles son las tasas de impuestos IFTA?',
-            'answer' => 'Las tasas de impuestos IFTA se pueden ver en <a href="https://ifta-calculator.com/rates" target="_blank">https://ifta-calculator.com/rates</a>. Pero en realidad no necesitas conocer las tasas exactas para cada estado y calcular sumas manualmente. Todo lo que necesitas saber es información sobre tus viajes y combustible comprado y el software aplica todas las tasas estatales automáticamente.'
-        ],
-        [
-            'question' => 'Reportes IFTA en línea',
-            'answer' => 'Para poder reportar IFTA en línea necesitas tener una cuenta con la agencia de impuestos o ingresos en el estado donde está basado tu negocio.<br>Para abrir una cuenta necesitas hacer los siguientes pasos:<br><ul><li>Encuentra el sitio web IFTA para tu estado.</li><li>Crea una cuenta. Te permite no solo pagar impuestos, sino también administrar la información de tu licencia y solicitar nuevas calcomanías. Ten en cuenta que debes crear tu cuenta con anticipación porque en algunos estados puede tomar tiempo verificar la información que proporcionaste.</li><li>Llena la solicitud en línea. Necesitarás proporcionar información sobre tu kilometraje total para cada jurisdicción y ubicación y precio del combustible comprado. Si la tasa de impuestos en una jurisdicción es más alta que el impuesto sobre combustible en tu jurisdicción base, tendrás un crédito. Si la tasa de impuestos es más baja, deberás impuestos. El sistema contará estas cantidades para determinar si se te debe un reembolso o tienes un pago de impuestos adeudado.</li><li>Si tienes un pago de impuestos adeudado, puedes pagar tus impuestos en línea.</li></ul>'
-        ],
-        [
-            'question' => '¿Quién paga impuestos IFTA?',
-            'answer' => 'Es necesario pagar impuestos IFTA si operas tu vehículo motor calificado para propósitos comerciales en al menos dos jurisdicciones IFTA y tu vehículo cumple con cualquiera de los siguientes criterios: pesa más de 26,000 libras, o tiene tres o más ejes en la unidad motriz.'
-        ],
-        [
-            'question' => '¿Cuánto es el impuesto sobre combustible diesel?',
-            'answer' => 'El impuesto federal de excisión de EE.UU. sobre gasolina es 18.4 centavos por galón y 24.4 centavos por galón para combustible diesel. Las tasas exactas de impuestos para trimestres definidos se pueden ver en línea en <a href="https://ifta-calculator.com/rates" target="_blank">https://ifta-calculator.com/rates</a>.'
-        ],
-        [
-            'question' => 'Calculadora de millas estatales IFTA',
-            'answer' => 'La calculadora de millas estatales fácil y gratuita es <a href="https://ifta-calculator.com" target="_blank">https://ifta-calculator.com</a>. Solo necesitas proporcionar información sobre tus paradas y tus compras de combustible.'
-        ],
-        [
-            'question' => '¿Cuánto cuesta IFTA?',
-            'answer' => 'La tarifa de registro estatal para tu placa proporcional variará dependiendo de tu estado base, peso bruto del vehículo y estados en los que desees registrarte. Típicamente las tarifas estatales para un vehículo de 80,000 libras corriendo en los 48 estados inferiores es entre $1500 y $2000, pero esto podría variar dependiendo de tu estado base.'
-        ]
+    [
+        'question' => '¿Qué es IFTA?',
+        'answer' => 'IFTA (International Fuel Tax Agreement o Acuerdo Internacional de Impuestos de Combustible) es un acuerdo entre casi todos los estados de EE.UU. (excepto Alaska y Hawaii) y la mayoría de las provincias de Canadá. Su propósito es simplificar el reporte de millas y combustible para traileros que cruzan fronteras estatales o de provincias.'
     ],
+    [
+        'question' => '¿Qué es el reporte de impuestos IFTA?',
+        'answer' => 'El reporte IFTA es el formulario trimestral donde calculas los impuestos de combustible que debes pagar o el reembolso que te corresponde. Sirve para que los estados compartan entre ellos lo que les toca, según dónde manejaste y dónde compraste diésel.'
+    ],
+    [
+        'question' => '¿Qué son las millas no-IFTA?',
+        'answer' => 'Las millas en Alaska, Hawaii, Washington D.C., todo México y los territorios de Yukon, Territorios del Noroeste y Nunavut (en Canadá) se consideran “millas no-IFTA”. Debes reportarlas en tu formulario, pero no pagas impuestos IFTA por esas millas.'
+    ],
+    [
+        'question' => '¿Necesito IFTA?',
+        'answer' => 'Sí, necesitas IFTA si manejas un camión comercial en al menos dos jurisdicciones IFTA y tu camión cumple con cualquiera de estos criterios:<br><ul><li>pesa más de 26,000 libras,</li><li>o tiene tres o más ejes,</li><li>o (menos común) es un autobús con 20 pasajeros o más.</li></ul>'
+    ],
+    [
+        'question' => '¿Qué vehículos no califican para IFTA?',
+        'answer' => 'Vehículos recreativos como motorhomes o camionetas con camper no entran en IFTA cuando se usan solo para viajes personales.'
+    ],
+    [
+        'question' => '¿Cómo obtener la licencia IFTA?',
+        'answer' => '<ol><li>Solicítala en la agencia de licencias de tu estado base (donde está registrado tu negocio con dirección física).</li><li>Llena la aplicación en línea (o en papel en la oficina).</li><li>Paga las tarifas y pide tus calcomanías (stickers). El set de dos cuesta unos $10.</li><li>Te mandarán dos stickers para cada camión calificado.</li><li>Pégalos en la parte baja trasera de la cabina, lado del chofer y del pasajero.</li><li>Listo. Recuerda que solo son válidos por un año y luego debes renovarlos.</li></ol>'
+    ],
+    [
+        'question' => '¿Cuánto cuesta la calcomanía IFTA?',
+        'answer' => 'Normalmente cuesta unos $10 por set de dos stickers, aunque puede variar según el estado.'
+    ],
+    [
+        'question' => '¿Qué estados son jurisdicciones IFTA?',
+        'answer' => 'Todos los estados de EE.UU. menos Alaska, Hawaii y Washington D.C., y todas las provincias de Canadá menos Yukon, Territorios del Noroeste y Nunavut.'
+    ],
+    [
+        'question' => '¿Qué estados no son parte de IFTA?',
+        'answer' => 'Alaska, Hawaii, Washington D.C. en EE.UU. y Yukon, Territorios del Noroeste y Nunavut en Canadá.'
+    ],
+    [
+        'question' => '¿Cuáles son los requisitos para IFTA?',
+        'answer' => 'Debes tener un camión comercial que circule en al menos dos jurisdicciones IFTA y cumpla con uno de estos puntos:<br><ul><li>pesa más de 26,000 libras,</li><li>o tiene tres o más ejes,</li><li>o es un autobús con 20 pasajeros o más.</li></ul>'
+    ],
+    [
+        'question' => '¿Cómo llevo el control de mis millas IFTA?',
+        'answer' => '<ul><li>Escribiendo en un cuaderno el odómetro cada vez que cruzas de estado.</li><li>Usando GPS u otro dispositivo que guarde millas por estado y por trimestre.</li><li>Con software de ruteo que calcule millas por estado.</li></ul>'
+    ],
+    [
+        'question' => '¿Cuál es el período de reporte IFTA?',
+        'answer' => 'Es trimestral. Las fechas límite son:<br><ul><li>1er trimestre: enero–marzo → vence 30 de abril.</li><li>2do trimestre: abril–junio → vence 31 de julio.</li><li>3er trimestre: julio–septiembre → vence 31 de octubre.</li><li>4to trimestre: octubre–diciembre → vence 31 de enero.</li></ul>'
+    ],
+    [
+        'question' => '¿Cómo funciona el impuesto IFTA?',
+        'answer' => 'Presentas tu reporte con todas las millas y combustible. El sistema redistribuye los impuestos entre estados y calcula si debes pagar más o te toca reembolso.'
+    ],
+    [
+        'question' => '¿Cómo calcular mi reporte trimestral IFTA?',
+        'answer' => 'La forma más fácil es usar un software (por ejemplo, <a href="https://ifta-calculator.com" target="_blank">IFTA Calculator</a>). Solo metes tus viajes (origen y destino) y las compras de diésel, y el programa hace el resto.'
+    ],
+    [
+        'question' => '¿Cuál es la mejor manera de registrar millas por estado?',
+        'answer' => 'Con un software donde pongas la primera y última parada del viaje, y él calcula automáticamente las millas y combustible por estado.'
+    ],
+    [
+        'question' => 'Calculadora de millas IFTA',
+        'answer' => 'Hay muchas en línea, pero algunas son caras o difíciles de usar. La de <a href="https://ifta-calculator.com" target="_blank">ifta-calculator.com</a> es gratis y sencilla: solo entras tus paradas y compras de combustible. Sin cuadernos, sin cuentas manuales, sin revisar odómetro cada rato.'
+    ],
+    [
+        'question' => '¿Cómo sacar un reporte IFTA?',
+        'answer' => 'Necesitas software especial. Metes tus viajes y combustible del trimestre, y el sistema calcula impuestos por estado y cuánto debes pagar o recibir.'
+    ],
+    [
+        'question' => '¿Cuáles son las tarifas de impuestos IFTA?',
+        'answer' => 'Puedes verlas en <a href="https://ifta-calculator.com/rates" target="_blank">ifta-calculator.com/rates</a>. No necesitas memorizarlas, el software aplica las tarifas de cada estado automáticamente.'
+    ],
+    [
+        'question' => 'Reportes IFTA en línea',
+        'answer' => 'Para reportar en línea necesitas una cuenta en la agencia de impuestos de tu estado base.<br>Pasos:<br><ul><li>Entra al sitio web IFTA de tu estado.</li><li>Crea tu cuenta (sirve para pagar, manejar tu licencia y pedir stickers nuevos). Hazlo con tiempo, la verificación puede tardar.</li><li>Llena la aplicación en línea con millas y compras de combustible por jurisdicción. El sistema calcula si debes pagar o recibes crédito.</li><li>Paga en línea si te toca saldo a deber.</li></ul>'
+    ],
+    [
+        'question' => '¿Quién paga el impuesto IFTA?',
+        'answer' => 'Todos los traileros que operan un camión calificado en al menos dos jurisdicciones IFTA y cuyo camión pese más de 26,000 libras o tenga tres o más ejes.'
+    ],
+    [
+        'question' => '¿Cuánto es el impuesto federal al diésel?',
+        'answer' => 'En EE.UU. el impuesto federal es 18.4 centavos por galón de gasolina y 24.4 centavos por galón de diésel. Las tarifas exactas por trimestre están en <a href="https://ifta-calculator.com/rates" target="_blank">ifta-calculator.com/rates</a>.'
+    ],
+    [
+        'question' => 'Calculadora de millas por estado IFTA',
+        'answer' => 'La opción más fácil y gratuita es la de <a href="https://ifta-calculator.com" target="_blank">ifta-calculator.com</a>. Solo entras tus paradas y compras de combustible.'
+    ],
+    [
+        'question' => '¿Cuánto cuesta IFTA?',
+        'answer' => 'La tarifa de registro depende de tu estado base, peso bruto del camión y estados donde quieras registrar. Para un camión de 80,000 libras en los 48 estados suele ser entre $1,500 y $2,000, pero puede variar.'
+    ]
+],
     'ru' => [
         [
             'question' => 'Что такое IFTA?',
-            'answer' => 'IFTA (Международное соглашение о топливном налоге) - это соглашение между всеми штатами США (кроме Аляски и Гавайев) и канадскими провинциями и территориями (кроме территории Юкон, Северо-Западных территорий и Нунавута), упрощающее отчетность об использовании топлива перевозчиками, которые работают более чем в одной юрисдикции.'
+            'answer' => 'IFTA (Международное соглашение о топливном налоге) - это соглашение между всеми штатами США (кроме Аляски и Гавайев) и канадскими провинциями и территориями (кроме территории Юкон, Северо-Западных территорий и Нунавута), упрощающее отчетность об использовании топлива коммерческими транспортными средствами, которые работают более чем в одной юрисдикции (штате или провинции).'
         ],
         [
             'question' => 'Что такое отчет о топливном налоге IFTA?',
-            'answer' => 'Отчет о топливном налоге IFTA - это отчет для расчета причитающихся топливных налогов или возмещений, который должен подаваться ежеквартально. Этот отчет используется для перераспределения налогов от собирающих штатов к штатам, которым они причитаются.'
+            'answer' => 'Отчет о топливном налоге IFTA - это отчет для расчета причитающихся топливных налогов или возмещений, который должен подаваться ежеквартально.  Этот отчет используется для перераспределения налогов от собирающих штатов к штатам, которым они причитаются. Налог уже включен в стоимость топлива, таким образом он автоматически уплачен юрисдикции, где приобреталось топливо - но это скорее депозит. А должен быть оплачен юрисдикциям где топливо израсходовано.'
         ],
         [
-            'question' => 'Что такое мили не-IFTA?',
-            'answer' => 'Юрисдикции не-IFTA следующие: Аляска, Гавайи, округ Колумбия (США); территория Юкон, Северо-Западные территории, Нунавут (канадские территории); и весь Мексика. Все мили, пройденные в этих местах, считаются милями не-IFTA и должны указываться как мили \'не-IFTA\' в отчете IFTA. Таким образом, вам не придется платить топливный налог IFTA за эти мили.'
+            'question' => 'Что такое non-IFTA мили?',
+            'answer' => 'Юрисдикции non-IFTA следующие: Аляска, Гавайи, округ Колумбия (США); территория Юкон, Северо-Западные территории, Нунавут (канадские территории). Все мили, пройденные в этих местах, считаются милями non-IFTA и должны указываться как мили \'non-IFTA\' в отчете IFTA. Таким образом, вам не придется платить топливный налог IFTA за эти мили.'
         ],
         [
             'question' => 'Нужен ли мне IFTA?',
@@ -215,7 +215,7 @@ $faq = [
         ],
         [
             'question' => 'Как получить лицензию IFTA?',
-            'answer' => '<ol><li>Вам нужно подать заявку на лицензию IFTA в агентство по лицензированию в вашей базовой юрисдикции (это место, где у вас есть бизнес с физическим адресом).</li><li>Заполните заявку онлайн (или бумажную заявку в офисе лицензирующего органа вашего штата).</li><li>Подайте вашу заявку вместе с заявкой на наклейки и сборы. Вам понадобится набор из двух наклеек (они стоят примерно 10 долларов).</li><li>Они отправят вам две наклейки IFTA (стикеры) для размещения на вашем грузовике. Вам нужны две наклейки для каждого квалифицированного транспорта, которым вы управляете.</li><li>Разместите эти наклейки на нижней задней внешней стороне кабины со стороны водителя и пассажира.</li><li>Вы готовы! Помните, что наклейки действительны в течение одного года, а затем вам нужно будет подать заявку на новый набор.</li></ol>'
+            'answer' => '<ol><li>Вам нужно подать заявку на лицензию IFTA в агентство по лицензированию в вашей базовой юрисдикции (это место, где у вас есть бизнес с физическим адресом).</li><li>Заполните заявку онлайн (или бумажную заявку в офисе лицензирующего органа вашего штата).</li><li>Подайте вашу заявку вместе с заявкой на наклейки и сборы. Вам понадобится набор из двух наклеек (они стоят примерно 10 долларов).</li><li>Они отправят вам две наклейки IFTA (стикеры) для размещения на вашем транспортном средстве. Вам нужны две наклейки для каждого квалифицированного транспорта, которым вы управляете.</li><li>Разместите эти наклейки на нижней задней внешней стороне кабины со стороны водителя и пассажира.</li><li>Вы готовы! Помните, что наклейки действительны в течение одного года, а затем вам нужно будет подать заявку на новый набор.</li></ol>'
         ],
         [
             'question' => 'Сколько стоит наклейка IFTA?',
@@ -271,7 +271,7 @@ $faq = [
         ],
         [
             'question' => 'Кто платит налог IFTA?',
-            'answer' => 'Необходимо платить налог IFTA, если вы эксплуатируете ваш квалифицированный моторизованный транспорт для коммерческих целей по крайней мере в двух юрисдикциях IFTA, и ваш транспорт соответствует любому из следующих критериев: весит более 26,000 фунтов, или имеет три или более оси на силовом агрегате.'
+            'answer' => 'Необходимо платить налог IFTA, если вы эксплуатируете ваш квалифицированный моторизованный транспорт для коммерческих целей по крайней мере в двух юрисдикциях IFTA, и ваш транспорт соответствует любому из следующих критериев: весит более 26,000 фунтов, или имеет три или более оси на тягаче.'
         ],
         [
             'question' => 'Сколько составляет налог на дизельное топливо?',
@@ -283,7 +283,8 @@ $faq = [
         ],
         [
             'question' => 'Сколько стоит IFTA?',
-            'answer' => 'Государственная регистрационная плата за вашу пропорциональную пластину будет варьироваться в зависимости от вашего базового штата, полной массы транспортного средства и штатов, в которых вы хотите зарегистрироваться. Обычно государственные сборы для транспортного средства весом 80,000 фунтов, работающего во всех 48 нижних штатах, составляют от $1500 до $2000, но это может варьироваться в зависимости от вашего базового штата.'
+            'answer' => 'Государственная пошлина за номера IRP будет варьироваться в зависимости от вашего базового штата, полной массы транспортного средства и штатов, в которых вы хотите зарегистрироваться. 
+            Обычно государственные сборы для транспортного средства весом 80,000 фунтов, работающего во всех 48 перечисленных ранее штатах, составляют от $1500 до $2000, но это может варьироваться в зависимости от вашего базового штата.'
         ]
     ]
 ];

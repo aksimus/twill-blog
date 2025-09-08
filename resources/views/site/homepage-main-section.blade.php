@@ -22,39 +22,39 @@ $widgets = [
         ]
     ],
     'es' => [
-        [
-            'title' => 'Fácil de usar',
-            'content' => 'En solo unos clics toda la información necesaria para la generación de reportes está a mano para todo el equipo que tienes o solo para una unidad.',
-        ],
-        [
-            'title' => 'Ahorro de tiempo',
-            'content' => 'No más seguimiento constante de millas o cálculos manuales - ingresas información básica sobre tus viajes y combustible y nosotros hacemos el resto.',
-        ],
-        [
-            'title' => 'Generación de reportes',
-            'content' => 'Tus reportes de impuestos trimestrales se generan con solo un clic y se pueden descargar en el formato necesario en cualquier momento.',
-        ],
-        [
-            'title' => 'Extracción de datos con IA',
-            'content' => 'Sube tu PDF de Confirmación de Tarifa para obtener instantáneamente los datos de tu viaje',
-        ]
+    [
+        'title' => 'Fácil de usar',
+        'content' => 'Con solo unos clics tienes toda la información que necesitas para tus reportes, ya sea de toda tu flota o de un solo camión.',
     ],
+    [
+        'title' => 'Ahorra tiempo',
+        'content' => 'Olvídate de llevar la cuenta de las millas o de hacer cálculos manuales — solo ingresas la información básica de tus viajes y del combustible, y nosotros hacemos el resto.',
+    ],
+    [
+        'title' => 'Generación de reportes',
+        'content' => 'Tus reportes trimestrales de impuestos IFTA se generan con un solo clic y los puedes descargar en el formato que necesites en cualquier momento.',
+    ],
+    [
+        'title' => 'Extracción de datos con IA',
+        'content' => 'Sube tu PDF de Rate Confirmation y obtén al instante los datos de tu viaje.',
+    ]
+],  
     'ru' => [
         [
             'title' => 'Простота использования',
-            'content' => 'Всего за несколько кликов вся необходимая информация для составления отчетов доступна для всего вашего оборудования или только для одной единицы.',
+            'content' => 'Всего за несколько кликов вся необходимая информация для составления отчетов доступна для всего вашего флота или только для одного юнита.',
         ],
         [
             'title' => 'Экономия времени',
-            'content' => 'Больше никакого постоянного отслеживания миль или ручных расчетов - вы вводите основную информацию о поездках и топливе, а мы делаем все остальное.',
+            'content' => 'Больше никакого постоянного отслеживания миль или ручных расчетов - вы вводите начало и конец трипа и информацию о приобретенном топливе, а калькулятор делает все остальное.',
         ],
         [
             'title' => 'Генерация отчетов',
-            'content' => 'Ваши квартальные налоговые отчеты генерируются одним кликом и могут быть загружены в нужном формате в любой момент.',
+            'content' => 'Ваши квартальные налоговые отчеты генерируются одним кликом и могут быть загружены в PDF или Excel формате',
         ],
         [
-            'title' => 'ИИ-извлечение данных',
-            'content' => 'Загрузите PDF-файл подтверждения тарифа, чтобы мгновенно получить данные о поездке',
+            'title' => 'AI-извлечение данных',
+            'content' => 'Загрузите PDF-файл Rate Confirmation, чтобы извлечь данные о трипе и избежать ручного ввода данных',
         ]
     ]
 ];

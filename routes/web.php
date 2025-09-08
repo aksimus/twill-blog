@@ -41,6 +41,14 @@ Route::get('/account/billing', function () use ($redirectToMileage) {
 
 
 
+// Redirect /en/{path} to /{path} since English is the default locale
+Route::get('/en/{path}', function ($path) {
+
+    $queryString = request()->getQueryString();
+    $url = '/' . $path . ($queryString ? '?' . $queryString : '');
+    return redirect($url, 301);
+})->where('path', '.*');
+
 // Use Laravel Localization but without problematic middleware
 Route::group([
 	'prefix' => LaravelLocalization::setLocale(),

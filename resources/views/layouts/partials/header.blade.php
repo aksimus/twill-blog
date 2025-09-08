@@ -9,7 +9,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        @include('layouts.partials.nav')
+        @if(!in_array(app()->environment(), ['production']))
+          @include('layouts.partials.nav')
+        @endif
       </div>
       <div class="offcanvas-header border-top">
         <a data-vue-calculator class="btn btn-primary w-100">

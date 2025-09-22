@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: 'api-front',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+
+
         // === Аналог $routeMiddleware (aliases) из старого Kernel ===
         $middleware->alias([
             'localize'              => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
@@ -23,9 +26,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeViewPath'        => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
             'SetLocale'             => \App\Http\Middleware\SetLocale::class,
             'handleVisitorData'     => \App\Http\Middleware\HandleVisitorData::class,
+            'EncryptCookies'        => \App\Http\Middleware\EncryptCookies::class,
         ]);
-        $middleware->appendToGroup('web', \App\Http\Middleware\HandleVisitorData::class);
+        $middleware->removeFromGroup('web', [\Illuminate\Cookie\Middleware\EncryptCookies::class] );
+        $middleware->appendToGroup('web', [\App\Http\Middleware\HandleVisitorData::class, \App\Http\Middleware\EncryptCookies::class]);
 
+   
+       // dd($middleware->web());
         // Примеры (опционально), если нужно вмешаться в группы:
         // $middleware->appendToGroup('web', \App\Http\Middleware\SomeGlobalWebMiddleware::class);
         // $middleware->prepend(\App\Http\Middleware\StartOfStack::class); // глобально

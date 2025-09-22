@@ -22,7 +22,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeCookieRedirect'  => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'        => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
             'SetLocale'             => \App\Http\Middleware\SetLocale::class,
+            'handleVisitorData'     => \App\Http\Middleware\HandleVisitorData::class,
         ]);
+        $middleware->appendToGroup('web', \App\Http\Middleware\HandleVisitorData::class);
 
         // Примеры (опционально), если нужно вмешаться в группы:
         // $middleware->appendToGroup('web', \App\Http\Middleware\SomeGlobalWebMiddleware::class);

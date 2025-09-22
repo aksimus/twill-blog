@@ -11,6 +11,8 @@ class Visitor extends Model
     protected $connection = 'mysql_iftacalc';
     protected $fillable = [
         'visitor_id', 
+        'ui_verified',
+        'is_mobile',
         'gclientid',
         'fbp',
         'user_id',

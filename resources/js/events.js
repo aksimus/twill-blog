@@ -115,28 +115,44 @@ function runInitEvent() {
   let attempts = 0;
   const maxAttempts = 10;
   const interval = 1000; // 1 second
+ 
+  let browserData = {};
+  try {
+    browserData = {
+
+      url: window.location.href,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      browserLang: navigator.language || navigator.userLanguage,
+      screenResolution: `${screen.width}x${screen.height}`,
+      browser: navigator.userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera)/i)?.[0] || 'Unknown',
+      os: navigator.platform || 'Unknown',
+      isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    };
+  } catch (error) {
+
+    browserData = {
+
+    };
+  }
 
   const timer = setInterval(() => {
     attempts++;
 
     const gclientid = getClientIdFromCookie();
     const fbp = getFbpFromCookie();
+    
+    _sendEvent({
+      event: 'app_init',
+      gclientid,
+      fbp,
+      ...browserData
+    });
 
     // run only if both are NOT empty
     if ((gclientid && fbp) || (attempts >= maxAttempts)) {
-      _sendEvent({
-        event: 'app_init',
-        gclientid,
-        fbp,
-      });
-
       clearInterval(timer); // stop if success
     }
 
-    // stop if max attempts reached
-    if (attempts >= maxAttempts) {
-      clearInterval(timer);
-    }
   }, interval);
 }
 

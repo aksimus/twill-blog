@@ -49,7 +49,8 @@ class HandleVisitorData
             'gclid'=> $request->query('gclid'),
             'date'=>date('Y-m-d')
         ];
-
+        $isMobile = preg_match('/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i', $request->userAgent());
+        $isMobile = $isMobile ? 1 : 0;
 
 
 
@@ -71,7 +72,8 @@ class HandleVisitorData
             if(!$visitor){
                 $visitor = Visitor::create([
                     'visitor_id' => $uuid,
-                    'user_id'=>$userId,             
+                    'user_id'=>$userId, 
+                    'is_mobile'=>$isMobile,            
                     'meta'=>$meta
                 ]);
                 

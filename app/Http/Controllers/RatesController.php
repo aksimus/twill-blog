@@ -39,8 +39,8 @@ class RatesController extends Controller
 
         // Get SEO meta data for rates show page
         $seoMeta = $this->getSeoMeta([
-            'title' => __('Exchange Rates for :year Q:quarter', ['year' => $year, 'quarter' => $quarter]),
-            'description' => __('Exchange rates for :year Q:quarter period.', ['year' => $year, 'quarter' => $quarter]),
+            'title' => __('IFTA rates for :year Q:quarter', ['year' => $year, 'quarter' => $quarter]),
+            'description' => __('IFTA rates for :year Q:quarter period.', ['year' => $year, 'quarter' => $quarter]),
         ]);
 
         return view('site.rates.show', compact('year', 'quarter', 'quarterInfo', 'rateList', 'navigation', 'seoMeta'));

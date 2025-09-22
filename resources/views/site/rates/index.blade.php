@@ -1,6 +1,6 @@
 @extends('layouts.blog-layout')
 
-@section('title', __('Exchange Rates'))
+@section('title', __('IFTA Rates'))
 
 @section('seo')
 {{-- SEO meta tags are now handled by the controller via SeoMetaService --}}

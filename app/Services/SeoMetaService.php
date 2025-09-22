@@ -124,24 +124,24 @@ class SeoMetaService
 
             case 'rates.index':
                 return [
-                    'title' => __('Exchange Rates'),
-                    'description' => __('Current exchange rates and currency information.'),
+                    'title' => __('IFTA Rates'),
+                    'description' => __('Current IFTA rates by year and quarter.'),
                     'type' => 'website',
-                    'keywords' => 'exchange rates, currency, forex',
+                    'keywords' => 'ifta rates',
                 ];
 
             case 'rates.show':
                 return [
-                    'title' => __('Exchange Rates for :year Q:quarter', [
+                    'title' => __('IFTA Rates for :year Q:quarter', [
                         'year' => $routeParams['year'] ?? '',
                         'quarter' => $routeParams['quarter'] ?? ''
                     ]),
-                    'description' => __('Exchange rates for :year Q:quarter period.', [
+                    'description' => __('IFTA rates for :year Q:quarter period.', [
                         'year' => $routeParams['year'] ?? '',
                         'quarter' => $routeParams['quarter'] ?? ''
                     ]),
                     'type' => 'website',
-                    'keywords' => 'exchange rates, :year, Q:quarter, currency',
+                    'keywords' => 'IFTA rates, :year, Q:quarter, currency',
                 ];
 
             default:

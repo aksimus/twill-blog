@@ -98,6 +98,14 @@
 
         </div>
       </div>
+        <!-- General form error display -->
+        <div
+          v-if="errorMessage"
+          class="front-page__demo-error"
+        >
+          <div class="alert alert-danger" v-html="errorMessage">
+          </div>
+        </div>
 
       <div class="front-page__demo-footer">
         <c-button-save
@@ -274,6 +282,9 @@ export default {
       startCalculationWaiting: false,
       runReportWaiting: false,
 
+      // Error message state
+      errorMessage: null,
+
       faqList: [],
 
       widgets: [
@@ -422,13 +433,10 @@ export default {
     routeServerNotice: {
       immediate: true,
       handler(notice) {
-        if (notice && !this.formState) {
-          this.$notify.push({
-            message: notice.message,
-            type: notice.type,
-            duration: notice.type === 'danger' ? -1 : 3000,
-          });
-        }
+
+        if (notice && notice.type === 'danger') {
+          this.errorMessage = notice.message;
+        } 
       },
     },
   },
@@ -482,7 +490,14 @@ export default {
       this.runReportWaiting = false;
     },
 
+    clearError() {
+   
+      this.errorMessage = null;
+    },
+
     async startCalculation() {
+      // Clear any previous error message
+      this.clearError();
       this.startCalculationWaiting = true;
 
       // fbq - global function of google tag manager
@@ -714,6 +729,23 @@ export default {
   padding: 6px 4px;
   border-top: 1px solid hsl(201, 19%, 70%);
   background-color: hsl(45, 100%, 86%);
+}
+
+.front-page__demo-error {
+  margin: 10px 0;
+  text-align: center;
+
+  .alert {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
 }
 
 @media (min-width: 768px) {

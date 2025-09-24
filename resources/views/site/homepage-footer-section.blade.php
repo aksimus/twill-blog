@@ -299,7 +299,13 @@ $currentFaq = $faq[$currentLocale] ?? $faq['en'];
 
 
 <div class="front-page__rates-link">
-  <a href="{{ route('rates.index') }}">{{ __('homepage.footer.rates_link') }}</a>
+
+
+
+  <a href="@localizedUrl('mileage/register')" class="c-button-save c-button c-button--success c-button--normal">
+    <i class="fa fa-user-plus"></i>&nbsp;&nbsp;Sign up to use the calculator
+  </a>
+
 </div>
 
 <div class="front-page__faq">
@@ -312,3 +318,16 @@ $currentFaq = $faq[$currentLocale] ?? $faq['en'];
   </div>
   @endforeach
 </div>
+
+<div class="front-page__rates-link">
+
+  <a href="@localizedUrl('mileage/register')" class="c-button-save c-button c-button--success c-button--normal">
+    <i class="fa fa-user-plus"></i>&nbsp;&nbsp;Sign up to use the calculator
+  </a>
+
+</div>
+<div>&nbsp;</div>
+
+
+
+

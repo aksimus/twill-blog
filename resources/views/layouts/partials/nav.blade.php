@@ -1,8 +1,14 @@
 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+    <a href="@localizedUrl('rates')" class="nav-link">{{ __('IFTA tax rates') }}</a>
+  </li>
+  @if(!in_array(app()->environment(), ['production', 'local']))
   <!-- Home -->
   <li class="nav-item">
     <a href="@localizedUrl()" class="nav-link">{{ __('Home') }}</a>
   </li>
+
+
   
   <!-- Features -->
   <li class="nav-item">
@@ -39,5 +45,5 @@
       </li>
     @endforeach
   @endif
-
+@endif
 </ul>

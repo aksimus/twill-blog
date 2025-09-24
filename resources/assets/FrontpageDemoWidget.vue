@@ -103,7 +103,7 @@
         <c-button-save
           id="recalc-step1"
           :spinner="startCalculationWaiting"
-          title="Calculate"
+          title="Calculate mileage & tax"
           @click="startCalculation" />
 
         <div><small>* enter trip details to start IFTA calculation</small></div>
@@ -157,6 +157,20 @@
                 small />
             </template>
           </c-table>
+
+
+          <div class="front-page__demo-footer">
+            
+            <div>&nbsp;</div>
+            
+            <c-button
+              id="recalc-step2"
+              :spinner="runReportWaiting"
+              variant="secondary"
+        
+              @click="runReportCalculation" >Get results</c-button>
+              <div><small>* Enter gallons purchased per state to generate a demo IFTA tax report.</small></div>
+          </div>
         </template>
 
         <template v-else>
@@ -214,29 +228,14 @@
       </div>
 
       <div slot="footer">
-        <template v-if="modalType === 'fuel-purchased'">
-          <c-button-save
-            id="recalc-step2"
-            :spinner="runReportWaiting"
-            title="Get results "
-            @click="runReportCalculation" />
-          <c-button
-            variant="secondary"
-            @click="modalState = false"
-          >Close</c-button>
-        </template>
+        <template>
 
-        <template v-else>
-          <c-button
-            id="recalc-step3"
-            variant="primary"
-            @click="signUp"
-          >Sign up to full version</c-button>
+            <c-button-save
+              id="recalc-step3"
+              @click="signUp"
+              title="Sign up for the full version"
+              />
 
-          <c-button
-            variant="secondary"
-            @click="modalType = 'fuel-purchased'"
-          >Back</c-button>
         </template>
 
       </div>
@@ -407,8 +406,8 @@ export default {
 
     modalTitle() {
       return this.modalType === 'fuel-purchased'
-        ? 'Add diesel purchase '
-        : 'See your IFTA tax';
+        ? 'Demo: Add diesel purchase '
+        : 'Demo: See your IFTA tax';
     },
 
     isMobile() { return this.viewportWidth < 768; },
@@ -622,6 +621,12 @@ export default {
 
 .front-page__demo-footer {
   text-align: center;
+}
+
+.front-page__modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
 }
 
 .front-page__widgets {

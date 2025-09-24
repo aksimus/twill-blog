@@ -18,5 +18,36 @@
 
 // Homepage
 @import 'home_page';
+
+// Custom button styles to match Calculate button
+.c-button-save.c-button.c-button--success.c-button--normal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(34, 170, 81);
+  border: 1px solid rgb(34, 170, 81);
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  
+  &:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(28, 145, 69);
+    border-color: rgb(28, 145, 69);
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(34, 170, 81, 0.25);
+  }
+}
+
 // Или если у вас другая структура файлов, то:
 // @import 'your-existing-files';

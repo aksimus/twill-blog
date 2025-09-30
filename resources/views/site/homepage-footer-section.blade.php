@@ -302,7 +302,7 @@ $currentFaq = $faq[$currentLocale] ?? $faq['en'];
 
 
 
-  <a href="@localizedUrl('mileage/register')" class="c-button-save c-button c-button--success c-button--normal">
+  <a href="/mileage/register" class="c-button-save c-button c-button--success c-button--normal">
     <i class="fa fa-user-plus"></i>&nbsp;&nbsp;Sign up to use the calculator
   </a>
 
@@ -321,7 +321,7 @@ $currentFaq = $faq[$currentLocale] ?? $faq['en'];
 
 <div class="front-page__rates-link">
 
-  <a href="@localizedUrl('mileage/register')" class="c-button-save c-button c-button--success c-button--normal">
+  <a href="/mileage/register" class="c-button-save c-button c-button--success c-button--normal">
     <i class="fa fa-user-plus"></i>&nbsp;&nbsp;Sign up to use the calculator
   </a>
 

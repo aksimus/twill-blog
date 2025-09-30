@@ -67,15 +67,38 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
 <div>
   <div class="front-page__video">
     <h4>{{ __('homepage.video.title') }}</h4>
-    <div class="front-page__video-container">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/LjUtSkVyAp0"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="front-page__video-container" data-yt-id="LjUtSkVyAp0">
+      <div class="youtube-video-placeholder" style="position:relative; width:560px; max-width:100%; cursor:pointer;">
+        <img
+          src="https://i.ytimg.com/vi/LjUtSkVyAp0/maxresdefault.jpg"
+          alt="YouTube Video: Watch how IFTA calculator works"
+          style="width:100%; display:block; border-radius:8px;"
+        >
+        <button
+          type="button"
+          class="yt-poster"
+          aria-label="Play video"
+          style="
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            background:rgba(0,0,0,0.6);
+            border:none;
+            border-radius:50%;
+            width:64px;
+            height:64px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+          "
+        >
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="15,10 30,20 15,30" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -88,3 +111,42 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
     @endforeach
   </div>
 </div>
+
+<!-- YouTube Video Lazy Loading JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.front-page__video-container').forEach(container => {
+      const id = container.dataset.ytId;
+      const posterBtn = container.querySelector('.yt-poster');
+
+      if (!posterBtn || !id) return;
+
+      const activate = () => {
+        if (container.dataset.loaded) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+        iframe.title = 'YouTube video player';
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.style.width = '100%';
+        iframe.style.height = '315px';
+        iframe.setAttribute('frameborder', '0');
+
+        container.dataset.loaded = '1';
+        container.innerHTML = '';
+        container.appendChild(iframe);
+      };
+
+      // Click or keyboard (Enter/Space) to activate
+      posterBtn.addEventListener('click', activate);
+      posterBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate();
+        }
+      });
+    });
+  });
+</script>

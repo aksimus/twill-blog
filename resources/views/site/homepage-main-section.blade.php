@@ -70,7 +70,7 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
     <div class="front-page__video-container" data-yt-id="LjUtSkVyAp0">
       <div class="youtube-video-placeholder" style="position:relative; width:560px; max-width:100%; cursor:pointer;">
         <img
-          src="https://i.ytimg.com/vi/LjUtSkVyAp0/maxresdefault.jpg"
+          src="/img/youtube_how_to_cover.webp"
           alt="YouTube Video: Watch how IFTA calculator works"
           style="width:100%; display:block; border-radius:8px;"
         >

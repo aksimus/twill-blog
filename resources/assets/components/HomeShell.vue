@@ -94,7 +94,7 @@ export default {
   padding: 10px;
 
   background: hsl(0, 0%, 100%)
-                url('/img/highway.jpg')
+                url('/img/highway.webp')
                 no-repeat
                 center / auto 100%;
 }
@@ -114,7 +114,7 @@ export default {
 @media (min-width: 590px) {
   .home-shell__image {
     background: hsl(0, 0%, 100%)
-                url('/img/highway.jpg')
+                url('/img/highway.webp')
                 no-repeat
                 center / 100% auto;
   }

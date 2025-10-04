@@ -49,5 +49,27 @@
   }
 }
 
+// Fix for modal body scroll lock issue
+// This overrides Bootstrap's modal body scroll lock behavior
+// that causes body width to be reduced when modal is open
+body.modal-open {
+  width: 100% !important;
+  right: 0 !important;
+  left: 0 !important;
+}
+
+// Additional fix for any modal-related body width issues
+// This ensures body always maintains full width regardless of modal state
+body {
+  width: 100% !important;
+  
+  // Override any fixed positioning that might cause width reduction
+  &[style*="position: fixed"] {
+    width: 100% !important;
+    right: 0 !important;
+    left: 0 !important;
+  }
+}
+
 // Или если у вас другая структура файлов, то:
 // @import 'your-existing-files';

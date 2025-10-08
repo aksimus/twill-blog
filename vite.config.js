@@ -9,9 +9,10 @@ export default defineConfig({
         createVuePlugin(), // Add Vue 2 plugin
         laravel({
             input: [
+                'resources/js/events.js',
                 'resources/scss/app.scss', 
                 'resources/js/app.js',
-                'resources/js/events.js'
+
             ],
             refresh: true,
             // buildDirectory: 'assets', // Using default 'build' directory for compatibility

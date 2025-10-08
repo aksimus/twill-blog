@@ -82,10 +82,6 @@ export default {
         await dispatch('login', { remember: false, email, password });
         // commit('saveToken', { token: res.data.access_token, expiresIn: res.data.expires_in });
         // await dispatch('fetchUser');
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'registration',
-        });
       }
     },
 

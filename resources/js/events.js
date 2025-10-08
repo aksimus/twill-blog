@@ -1,29 +1,100 @@
+window.dataLayer = window.dataLayer || [];
+/*
+
+vue -> dataLayer -> GTM -> GA4 
+vue -> dataLayer -> push lintener in events.js -> FB 
+
+vue components must use window.dataLayer.push({ ... })
+don't use window.dataLayer.push() inside _sendEvents function, otherwise they will be looped
+GTM read events from dataLayer and send them to GA4 ()
+
+
+
+*/
+(function (DL_NAME = 'dataLayer') {
+
+  window[DL_NAME] = window[DL_NAME] || [];
+  const dl = window[DL_NAME];
+
+
+  const originalPush = dl.push.bind(dl);
+
+
+  const subscribers = new Set();
+  function notify(eventObj) {
+    
+    try {
+      window.dispatchEvent(new CustomEvent('datalayer:event', { detail: eventObj }));
+    } catch (e) {}
+    // Колбэки
+    subscribers.forEach(fn => {
+      try { fn(eventObj); } catch (e) { console.error('DL subscriber error', e); }
+    });
+  }
+
+
+  dl.push = function () {
+    for (let i = 0; i < arguments.length; i++) {
+      const payload = arguments[i];
+      notify(payload);
+    }
+    return originalPush.apply(dl, arguments);
+  };
+
+  window.dataLayerListener = {
+    subscribe(fn) { subscribers.add(fn); return () => subscribers.delete(fn); },
+    getDataLayer() { return dl; },
+    backlog() {
+        if (dl.length) {
+          dl.forEach(notify);
+        }
+    }
+  };
+})();
+
+
+
+
 window._sendEvent = async function (event) {
   _sendEvents([event]);
 };
 
 window._sendEvents = async function (events) {
-  window.dataLayer = window.dataLayer || [];
+
 
   if (!Array.isArray(events)) {
     console.error('_sendEvent expects an array of event objects');
     return;
   }
 
-  // Validate each event object
-  const validEvents = events.filter(event => event && typeof event.event === 'string');
+  // Validate each event object, exclude GTM internal events, and keep only whitelisted names
+  const allowedEventNames = [
+    'user_initialized', 
+    'login', 
+    'registration', 
+    'demo_recalc_run', 
+    'begin_checkout', 
+    'purchase'
+  ];
+  const validEvents = events
+    .filter(event => event && typeof event.event === 'string')
+    .filter(event => !event.event.startsWith('gtm.'))
+    .filter(event => allowedEventNames.includes(event.event));
   if (validEvents.length === 0) {
     return;
   }
 
   validEvents
-    .filter(event => ['user_initialized', 'demo_recalc_run', 'begin_checkout', 'purchase'].includes(event.event))
     .forEach((event) => {
-      window.dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-      window.dataLayer.push({ _type: 'business_logic_event', ...event });
+
 
       // FB
       try {
+
+        if (event.event == 'registration') {
+          fbq('track', 'CompleteRegistration', {content_name: 'User Registration'}, {eventID: event.event_id});
+        }
+
         if (event.event == 'purchase') {
           const { value, currency } = event.ecommerce;
           fbq('track', 'Purchase', { value, currency });
@@ -32,6 +103,7 @@ window._sendEvents = async function (events) {
         console.error('Error sending events to FB:', error);
       }
     });
+    
 
   try {
     const response = await fetch('/api/events', {
@@ -45,9 +117,11 @@ window._sendEvents = async function (events) {
     if (!response.ok) {
       console.error('Failed to send events:', response.statusText);
     }
+    
   } catch (error) {
     console.error('Error sending events:', error);
   }
+
 };
 window.getFbpFromCookie = function () {
   const match = document.cookie.match(/_fbp=([^;]+)/);
@@ -75,41 +149,9 @@ window.addEventListener('business_logic_event', (event) => {
 });
 
 
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-  event: 'scriptReadyListener',
-});
 
-function runWhenGTMIsLoaded(callback) {
-  const originalPush = dataLayer.push;
-  dataLayer.push = function () {
-    const args = Array.prototype.slice.call(arguments);
-    for (const arg of args) {
-      if (arg && arg.event === 'gtm.js') {
-        callback();
-      }
-    }
-    return originalPush.apply(dataLayer, args);
-  };
 
-  // Check if GTM is already loaded
-  for (const item of dataLayer) {
-    if (item && item.event === 'gtm.js') {
-      callback();
-      break;
-    }
-  }
-}
-/*
-// Example usage:
-runWhenGTMIsLoaded(() => {
-  _sendEvent({
-    event: 'init',
-    gclientid: getClientIdFromCookie(),
-    fbp: getFbpFromCookie(),
-  });
-});
-*/
+
 function runInitEvent() {
 
   let attempts = 0;
@@ -158,6 +200,16 @@ function runInitEvent() {
 
 // Check if DOM is already ready or wait for it
 function initWhenReady() {
+
+  // подписка
+  const unsubscribe = window.dataLayerListener.subscribe((e) => {
+     _sendEvent(e);
+
+  });
+  
+  window.dataLayerListener.backlog();
+
+  
   runInitEvent();
 }
 

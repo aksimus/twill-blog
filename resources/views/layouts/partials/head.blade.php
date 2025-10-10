@@ -18,7 +18,7 @@
   </script>
   <!-- End Google Tag Manager -->  
 
-<script defer src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_maps.api_key')}}&language=en"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{config('services.google_maps.api_key')}}&language=en&loading=async"></script>
 
 
 <!-- Favicon and Touch Icons -->

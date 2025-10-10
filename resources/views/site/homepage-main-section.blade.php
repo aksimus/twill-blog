@@ -72,7 +72,9 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
         <img
           src="/img/youtube_how_to_cover.webp"
           alt="YouTube Video: Watch how IFTA calculator works"
-          style="width:100%; display:block; border-radius:8px;"
+          width="560"
+          height="315"
+          style="width:100%; height:auto; display:block; border-radius:8px;"
         >
         <button
           type="button"

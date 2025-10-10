@@ -1,7 +1,7 @@
 <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
   <div class="container px-3">
     <a href="{{ route('frontend.home') }}" class="navbar-brand pe-3">
-      <img src="{{ asset('img/logo_s1.png') }}" width="160" alt="Logo">
+      <img src="{{ asset('img/logo_s1.png') }}" width="160" height="40" alt="Logo">
     </a>
     <div id="navbarNav" class="offcanvas offcanvas-end">
       <div class="offcanvas-header border-bottom">

@@ -11,7 +11,7 @@
 
   @include('site.homepage-promo-section')
 
-    <div id="front-page-demo-widget"></div>
+    <div id="front-page-demo-widget" style="min-height: 450px;"></div>
 
     <main>
       @include('site.homepage-main-section')

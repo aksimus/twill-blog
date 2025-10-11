@@ -69,6 +69,7 @@ window._sendEvents = async function (events) {
 
   // Validate each event object, exclude GTM internal events, and keep only whitelisted names
   const allowedEventNames = [
+    'app_init',
     'user_initialized', 
     'login', 
     'registration', 
@@ -201,16 +202,14 @@ function runInitEvent() {
 // Check if DOM is already ready or wait for it
 function initWhenReady() {
 
-  // подписка
+  runInitEvent();
+
   const unsubscribe = window.dataLayerListener.subscribe((e) => {
      _sendEvent(e);
 
   });
-  
   window.dataLayerListener.backlog();
 
-  
-  runInitEvent();
 }
 
 if (document.readyState === 'loading') {

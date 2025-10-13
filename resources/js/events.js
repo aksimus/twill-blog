@@ -54,6 +54,12 @@ GTM read events from dataLayer and send them to GA4 ()
 
 
 
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11)
+    .replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+}
 
 window._sendEvent = async function (event) {
   _sendEvents([event]);
@@ -91,6 +97,10 @@ window._sendEvents = async function (events) {
 
       // FB
       try {
+        if (event.event == 'app_init') {
+          console.log('PageView', event);
+          fbq('track', 'PageView', {}, {eventID: event.event_id});
+        }
 
         if (event.event == 'registration') {
           fbq('track', 'CompleteRegistration', {content_name: 'User Registration'}, {eventID: event.event_id});
@@ -127,6 +137,12 @@ window._sendEvents = async function (events) {
 window.getFbpFromCookie = function () {
   const match = document.cookie.match(/_fbp=([^;]+)/);
   return match ? match[1] : null;
+};
+window.getFbcFromCookie = function () {
+  const cookie = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('_fbc='));
+  return cookie ? cookie.split('=')[1] : null;
 };
 
 window.getClientIdFromCookie = function () {
@@ -183,11 +199,17 @@ function runInitEvent() {
 
     const gclientid = getClientIdFromCookie();
     const fbp = getFbpFromCookie();
-    
+    const fbc = getFbcFromCookie();
+
+
+    const eventId = uuidv4();
+
     _sendEvent({
       event: 'app_init',
       gclientid,
       fbp,
+      fbc,
+      event_id: eventId,
       ...browserData
     });
 

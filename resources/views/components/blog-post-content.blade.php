@@ -11,8 +11,16 @@
     </div>
   @endif
 
+
+
+
+
+
   <!-- Render Twill blocks -->
   <x-twill-blocks :post="$post" />
+
+
+
 
   <!-- Author information -->
   @if($post->author)

@@ -15,21 +15,40 @@
     placeholder="e.g., dQw4w9WgXcQ"
     note="Extract from YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     :required="true"
-/>
-
-<x-twill::input
-    name="description"
-    label="Video Description"
-    placeholder="Brief description of the video"
     :translated="true"
 />
+
+<x-twill::wysiwyg
+    type="quill"
+    name="rich_description"
+    label="Description"
+    placeholder="Detailed description with formatting"
+    :toolbar-options="[
+        'bold',
+        'italic',
+        ['list' => 'bullet'],
+        ['list' => 'ordered'],
+        'link',
+        'clean'
+    ]"
+    :translated="true"
+/>
+
+<x-block-display-languages />
+
+@formField('medias', [
+    'name' => 'cover_image',
+    'label' => 'Custom Cover Image',
+    'note' => 'Optional: Upload a custom cover image instead of using YouTube thumbnail'
+])
 
 <x-twill::select
     name="load_type"
     label="Load Type"
     :options="[
         ['value' => 'immediate', 'label' => 'Load Player Immediately'],
-        ['value' => 'cover_modal', 'label' => 'Show Cover Image + Modal Popup']
+        ['value' => 'cover_modal', 'label' => 'Show Cover Image + Modal Popup'],
+        ['value' => 'gallery_style', 'label' => 'Gallery Style (Lightbox)']
     ]"
     default="immediate"
     note="Choose how the video should be loaded"
@@ -59,11 +78,6 @@
     default="true"
 />
 
-<x-twill::checkbox
-    name="show_info"
-    label="Show Video Info"
-    default="true"
-/>
 
 <x-twill::checkbox
     name="responsive"

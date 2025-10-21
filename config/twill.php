@@ -6,7 +6,12 @@ return [
 	'admin_route_name_prefix' => env('ADMIN_ROUTE_NAME_PREFIX', 'twill.'),
 
 	'block_editor' => [
-		'use_twill_blocks' => [],
+		'use_twill_blocks' => [
+			'you-tube-video',
+			'text',
+			'image',
+			'contact-form',
+		],
 		'crops' => [
 			'highlight' => [
 				'desktop' => [
@@ -19,6 +24,20 @@ return [
 					[
 						'name' => 'mobile',
 						'ratio' => 1,
+					],
+				],
+			],
+			'cover_image' => [
+				'desktop' => [
+					[
+						'name' => 'desktop',
+						'ratio' => 16 / 9,
+					],
+				],
+				'mobile' => [
+					[
+						'name' => 'mobile',
+						'ratio' => 16 / 9,
 					],
 				],
 			],

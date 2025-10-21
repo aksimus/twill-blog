@@ -2,6 +2,8 @@
 @twillBlockIcon('text')
 @twillBlockGroup('app')
 
+<x-block-display-languages />
+
 <x-twill::input
     name="title"
     label="Title"

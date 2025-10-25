@@ -12,6 +12,7 @@ return [
 			'image',
 			'contact-form',
 			'opinion',
+			'pros-cons',
 		],
 		'crops' => [
 			'highlight' => [

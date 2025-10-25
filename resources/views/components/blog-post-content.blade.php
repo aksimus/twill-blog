@@ -2,7 +2,7 @@
 
 <div class="col-lg-9">
   @if($post->description && !$post->hide_description_on_post_page)
-    <h3 class="h5 mb-4 pb-2 fw-medium">{{ $post->description }}</h3>
+    <div class="h5 mb-4 pb-2 fw-medium">{!! $post->description !!}</div>
   @endif
   
   @if($post->content)

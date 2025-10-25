@@ -14,17 +14,29 @@
 
 @section('content')
   <!-- Breadcrumb -->
-  <x-breadcrumb :items="[
-    ['url' => route('frontend.home'), 'title' => 'Home'],
-    ['url' => route('blog.index'), 'title' => 'Blog'],
-    ...($post->category ? [['url' => route('blog.category', $post->category->getSlug()), 'title' => $post->category->title]] : []),
-    ['url' => '#', 'title' => $post->title ?? 'Single Post']
-  ]" />
+  <nav aria-label="breadcrumb" class="container mt-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ route('frontend.home') }}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('blog.index') }}">Blog</a></li>
+      @if($post->category && method_exists($post->category, 'getSlug'))
+        <li class="breadcrumb-item"><a href="{{ route('blog.category', $post->category->getSlug()) }}">{{ $post->category->title }}</a></li>
+      @endif
+      <li class="breadcrumb-item active" aria-current="page">{{ $post->title ?? 'Single Post' }}</li>
+    </ol>
+  </nav>
 
   <!-- Post title + Meta  -->
   <section class="container mt-4 pt-lg-2 pb-3">
     <h1 class="pb-3" style="max-width: 970px;">{{ $post->title ?? 'This Long-Awaited Technology May Finally Change the World' }}</h1>
-    <x-blog-post-meta :post="$post ?? null" />
+    <div class="d-flex flex-wrap align-items-center fs-sm text-muted border-bottom pb-3">
+      @if($post->category && method_exists($post->category, 'getSlug'))
+        <a href="{{ route('blog.category', $post->category->getSlug()) }}" class="text-decoration-none me-3">{{ $post->category->title }}</a>
+      @endif
+      <span class="me-3">{{ $post->created_at->format('M d, Y') }}</span>
+      @if($post->author)
+        <span>by {{ $post->author->name }}</span>
+      @endif
+    </div>
   </section>
 
   <!-- Post content + Sharing -->

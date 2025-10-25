@@ -93,8 +93,27 @@
       <article class="card border-0 shadow-sm overflow-hidden mb-4">
         <div class="row g-0">
           <div class="col-sm-4 position-relative" style="min-height: 15rem;">
-            @if($post->medias('hero')->first())
-              <img src="{{ $post->medias('hero')->first()->url }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ $post->title }}">
+            @php $hasHero = $post->hasImage('hero', 'cat_desktop'); @endphp
+
+            @if($hasHero)
+              <picture>
+                {{-- Mobile: 3:2 ratio (cat_mobile: 1.46) --}}
+                <source media="(max-width: 576px)"
+                  srcset="
+                    {{ $post->image('hero','cat_mobile',['w'=>351,'h'=>240,'fit'=>'crop']) }} 1x,
+                    {{ $post->image('hero','cat_mobile',['w'=>702,'h'=>480,'fit'=>'crop']) }} 2x
+                  ">
+                {{-- Desktop: 3:2 ratio (cat_desktop: 1.51) --}}
+                <img
+                  src="{{ $post->image('hero','cat_desktop',['w'=>432,'h'=>286,'fit'=>'crop']) }}"
+                  srcset="
+                    {{ $post->image('hero','cat_desktop',['w'=>432,'h'=>286,'fit'=>'crop']) }} 1x,
+                    {{ $post->image('hero','cat_desktop',['w'=>864,'h'=>572,'fit'=>'crop']) }} 2x
+                  "
+                  alt="{{ optional($post->medias('hero')->first())->alt_text ?? $post->title }}"
+                  width="432" height="286"
+                  class="w-100 h-100" style="object-fit:cover" loading="lazy" decoding="async">
+              </picture>
             @else
               <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                 <i class="bx bx-image text-white" style="font-size: 3rem; opacity: 0.5;"></i>

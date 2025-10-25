@@ -10,6 +10,9 @@ use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\Fields\Browser;
 use A17\Twill\Services\Forms\Form;
 
+use A17\Twill\Services\Forms\Fields\Medias;
+
+
 class BlogPostController extends BaseModuleController
 {
 	protected $moduleName = 'blogPosts';
@@ -27,6 +30,10 @@ class BlogPostController extends BaseModuleController
 
 		$form->add(
 			Input::make()->name('title')->label('Title')->translatable()
+		);
+		
+		$form->add(
+			Medias::make()->name('hero')->label('Hero Image')->max(1)
 		);
 
 		$form->add(

@@ -23,6 +23,31 @@ class BlogPost extends Model
 		'blogAuthor',
 		'blogTags',
 	];
+	public $mediasParams = [
+		'hero' => [
+				'default' => [
+					[
+						'name' => 'default',
+						'ratio' => 16 / 9,
+					],
+				],
+
+		  'post_desktop' => [
+			['name' => 'post_desktop', 'ratio' => 2.75],      // 11:4 - Silicon desktop single post hero
+		  ],
+		  'post_mobile' => [
+			['name' => 'post_mobile', 'ratio' => 1.25],    // 5:4 - Silicon mobile single post hero
+		  ],
+		  'cat_desktop' => [
+			['name' => 'cat_desktop', 'ratio' => 1.51],    // 3:2 - Silicon desktop blog list (432x286px from DOM)
+		  ],
+		  'cat_mobile' => [
+			['name' => 'cat_mobile', 'ratio' => 1.46],    // 3:2 - Silicon mobile blog list (351x240px from DOM)
+		  ],
+		],
+
+	  ];
+
 
 	public $translatedAttributes = [
 		'title',

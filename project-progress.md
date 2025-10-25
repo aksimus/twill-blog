@@ -1,4 +1,9 @@
 
+https://docs.google.com/document/d/1Z6W7zkl7VRPvavYnY7ZW-dz8JW6k-zzfsLRjSLUVYhQ/edit?tab=t.0
+
+требования к блогу
+
+
 #twill_blog_v01  //2025-08-21
 done
 
@@ -58,6 +63,14 @@ authors module
 - другие контент блоки: цитата, pros & cons, 
 - добавление микроразметки
 - редирект с трейлинг слешем
+
+
+
+
+
+
+
+
 
 
 

@@ -11,6 +11,7 @@ return [
 			'text',
 			'image',
 			'contact-form',
+			'opinion',
 		],
 		'crops' => [
 			'highlight' => [
@@ -38,6 +39,14 @@ return [
 					[
 						'name' => 'mobile',
 						'ratio' => 16 / 9,
+					],
+				],
+			],
+			'avatar' => [
+				'default' => [
+					[
+						'name' => 'default',
+						'ratio' => 1,
 					],
 				],
 			],

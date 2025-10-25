@@ -21,17 +21,12 @@
     <h1 class="pb-3" style="max-width: 970px;">{{ $post->title ?? 'This Long-Awaited Technology May Finally Change the World' }}</h1>
     <x-blog-post-meta :post="$post ?? null" />
   </section>
-  @if(0 && $post->featured_image)
-    <!-- Post image (parallax) -->
-    <div class="jarallax mb-lg-5 mb-4" data-jarallax data-speed="0.35" style="height: 36.45vw; min-height: 300px;">
-      <div class="jarallax-img" style="background-image: url({{ $post->featured_image }});"></div>
-    </div>
-  @endif
+
   <!-- Post content + Sharing -->
   <section class="container mb-5 pt-4 pb-2 py-mg-4">
     <div class="row gy-4">
       <!-- Content -->
-      @php $hasHero = $post->hasImage('hero', 'post_desktop'); @endphp
+      @php $hasHero = $post->hasImage('hero', 'post_desktop') && !$post->hide_on_post_page; @endphp
       
       @if($hasHero)
         <!-- Post hero image -->

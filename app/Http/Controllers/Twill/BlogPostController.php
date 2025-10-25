@@ -18,6 +18,7 @@ class BlogPostController extends BaseModuleController
 {
 	protected $moduleName = 'blogPosts';
 	protected $request = \App\Http\Requests\Twill\BlogPostRequest::class;
+	protected $previewView = 'blog.post';
 
 	protected function setUpController(): void
 	{

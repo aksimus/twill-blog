@@ -85,11 +85,18 @@ authors module
 - избавиться от неиспульзуемых плагинов из silicon темы
 
 
-
-##todo 
 - встроить все в проект ifta-calculator
--- разделение роутов на app и front
--- подключить events.js
+
+#twill_blog_v08 - вмержились в основной проект 
+##todo 
+- перенастроить пути на /calculator
+
+- подключить events.js
+- настроить staging
+- настроить CI/CD 
+
+- протестировать 
+-- oauth
 
 
 

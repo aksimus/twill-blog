@@ -12,7 +12,8 @@ composer create-project laravel/laravel . "11.31"
 
 опционально: скопировать composer.json из laravel-samples в котором установлены twill и localization, удалить composer.lock и запустить composer install
 
-
+mkdir -p storage/app storage/framework/cache storage/framework/views/
+ chown -R www-data:www-data  storage/app storage/framework/cache storage/framework/views/
 
 скопировать .env из laravel-samples
 

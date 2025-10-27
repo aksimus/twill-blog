@@ -74,5 +74,10 @@
     "Rates are being loaded from external source. Please try again in a moment.": "Rates are being loaded from external source. Please try again in a moment.",
     "homepage.seo.title": "Free IFTA calculator & state by state mileage calculator",
     "homepage.seo.description": "How to calculate IFTA miles? Use this Free IFTA tax calculator and state by state mileage calculator.",
-    "homepage.seo.keywords": "IFTA,ifta miles,ifta calculator,ifta report,ifta rates"
-}
+    "homepage.seo.keywords": "IFTA,ifta miles,ifta calculator,ifta report,ifta rates",
+
+    "Pros": "Pros",
+    "Cons": "Cons",
+    "There was an error sending your message. Please try again.": "There was an error sending your message. Please try again.",
+    "Network error: Unable to send your message. Please check your connection and try again.": "Network error: Unable to send your message. Please check your connection and try again."
+} 

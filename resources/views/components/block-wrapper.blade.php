@@ -3,16 +3,22 @@
     $displayLanguages = $block->input('display_languages') ?? [];
     $currentLocale = app()->getLocale();
     
-    // If no languages are selected or it's null, don't display the block on any language
-    if (empty($displayLanguages) || !is_array($displayLanguages) || $displayLanguages === null) {
-        return;
+    // If display_languages exists and is not empty, check if current locale is allowed
+    $shouldDisplay = true;
+    if (!empty($displayLanguages) && is_array($displayLanguages)) {
+        // Check if current locale is in the allowed languages
+        if (!in_array($currentLocale, $displayLanguages)) {
+            // Don't render this block for current language
+            $shouldDisplay = false;
+        }
     }
     
-    // Check if current locale is in the allowed languages
-    if (!in_array($currentLocale, $displayLanguages)) {
-        // Don't render this block for current language
-        return;
+    // In admin context, always display (for preview)
+    if (app()->runningInConsole() || request()->is('cms/*') || request()->is('admin/*')) {
+        $shouldDisplay = true;
     }
 @endphp
 
+@if($shouldDisplay)
 {{ $slot }}
+@endif

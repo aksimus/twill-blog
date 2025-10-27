@@ -17,12 +17,45 @@ class BlogPost extends Model
 
 	protected $fillable = [
 		'published',
+		'hidden_from_categories',
+		'settings',
+		'hide_on_post_page',
+		'hide_description_on_post_page',
 		'blog_category_id',
 		'blog_author_id',
 		'blogCategory',
 		'blogAuthor',
 		'blogTags',
 	];
+
+	protected $casts = [
+		'settings' => 'array',
+	];
+	public $mediasParams = [
+		'hero' => [
+				'default' => [
+					[
+						'name' => 'default',
+						'ratio' => 16 / 9,
+					],
+				],
+
+		  'post_desktop' => [
+			['name' => 'post_desktop', 'ratio' => 2.75],      // 11:4 - Silicon desktop single post hero
+		  ],
+		  'post_mobile' => [
+			['name' => 'post_mobile', 'ratio' => 1.25],    // 5:4 - Silicon mobile single post hero
+		  ],
+		  'cat_desktop' => [
+			['name' => 'cat_desktop', 'ratio' => 1.51],    // 3:2 - Silicon desktop blog list (432x286px from DOM)
+		  ],
+		  'cat_mobile' => [
+			['name' => 'cat_mobile', 'ratio' => 1.46],    // 3:2 - Silicon mobile blog list (351x240px from DOM)
+		  ],
+		],
+
+	  ];
+
 
 	public $translatedAttributes = [
 		'title',
@@ -48,5 +81,49 @@ class BlogPost extends Model
 		return $this->belongsToMany(BlogTag::class, 'blog_post_blog_tag')
 			->withPivot('position')
 			->orderBy('position');
+	}
+
+	/**
+	 * Get a setting value from the settings JSON field
+	 */
+	public function getSetting(string $key, $default = false): bool
+	{
+		return $this->settings[$key] ?? $default;
+	}
+
+	/**
+	 * Helper accessor for hide_on_post_page setting
+	 */
+	public function getHideOnPostPageAttribute(): bool
+	{
+		return $this->getSetting('hide_on_post_page', false);
+	}
+
+	/**
+	 * Helper accessor for hide_description_on_post_page setting
+	 */
+	public function getHideDescriptionOnPostPageAttribute(): bool
+	{
+		return $this->getSetting('hide_description_on_post_page', false);
+	}
+
+	/**
+	 * Mutator for hide_on_post_page - converts to settings JSON
+	 */
+	public function setHideOnPostPageAttribute($value): void
+	{
+		$settings = $this->settings ?? [];
+		$settings['hide_on_post_page'] = (bool) $value;
+		$this->attributes['settings'] = json_encode($settings);
+	}
+
+	/**
+	 * Mutator for hide_description_on_post_page - converts to settings JSON
+	 */
+	public function setHideDescriptionOnPostPageAttribute($value): void
+	{
+		$settings = $this->settings ?? [];
+		$settings['hide_description_on_post_page'] = (bool) $value;
+		$this->attributes['settings'] = json_encode($settings);
 	}
 } 

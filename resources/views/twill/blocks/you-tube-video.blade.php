@@ -2,10 +2,14 @@
 @twillBlockIcon('video')
 @twillBlockGroup('media')
 
+<x-block-display-languages />
+
+<x-block-title-description />
+
 <x-twill::input
-    name="title"
-    label="Video Title"
-    placeholder="Enter video title"
+    name="caption"
+    label="Video Caption"
+    placeholder="Enter video caption (displayed below video)"
     :translated="true"
 />
 
@@ -18,23 +22,29 @@
     :translated="true"
 />
 
-<x-twill::wysiwyg
-    type="quill"
-    name="rich_description"
-    label="Description"
-    placeholder="Detailed description with formatting"
-    :toolbar-options="[
+@formField('wysiwyg', [
+    'name' => 'rich_description',
+    'label' => 'Description',
+    'placeholder' => 'Detailed description with formatting',
+    'translated' => true,
+    'toolbarOptions' => [
+        ['header' => [2, 3, 4, 5, 6, false]],
         'bold',
         'italic',
-        ['list' => 'bullet'],
-        ['list' => 'ordered'],
+        'underline',
+        'strike',
+        'blockquote',
+        'code-block',
+        'ordered',
+        'bullet',
+        'hr',
+        'code',
         'link',
-        'clean'
-    ]"
-    :translated="true"
-/>
-
-<x-block-display-languages />
+        'clean',
+        'table',
+        'code-view'
+    ]
+])
 
 @formField('medias', [
     'name' => 'cover_image',

@@ -1,3 +1,8 @@
+@php
+  // Support both preview ($item) and regular ($post) contexts
+  $post = $post ?? $item ?? null;
+@endphp
+
 @extends('layouts.blog-layout')
 
 @section('title', $post->title ?? 'Blog Post')
@@ -22,17 +27,35 @@
     <x-blog-post-meta :post="$post ?? null" />
   </section>
 
-  @if($post->featured_image)
-    <!-- Post image (parallax) -->
-    <div class="jarallax mb-lg-5 mb-4" data-jarallax data-speed="0.35" style="height: 36.45vw; min-height: 300px;">
-      <div class="jarallax-img" style="background-image: url({{ $post->featured_image }});"></div>
-    </div>
-  @endif
-
   <!-- Post content + Sharing -->
   <section class="container mb-5 pt-4 pb-2 py-mg-4">
     <div class="row gy-4">
       <!-- Content -->
+      @php $hasHero = $post->hasImage('hero', 'post_desktop') && !$post->hide_on_post_page; @endphp
+      
+      @if($hasHero)
+        <!-- Post hero image -->
+        <div class="col-lg-9">
+          <picture class="d-block mb-4 pb-2 rounded-3 overflow-hidden">
+            {{-- Mobile: 5:4 ratio (post_mobile: 1.25) --}}
+            <source media="(max-width: 576px)"
+              srcset="
+                {{ $post->image('hero','post_mobile',['w'=>375,'h'=>300,'fit'=>'crop']) }} 1x,
+                {{ $post->image('hero','post_mobile',['w'=>750,'h'=>600,'fit'=>'crop']) }} 2x
+              ">
+            {{-- Desktop: 11:4 ratio (post_desktop: 2.75) --}}
+            <img
+              src="{{ $post->image('hero','post_desktop',['w'=>1320,'h'=>480,'fit'=>'crop']) }}"
+              srcset="
+                {{ $post->image('hero','post_desktop',['w'=>1320,'h'=>480,'fit'=>'crop']) }} 1x,
+                {{ $post->image('hero','post_desktop',['w'=>2640,'h'=>960,'fit'=>'crop']) }} 2x
+              "
+              alt="{{ optional($post->medias('hero')->first())->alt_text ?? $post->title }}"
+              class="w-100" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      @endif
+
       <x-blog-post-content :post="$post ?? null" />
 
       <!-- Sharing -->

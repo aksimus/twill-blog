@@ -14,7 +14,7 @@ class BlogController extends Controller
 	
 	public function index(BlogPostRepository $posts, BlogCategoryRepository $categories): View
 	{
-		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['published' => true], orders: ['created_at' => 'desc'], perPage: 10);
+		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['published' => true, 'hidden_from_categories' => false], orders: ['created_at' => 'desc'], perPage: 10);
 		
 		// Get categories with posts count
 		$allCategories = $categories->get(scopes: ['published' => true], orders: ['title' => 'asc']);
@@ -34,7 +34,7 @@ class BlogController extends Controller
 		if (!$category) abort(404);
 		
 		$perPage = config('blog.post_per_page', 2);
-		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['blog_category_id' => $category->id, 'published' => true], orders: ['created_at' => 'desc'], perPage: $perPage);
+		$items = $posts->get(with: ['category', 'blogTags', 'author'], scopes: ['blog_category_id' => $category->id, 'published' => true, 'hidden_from_categories' => false], orders: ['created_at' => 'desc'], perPage: $perPage);
 		
 		// Share SEO meta data for category
 		$this->shareSeoMeta($this->getBlogCategorySeoMeta($category));
@@ -50,7 +50,7 @@ class BlogController extends Controller
 		$perPage = config('blog.post_per_page', 2);
 		
 		// Get posts that have this tag, with pagination
-		$items = $posts->get(with: ['blogTags', 'author'], orders: ['created_at' => 'desc'], perPage: -1);
+		$items = $posts->get(with: ['blogTags', 'author'], scopes: ['published' => true, 'hidden_from_categories' => false], orders: ['created_at' => 'desc'], perPage: -1);
 		$filteredItems = $items->filter(fn($p) => $p->blogTags->contains('id', $tag->id));
 		
 		// Manually paginate the filtered results
@@ -99,7 +99,7 @@ class BlogController extends Controller
 		if ($post->category) {
 			$relatedPosts = $posts->get(
 				with: ['category', 'author'], 
-				scopes: ['blog_category_id' => $post->category->id, 'published' => true], 
+				scopes: ['blog_category_id' => $post->category->id, 'published' => true, 'hidden_from_categories' => false], 
 				orders: ['created_at' => 'desc'], 
 				perPage: 3
 			)->filter(fn($relatedPost) => $relatedPost->id !== $post->id)->take(3);

@@ -2,28 +2,40 @@
 @twillBlockIcon('mail')
 @twillBlockGroup('forms')
 
+<x-block-display-languages />
+
+<x-block-title-description />
+
 <x-twill::input
-    name="title"
+    name="form_title"
     label="Form Title"
     placeholder="Contact Us"
     :translated="true"
 />
 
-<x-twill::wysiwyg
-    type="quill"
-    name="description"
-    label="Form Description"
-    placeholder="Get in touch with us..."
-    :toolbar-options="[
+@formField('wysiwyg', [
+    'name' => 'form_description',
+    'label' => 'Form Description',
+    'placeholder' => 'Get in touch with us...',
+    'translated' => true,
+    'toolbarOptions' => [
+        ['header' => [2, 3, 4, 5, 6, false]],
         'bold',
         'italic',
-        ['list' => 'bullet'],
-        ['list' => 'ordered'],
+        'underline',
+        'strike',
+        'blockquote',
+        'code-block',
+        'ordered',
+        'bullet',
+        'hr',
+        'code',
         'link',
-        'clean'
-    ]"
-    :translated="true"
-/>
+        'clean',
+        'table',
+        'code-view'
+    ]
+])
 
 <x-twill::input
     name="email_label"

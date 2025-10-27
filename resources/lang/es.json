@@ -74,6 +74,10 @@
     "Rates are being loaded from external source. Please try again in a moment.": "Las tarifas se están cargando desde una fuente externa. Por favor, inténtelo de nuevo en un momento.",
     "homepage.seo.title": "Calculadora IFTA - Software Profesional de Cálculo de Impuestos de Combustible",
     "homepage.seo.description": "Software profesional de cálculo IFTA para empresas logísticas. Calcule impuestos de combustible, rastree millas y gestione el cumplimiento con nuestra plataforma avanzada de calculadora IFTA.",
-    "homepage.seo.keywords": "calculadora IFTA, cálculo de impuestos de combustible, software logístico, cumplimiento de camiones, seguimiento de millas, reporte de impuestos de combustible, software de transporte, software IFTA"
+    "homepage.seo.keywords": "calculadora IFTA, cálculo de impuestos de combustible, software logístico, cumplimiento de camiones, seguimiento de millas, reporte de impuestos de combustible, software de transporte, software IFTA",
     
+    "Pros": "Ventajas",
+    "Cons": "Desventajas",
+    "There was an error sending your message. Please try again.": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+    "Network error: Unable to send your message. Please check your connection and try again.": "Error de red: No se pudo enviar tu mensaje. Por favor, verifica tu conexión e inténtalo de nuevo."
 } 

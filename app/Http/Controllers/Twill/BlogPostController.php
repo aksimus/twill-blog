@@ -8,12 +8,16 @@ use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\Fields\Browser;
+use A17\Twill\Services\Forms\Fields\Checkbox;
 use A17\Twill\Services\Forms\Form;
+
+use A17\Twill\Services\Forms\Fields\Medias;
+
 
 class BlogPostController extends BaseModuleController
 {
 	protected $moduleName = 'blogPosts';
-	protected $request = \App\Http\Requests\BlogPostRequest::class;
+	protected $request = \App\Http\Requests\Twill\BlogPostRequest::class;
 
 	protected function setUpController(): void
 	{
@@ -30,7 +34,29 @@ class BlogPostController extends BaseModuleController
 		);
 
 		$form->add(
+			Checkbox::make()
+				->name('hidden_from_categories')
+				->label('Hide post from category/tag/blog listings')
+		);
+		
+		$form->add(
+			Medias::make()->name('hero')->label('Hero Image')->max(1)
+		);
+
+		$form->add(
+			Checkbox::make()
+				->name('hide_on_post_page')
+				->label('Hide "Hero Image" on post page (show in lists only)')
+		);
+
+		$form->add(
 			Wysiwyg::make()->name('description')->label('Description')->translatable()
+		);
+
+		$form->add(
+			Checkbox::make()
+				->name('hide_description_on_post_page')
+				->label('Hide "Description" on post page (show in lists only)')
 		);
 
 		$form->add(

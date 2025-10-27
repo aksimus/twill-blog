@@ -1,35 +1,51 @@
 <x-block-wrapper :block="$block">
 @php
-    // Get repeater items using Twill's children API
-    $pros = $block->children->where('type', 'pro_item') ?? collect();
-    $cons = $block->children->where('type', 'con_item') ?? collect();
+    // Get block title and description
+    $title = $block->translatedInput('title') ?? '';
+    $description = $block->translatedInput('description') ?? '';
+    
+    // Get pros and cons from textarea fields
+    $prosText = $block->translatedInput('pros') ?? '';
+    $consText = $block->translatedInput('cons') ?? '';
+    
+    // Split by newlines and filter empty lines
+    $pros = $prosText ? array_filter(array_map('trim', explode("\n", $prosText)), fn($item) => !empty($item)) : [];
+    $cons = $consText ? array_filter(array_map('trim', explode("\n", $consText)), fn($item) => !empty($item)) : [];
 @endphp
 
-@if($pros->isNotEmpty() || $cons->isNotEmpty())
+@if(!empty($pros) || !empty($cons))
 <div class="pros-cons-block mb-4">
-    @if($pros->isNotEmpty())
+    @if($title)
+        <h2 class="mb-3">{{ $title }}</h2>
+    @endif
+    
+    @if($description)
+        <div class="mb-3">{!! $description !!}</div>
+    @endif
+    
+    @if(!empty($pros))
     <div class="mb-4">
         <h4 class="h6">
             <i class="bx bx-plus-circle me-1 mt-n1 align-middle fs-5 text-primary"></i>
-            PROS
+            {{ __('Pros') }}
         </h4>
         <ul class="mb-4 pb-2 ps-4">
             @foreach($pros as $pro)
-                <li class="mb-1">{{ $pro->translatedInput('text') }}</li>
+                <li class="mb-1">{{ $pro }}</li>
             @endforeach
         </ul>
     </div>
     @endif
 
-    @if($cons->isNotEmpty())
+    @if(!empty($cons))
     <div class="mb-4">
         <h4 class="h6">
             <i class="bx bx-minus-circle me-1 mt-n1 align-middle fs-5 text-primary"></i>
-            CONS
+            {{ __('Cons') }}
         </h4>
         <ul class="mb-4 pb-2 ps-4">
             @foreach($cons as $con)
-                <li class="mb-1">{{ $con->translatedInput('text') }}</li>
+                <li class="mb-1">{{ $con }}</li>
             @endforeach
         </ul>
     </div>

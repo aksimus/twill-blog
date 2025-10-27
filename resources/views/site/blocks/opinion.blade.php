@@ -1,5 +1,9 @@
 <x-block-wrapper :block="$block">
 @php
+    // Get block title and description
+    $title = $block->translatedInput('title') ?? '';
+    $description = $block->translatedInput('description') ?? '';
+    
     $quote = $block->translatedInput('quote') ?? '';
     $authorName = $block->translatedInput('author_name') ?? '';
     $authorTitle = $block->translatedInput('author_title') ?? '';
@@ -10,7 +14,16 @@
 @endphp
 
 @if($quote)
-<figure class="position-relative mb-4 ps-4">
+<div class="opinion-block mb-4">
+    @if($title)
+        <h2 class="mb-3">{{ $title }}</h2>
+    @endif
+    
+    @if($description)
+        <div class="mb-3">{!! $description !!}</div>
+    @endif
+    
+    <figure class="position-relative ps-4">
     <span class="position-absolute top-0 start-0 w-3 h-100 bg-primary"></span>
     <blockquote class="blockquote fs-xl fw-medium text-dark ps-1 ps-sm-3">
         <p>{!! $quote !!}</p>
@@ -36,7 +49,8 @@
         </div>
     </figcaption>
     @endif
-</figure>
+    </figure>
+</div>
 @endif
 </x-block-wrapper>
 

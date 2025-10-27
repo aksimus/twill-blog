@@ -4,19 +4,31 @@
 
 <x-block-display-languages />
 
-<x-twill::wysiwyg
-    type="quill"
-    name="quote"
-    label="Quote Text"
-    placeholder="Enter the opinion/quote text"
-    :toolbar-options="[
+<x-block-title-description />
+
+@formField('wysiwyg', [
+    'name' => 'quote',
+    'label' => 'Quote Text',
+    'placeholder' => 'Enter the opinion/quote text',
+    'translated' => true,
+    'toolbarOptions' => [
+        ['header' => [2, 3, 4, 5, 6, false]],
         'bold',
         'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'code-block',
+        'ordered',
+        'bullet',
+        'hr',
+        'code',
         'link',
-        'clean'
-    ]"
-    :translated="true"
-/>
+        'clean',
+        'table',
+        'code-view'
+    ]
+])
 
 <x-twill::medias
     name="avatar"

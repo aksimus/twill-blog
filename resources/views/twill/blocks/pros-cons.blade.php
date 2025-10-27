@@ -4,17 +4,25 @@
 
 <x-block-display-languages />
 
-@formField('repeater', [
-    'type' => 'pro_item',
+<x-block-title-description />
+
+@formField('input', [
+    'type' => 'textarea',
+    'name' => 'pros',
     'label' => 'Pros',
-    'trigger' => 'Add Pro',
-    'max' => 20
+    'placeholder' => 'Enter one pro per line',
+    'note' => 'Enter each pro on a new line',
+    'rows' => 6,
+    'translated' => true
 ])
 
-@formField('repeater', [
-    'type' => 'con_item',
+@formField('input', [
+    'type' => 'textarea',
+    'name' => 'cons',
     'label' => 'Cons',
-    'trigger' => 'Add Con',
-    'max' => 20
+    'placeholder' => 'Enter one con per line',
+    'note' => 'Enter each con on a new line',
+    'rows' => 6,
+    'translated' => true
 ])
 

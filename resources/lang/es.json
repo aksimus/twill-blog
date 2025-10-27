@@ -54,5 +54,9 @@
     "Visit Blog": "Visitar Blog",
     "Ready to Get Started?": "¿Listo para Comenzar?",
     "Join thousands of satisfied customers today.": "Únete a miles de clientes satisfechos hoy.",
-    "Learn More": "Saber Más"
+    "Learn More": "Saber Más",
+    "Pros": "Ventajas",
+    "Cons": "Desventajas",
+    "There was an error sending your message. Please try again.": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+    "Network error: Unable to send your message. Please check your connection and try again.": "Error de red: No se pudo enviar tu mensaje. Por favor, verifica tu conexión e inténtalo de nuevo."
 } 

@@ -54,5 +54,9 @@
     "Visit Blog": "Посетить блог",
     "Ready to Get Started?": "Готовы начать?",
     "Join thousands of satisfied customers today.": "Присоединяйтесь к тысячам довольных клиентов сегодня.",
-    "Learn More": "Узнать больше"
+    "Learn More": "Узнать больше",
+    "Pros": "Плюсы",
+    "Cons": "Минусы",
+    "There was an error sending your message. Please try again.": "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте снова.",
+    "Network error: Unable to send your message. Please check your connection and try again.": "Ошибка сети: Не удалось отправить сообщение. Пожалуйста, проверьте подключение и попробуйте снова."
 } 

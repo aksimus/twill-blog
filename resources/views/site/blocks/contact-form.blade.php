@@ -1,7 +1,11 @@
 @php
-    // Extract block data using proper Twill methods
-    $title = $block->translatedInput('title') ?? 'Contact Us';
-    $description = $block->translatedInput('description') ?? '';
+    // Extract block title and description from common fields
+    $blockTitle = $block->translatedInput('title') ?? '';
+    $blockDescription = $block->translatedInput('description') ?? '';
+    
+    // Extract form labels
+    $formTitle = $block->translatedInput('form_title') ?? 'Contact Us';
+    $formDescription = $block->translatedInput('form_description') ?? '';
     $emailLabel = $block->translatedInput('email_label') ?? 'Email Address';
     $phoneLabel = $block->translatedInput('phone_label') ?? 'Phone Number';
     $messageLabel = $block->translatedInput('message_label') ?? 'Message';
@@ -10,6 +14,10 @@
     $formStyle = $block->input('form_style') ?? 'default';
     $showPhoneField = $block->input('show_phone_field') ?? true;
     $requirePhone = $block->input('require_phone') ?? false;
+    
+    // Translated error messages
+    $errorMessage = __('There was an error sending your message. Please try again.');
+    $networkErrorMessage = __('Network error: Unable to send your message. Please check your connection and try again.');
     
     // Generate unique ID for this form instance
     $formId = 'contact-form-' . uniqid();
@@ -29,15 +37,22 @@
 @endphp
 
 <div class="contact-form-block my-8 max-w-2xl mx-auto" id="{{ $formId }}">
+    @if($blockTitle)
+        <h2 class="mb-3">{{ $blockTitle }}</h2>
+    @endif
+    
+    @if($blockDescription)
+        <div class="mb-3">{!! $blockDescription !!}</div>
+    @endif
+    
     <div class="p-6 rounded-lg {{ $containerClasses }}">
-        
-        @if($title)
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">{{ $title }}</h3>
+        @if($formTitle)
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">{{ $formTitle }}</h3>
         @endif
         
-        @if($description)
+        @if($formDescription)
             <div class="prose text-gray-600 mb-6 text-center">
-                {!! $description !!}
+                {!! $formDescription !!}
             </div>
         @endif
         
@@ -57,7 +72,7 @@
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
                 </svg>
-                <span id="{{ $formId }}-error-message">There was an error sending your message. Please try again.</span>
+                <span id="{{ $formId }}-error-message">{{ $errorMessage }}</span>
             </div>
         </div>
         
@@ -212,12 +227,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         showFieldError(field, result.errors[field][0]);
                     });
                 } else {
-                    showError(result.message || 'There was an error sending your message. Please try again.');
+                    showError(result.message || '{{ $errorMessage }}');
                 }
             }
         } catch (error) {
             console.error('Contact form AJAX error:', error);
-            showError('Network error: Unable to send your message. Please check your connection and try again.');
+            showError('{{ $networkErrorMessage }}');
         } finally {
             // Hide loading state
             submitBtn.disabled = false;

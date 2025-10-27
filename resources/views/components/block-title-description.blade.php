@@ -1,19 +1,15 @@
-@twillBlockTitle('Text')
-@twillBlockIcon('text')
-@twillBlockGroup('app')
-
-<x-block-display-languages />
-
+{{-- Common component for block title and description --}}
 <x-twill::input
     name="title"
-    label="Title"
+    label="Block Title"
+    placeholder="Optional: Add a heading for this block"
     :translated="true"
 />
 
 @formField('wysiwyg', [
-    'name' => 'text',
-    'label' => 'Text',
-    'placeholder' => 'Text',
+    'name' => 'description',
+    'label' => 'Block Description',
+    'placeholder' => 'Optional: Add a description for this block',
     'translated' => true,
     'toolbarOptions' => [
         ['header' => [2, 3, 4, 5, 6, false]],
@@ -29,6 +25,7 @@
         'code',
         'link',
         'clean',
-        'table'
+        'table',
+        'code-view'
     ]
 ])

@@ -1,7 +1,7 @@
 <x-block-wrapper :block="$block">
 @php
     // Extract block data using proper Twill methods
-    $title = $block->translatedInput('title') ?? '';
+    $caption = $block->translatedInput('caption') ?? '';
     $youtubeId = $block->translatedInput('youtube_id') ?? '';
     $description = $block->translatedInput('description') ?? '';
     $richDescription = $block->translatedInput('rich_description') ?? '';
@@ -39,39 +39,45 @@
     
     // Determine cover image source
     $coverImageSrc = $coverImage ? asset('storage/uploads/' . $coverImage->uuid) : "https://img.youtube.com/vi/{$youtubeId}/maxresdefault.jpg";
-    $coverImageAlt = $coverImage ? $coverImage->alt_text : ($title ?: 'YouTube video thumbnail');
+    $coverImageAlt = $coverImage ? $coverImage->alt_text : ($caption ?: 'YouTube video thumbnail');
     
     // Determine description to use
     $displayDescription = $richDescription ?: $description;
 @endphp
 <div class="youtube-video-block my-8" id="{{ $blockId }}">
-    @if($title)
-        <h2 class="h5 mb-4 pb-2 fw-medium">{{ $title }}</h2>
-    @endif
-    
     <div class="youtube-video-container {{ $responsive ? 'w-full' : 'max-w-4xl mx-auto' }}">
         
         @if($loadType === 'cover_modal')
-            <!-- Gallery Style Video -->
+            <!-- Gallery Style Video with Permanent Hover State -->
             <div class="gallery mb-4 pb-2" data-video="true">
                 <a href="{{ $youtubeWatchUrl }}" 
                    class="gallery-item video-item is-hovered rounded-3" 
-                   data-sub-html='<h6 class="fs-sm text-light">{{ $title ?: "YouTube Video" }}</h6>{!! $displayDescription !!}'>
+                   data-sub-html='<h6 class="fs-sm text-light">{{ $caption ?: "YouTube Video" }}</h6>{!! $displayDescription !!}'>
                     <img src="{{ $coverImageSrc }}" 
                          alt="{{ $coverImageAlt }}"
                          @if(!$coverImage) onerror="this.src='https://img.youtube.com/vi/{{ $youtubeId }}/0.jpg'" @endif>
+                    @if($caption)
+                    <div class="gallery-item-caption p-4">
+                        <h4 class="text-light mb-1">{{ $caption }}</h4>
+                    </div>
+                    @endif
                 </a>
             </div>
             
         @elseif($loadType === 'gallery_style')
-            <!-- Gallery Style Video (same as cover_modal but with different class) -->
+            <!-- Gallery Style Video with Permanent Hover State -->
             <div class="gallery mb-4 pb-2" data-video="true">
                 <a href="{{ $youtubeWatchUrl }}" 
                    class="gallery-item video-item is-hovered rounded-3" 
-                   data-sub-html='<h6 class="fs-sm text-light">{{ $title ?: "YouTube Video" }}</h6>{!! $displayDescription !!}'>
+                   data-sub-html='<h6 class="fs-sm text-light">{{ $caption ?: "YouTube Video" }}</h6>{!! $displayDescription !!}'>
                     <img src="{{ $coverImageSrc }}" 
                          alt="{{ $coverImageAlt }}"
                          @if(!$coverImage) onerror="this.src='https://img.youtube.com/vi/{{ $youtubeId }}/0.jpg'" @endif>
+                    @if($caption)
+                    <div class="gallery-item-caption p-4">
+                        <h4 class="text-light mb-1">{{ $caption }}</h4>
+                    </div>
+                    @endif
                 </a>
             </div>
             
@@ -85,7 +91,7 @@
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
-                        title="{{ $title ?: 'YouTube video' }}"
+                        title="{{ $caption ?: 'YouTube video' }}"
                         loading="lazy">
                     </iframe>
                 </div>
@@ -98,20 +104,22 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
-                    title="{{ $title ?: 'YouTube video' }}"
+                    title="{{ $caption ?: 'YouTube video' }}"
                     loading="lazy">
                 </iframe>
             @endif
         @endif
     </div>
     
+    @if($caption && $loadType === 'immediate')
+        <div class="mt-3 text-center text-muted text-sm">
+            {{ $caption }}
+        </div>
+    @endif
+    
     @if($displayDescription && $loadType !== 'cover_modal' && $loadType !== 'gallery_style')
         <div class="mt-4 text-gray-600 text-sm">
-            @if($richDescription)
-                {!! $richDescription !!}
-            @else
-                {{ $description }}
-            @endif
+            {!! $displayDescription !!}
         </div>
     @endif
 </div>

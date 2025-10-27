@@ -21,7 +21,7 @@ import './components/scroll-top-button' // USED - back to top button exists
 import './components/element-parallax' // USED - jarallax in blog posts  
 import './components/parallax' // USED - jarallax in blog posts
 // import './components/carousel' // UNUSED - No carousel components found
-// import './components/gallery' // UNUSED - No gallery components found
+import './components/gallery' // UNUSED - No gallery components found
 // import './components/range-slider' // UNUSED - No range sliders found
 import './components/form-validation' // USED - contact forms need validation
 // import './components/input-formatter' // UNUSED - No special input formatting found

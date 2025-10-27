@@ -28,8 +28,8 @@
 
 <!-- Vendor Styles -->
 <!-- Boxicons now loaded via import in app.scss -->
-<!-- <link rel="stylesheet" media="screen" href="/assets/vendor/lightgallery/css/lightgallery-bundle.min.css"> --> <!-- UNUSED - No lightgallery found -->
-<!-- <link rel="stylesheet" media="screen" href="/assets/vendor/swiper/swiper-bundle.min.css"> --> <!-- UNUSED - No swiper carousels found -->
+<link rel="stylesheet" media="screen" href="/assets/vendor/lightgallery/css/lightgallery-bundle.min.css">
+<link rel="stylesheet" media="screen" href="/assets/vendor/swiper/swiper-bundle.min.css">
 
 
 <!-- Page loading styles -->

@@ -1,0 +1,74 @@
+//
+// Table of Contents
+//
+
+.table-of-contents {
+  padding: 1.5rem;
+  background-color: var(--bs-secondary-bg);
+  border-left: 4px solid var(--bs-primary);
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+
+  h6 {
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: var(--bs-body-color);
+  }
+
+  .toc-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .toc-link {
+    color: var(--bs-body-color);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+    font-size: 0.9375rem;
+
+    &:hover {
+      color: var(--bs-primary);
+      text-decoration: none;
+    }
+
+    &:active,
+    &:focus {
+      color: var(--bs-primary);
+    }
+  }
+
+  // Indentation for nested headings
+  .toc-level-3 {
+    padding-left: 1rem;
+  }
+
+  .toc-level-4 {
+    padding-left: 2rem;
+  }
+}
+
+// Dark mode adjustments
+[data-bs-theme="dark"] {
+  .table-of-contents {
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    border-left-color: var(--bs-primary);
+  }
+
+  .toc-link {
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
+}
+

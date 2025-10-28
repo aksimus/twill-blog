@@ -8,6 +8,7 @@ use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Behaviors\HasSlug;
 use A17\Twill\Models\Behaviors\HasTranslation;
 use A17\Twill\Models\Model;
+use App\Services\TableOfContentsService;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -125,5 +126,38 @@ class BlogPost extends Model
 		$settings = $this->settings ?? [];
 		$settings['hide_description_on_post_page'] = (bool) $value;
 		$this->attributes['settings'] = json_encode($settings);
+	}
+
+	/**
+	 * Get complete blog post content with table of contents
+	 * 
+	 * @param bool $includeDescription Whether to include description in content
+	 * @return array ['html' => string, 'toc' => array]
+	 */
+	public function getContentWithToc(bool $includeDescription = true): array
+	{
+		$html = '';
+
+		// 1. Add description if visible
+		if ($includeDescription && $this->description && !$this->hide_description_on_post_page) {
+			$html .= $this->description;
+		}
+
+		// 2. Add content field if exists
+		if ($this->content) {
+			$html .= $this->content;
+		}
+
+		// 3. Add Twill blocks
+		if (method_exists($this, 'renderBlocks')) {
+			$blocksHtml = $this->renderBlocks();
+			if ($blocksHtml) {
+				$html .= $blocksHtml;
+			}
+		}
+
+		// Generate ToC from aggregated HTML
+		$service = app(TableOfContentsService::class);
+		return $service->generateTableOfContents($html);
 	}
 } 

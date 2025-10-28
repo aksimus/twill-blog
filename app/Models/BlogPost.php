@@ -129,6 +129,25 @@ class BlogPost extends Model
 	}
 
 	/**
+	 * Helper accessor for show_toc setting
+	 */
+	public function getShowTocAttribute(): bool
+	{
+		// Default to true if not explicitly set
+		return $this->getSetting('show_toc', true);
+	}
+
+	/**
+	 * Mutator for show_toc - converts to settings JSON
+	 */
+	public function setShowTocAttribute($value): void
+	{
+		$settings = $this->settings ?? [];
+		$settings['show_toc'] = (bool) $value;
+		$this->attributes['settings'] = json_encode($settings);
+	}
+
+	/**
 	 * Get complete blog post content with table of contents
 	 * 
 	 * @param bool $includeDescription Whether to include description in content

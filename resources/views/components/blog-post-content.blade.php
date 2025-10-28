@@ -8,7 +8,7 @@
 @endphp
 
 <div class="col-lg-9">
-  @if(!empty($toc))
+  @if($post->show_toc && !empty($toc))
     <x-table-of-contents :items="$toc" />
   @endif
   
@@ -17,17 +17,6 @@
       {!! $html !!}
     </div>
   @endif
-
-
-
-
-
-
-  <!-- Render Twill blocks -->
-  <x-twill-blocks :post="$post" />
-
-
-
 
   <!-- Author information -->
   @if($post->author)

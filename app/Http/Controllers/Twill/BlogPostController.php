@@ -59,6 +59,13 @@ class BlogPostController extends BaseModuleController
 				->label('Hide "Description" on post page (show in lists only)')
 		);
 
+        // Table of Contents toggle
+        $form->add(
+            Checkbox::make()
+                ->name('show_toc')
+                ->label('Show Table of Contents at top of the post')
+        );
+
 		$form->add(
 			Browser::make()
 				->modules(['blogCategories'])

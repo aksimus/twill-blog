@@ -1,13 +1,20 @@
 @props(['post'])
 
+@php
+  // Get content with table of contents
+  $content = $post->getContentWithToc();
+  $toc = $content['toc'] ?? [];
+  $html = $content['html'] ?? '';
+@endphp
+
 <div class="col-lg-9">
-  @if($post->description && !$post->hide_description_on_post_page)
-    <div class="h5 mb-4 pb-2 fw-medium">{!! $post->description !!}</div>
+  @if(!empty($toc))
+    <x-table-of-contents :items="$toc" />
   @endif
   
-  @if($post->content)
+  @if(!empty($html))
     <div class="blog-content">
-      {!! $post->content !!}
+      {!! $html !!}
     </div>
   @endif
 

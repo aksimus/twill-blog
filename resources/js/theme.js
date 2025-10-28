@@ -34,3 +34,4 @@ import './components/video-button' // USED - YouTube video blocks exist
 // import './components/subscription-form' // UNUSED - No subscription forms found
 // import './components/hover-animation' // UNUSED - No special hover animations found
 // import './components/audio-player' // UNUSED - No audio players found
+import './components/table-of-contents' // USED - blog post TOC component

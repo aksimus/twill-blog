@@ -98,7 +98,7 @@ window._sendEvents = async function (events) {
       // FB
       try {
         if (event.event == 'app_init') {
-          console.log('PageView', event);
+
           fbq('track', 'PageView', {}, {eventID: event.event_id});
         }
 

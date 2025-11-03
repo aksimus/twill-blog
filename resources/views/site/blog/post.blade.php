@@ -8,8 +8,20 @@
 @section('title', $post->title ?? 'Blog Post')
 
 @section('seo')
-{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
-<x-seo-meta />
+@php
+    $seo = $post->seo ?? [];
+    $h1Header = $seo['h1_header'] ?? null;
+@endphp
+<x-seo-meta 
+    :title="$post->title"
+    :description="$seo['meta_description'] ?? strip_tags($post->description ?? '')"
+    :keywords="$seo['meta_keywords'] ?? ''"
+    type="article"
+    :author="$post->author->full_name ?? ''"
+    :publishedTime="$post->created_at?->toISOString()"
+    :modifiedTime="$post->updated_at?->toISOString()"
+    :image="$post->hasImage('cover') ? $post->image('cover') : null"
+/>
 @endsection
 
 @section('content')
@@ -23,7 +35,7 @@
 
   <!-- Post title + Meta  -->
   <section class="container mt-4 pt-lg-2 pb-3">
-    <h1 class="pb-3" style="max-width: 970px;">{{ $post->title ?? 'This Long-Awaited Technology May Finally Change the World' }}</h1>
+    <h1 class="pb-3" style="max-width: 970px;">{{ ($seo['h1_header'] ?? null) ?: $post->title ?? 'This Long-Awaited Technology May Finally Change the World' }}</h1>
     <x-blog-post-meta :post="$post ?? null" />
   </section>
 
@@ -163,16 +175,21 @@
                 </div>
                 <div class="card-footer py-4">
                   @if($relatedPost->author)
-                    <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
-                      @if($relatedPost->author->avatar)
-                        <img src="{{ $relatedPost->author->avatar }}" class="rounded-circle me-3" width="48" alt="{{ $relatedPost->author->name }}">
+                    <div class="d-flex align-items-center">
+                      @if($relatedPost->author->avatar_url)
+                        <img src="{{ $relatedPost->author->avatar_url }}" class="rounded-circle me-3" width="48" height="48" alt="{{ $relatedPost->author->full_name }}" style="object-fit: cover;">
                       @else
                         <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
                           <i class="bx bx-user fs-4 text-white"></i>
                         </div>
                       @endif
-                      {{ $relatedPost->author->name }}
-                    </a>
+                      <div>
+                        <div class="fw-bold text-dark">{{ $relatedPost->author->full_name }}</div>
+                        @if($relatedPost->author->job_title)
+                          <div class="text-muted fs-sm">{{ $relatedPost->author->job_title }}</div>
+                        @endif
+                      </div>
+                    </div>
                   @endif
                 </div>
               </article>

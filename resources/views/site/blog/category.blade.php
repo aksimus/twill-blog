@@ -1,9 +1,12 @@
+@php
+    $seo = $category->seo ?? [];
+@endphp
+
 @extends('layouts.blog-layout')
 
 @section('title', $category->title)
 
 @section('seo')
-{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
 <x-seo-meta />
 @endsection
 
@@ -27,7 +30,7 @@
     <!-- Page title + Category info -->
     <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
       <div class="col-lg-8 col-md-6">
-        <h1 class="mb-2 mb-md-0">{{ $category->title }}</h1>
+        <h1 class="mb-2 mb-md-0">{{ ($seo['h1_header'] ?? null) ?: $category->title }}</h1>
         @if($category->description)
           <p class="text-muted mb-3">{!! $category->description !!}</p>
         @endif
@@ -103,16 +106,21 @@
               <hr class="my-4">
               <div class="d-flex align-items-center justify-content-between">
                 @if($post->author)
-                  <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none me-3">
-                    @if($post->author->avatar)
-                      <img src="{{ $post->author->avatar }}" class="rounded-circle me-3" width="48" alt="{{ $post->author->name }}">
+                  <div class="d-flex align-items-center me-3">
+                    @if($post->author->avatar_url)
+                      <img src="{{ $post->author->avatar_url }}" class="rounded-circle me-3" width="48" height="48" alt="{{ $post->author->full_name }}" style="object-fit: cover;">
                     @else
                       <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
                         <i class="bx bx-user text-white"></i>
                       </div>
                     @endif
-                    {{ $post->author->name }}
-                  </a>
+                    <div>
+                      <div class="fw-bold text-dark">{{ $post->author->full_name }}</div>
+                      @if($post->author->job_title)
+                        <div class="text-muted fs-sm">{{ $post->author->job_title }}</div>
+                      @endif
+                    </div>
+                  </div>
                 @else
                   <div class="d-flex align-items-center fw-bold text-dark me-3">
                     <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">

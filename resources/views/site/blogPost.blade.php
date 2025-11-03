@@ -7,9 +7,20 @@
 
 @section('title', $post->title ?? 'Blog Post')
 
-@section('meta')
-<meta name="description" content="{{ $post->meta_description ?? $post->description ?? 'Blog post' }}">
-<meta name="keywords" content="{{ $post->meta_keywords ?? '' }}">
+@section('seo')
+@php
+    $seo = $post->seo ?? [];
+@endphp
+<x-seo-meta 
+    :title="$post->title"
+    :description="$seo['meta_description'] ?? strip_tags($post->description ?? '')"
+    :keywords="$seo['meta_keywords'] ?? ''"
+    type="article"
+    :author="$post->author->name ?? ''"
+    :publishedTime="$post->created_at?->toISOString()"
+    :modifiedTime="$post->updated_at?->toISOString()"
+    :image="$post->hasImage('cover') ? $post->image('cover') : null"
+/>
 @endsection
 
 @section('content')

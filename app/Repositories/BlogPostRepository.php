@@ -15,6 +15,17 @@ class BlogPostRepository extends ModuleRepository
 {
 	use HandleBlocks, HandleTranslations, HandleSlugs, HandleMedias, HandleRevisions, HandleBrowsers;
 
+	protected array $fieldsGroups = [
+		'seo' => [
+			'h1_header',
+			'meta_description',
+			'meta_keywords',
+		],
+	];
+
+	public bool $fieldsGroupsFormFieldNamesAutoPrefix = true;
+	public string $fieldsGroupsFormFieldNameSeparator = '.';
+
 	public function __construct(BlogPost $model)
 	{
 		$this->model = $model;
@@ -22,6 +33,10 @@ class BlogPostRepository extends ModuleRepository
 			'blogCategory' => [
 				'relation' => 'category',
 				'moduleName' => 'blogCategories',
+			],
+			'blogAuthor' => [
+				'relation' => 'author',
+				'moduleName' => 'blogAuthors',
 			],
 			'blogTags' => [
 				'relation' => 'blogTags',

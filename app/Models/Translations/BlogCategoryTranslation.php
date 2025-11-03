@@ -8,4 +8,8 @@ use App\Models\BlogCategory;
 class BlogCategoryTranslation extends Model
 {
 	protected $baseModuleModel = BlogCategory::class;
+
+	protected $casts = [
+		'seo' => 'array',
+	];
 } 

@@ -1,10 +1,27 @@
 @props([
     'seoMeta' => null,
+    'model' => null, // Optional: can pass model directly to extract seo field
     'title' => null, 'description' => null, 'keywords' => null, 'image' => null,
     'type' => 'website', 'author' => null, 'publishedTime' => null, 'modifiedTime' => null
 ])
 
 @php
+    // If model is provided, extract SEO data from seo field
+    if ($model && method_exists($model, 'getAttribute') && $model->seo) {
+        $seo = is_array($model->seo) ? $model->seo : (json_decode($model->seo, true) ?? []);
+        
+        // Extract SEO values from model's seo field
+        if (!isset($title) && isset($seo['h1_header'])) {
+            $title = $model->title ?? null;
+        }
+        if (!isset($description) && isset($seo['meta_description'])) {
+            $description = $seo['meta_description'];
+        }
+        if (!isset($keywords) && isset($seo['meta_keywords'])) {
+            $keywords = $seo['meta_keywords'];
+        }
+    }
+    
     // Get SEO meta data from the service (shared by controllers)
     $seoMeta = $seoMeta ?? [];
     

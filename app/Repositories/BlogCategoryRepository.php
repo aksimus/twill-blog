@@ -14,6 +14,17 @@ class BlogCategoryRepository extends ModuleRepository
 {
 	use HandleBlocks, HandleTranslations, HandleSlugs, HandleMedias, HandleRevisions;
 
+	protected array $fieldsGroups = [
+		'seo' => [
+			'h1_header',
+			'meta_description',
+			'meta_keywords',
+		],
+	];
+
+	public bool $fieldsGroupsFormFieldNamesAutoPrefix = true;
+	public string $fieldsGroupsFormFieldNameSeparator = '.';
+
 	public function __construct(BlogCategory $model)
 	{
 		$this->model = $model;

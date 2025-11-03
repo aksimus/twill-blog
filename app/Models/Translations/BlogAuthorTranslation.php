@@ -8,4 +8,8 @@ use App\Models\BlogAuthor;
 class BlogAuthorTranslation extends Model
 {
     protected $baseModuleModel = BlogAuthor::class;
+
+    protected $casts = [
+        'seo' => 'array',
+    ];
 }

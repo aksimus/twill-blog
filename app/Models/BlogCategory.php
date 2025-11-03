@@ -15,11 +15,13 @@ class BlogCategory extends Model
 
 	protected $fillable = [
 		'published',
+		'seo',
 	];
 
 	public $translatedAttributes = [
 		'title',
 		'description',
+		'seo',
 	];
 
 	public $slugAttributes = [

@@ -3,8 +3,7 @@
 @section('title', __('Tags'))
 
 @section('seo')
-{{-- SEO meta tags are now handled by the controller via SeoMetaService --}}
-<x-seo-meta :seoMeta="$seoMeta ?? []" />
+<x-seo-meta />
 @endsection
 
 @section('content')

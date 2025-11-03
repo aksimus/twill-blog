@@ -27,7 +27,7 @@ class BlogAuthor extends Model implements Sortable
         'twitter',
         'linkedin',
         'github',
-        'avatar',
+        'seo',
     ];
     
     public $translatedAttributes = [
@@ -35,10 +35,22 @@ class BlogAuthor extends Model implements Sortable
         'description',
         'bio',
         'job_title',
+        'seo',
     ];
     
     public $slugAttributes = [
         'title',
+    ];
+
+    public $mediasParams = [
+        'avatar' => [
+            'default' => [
+                [
+                    'name' => 'default',
+                    'ratio' => 1,
+                ],
+            ],
+        ],
     ];
 
     /**
@@ -60,14 +72,14 @@ class BlogAuthor extends Model implements Sortable
     /**
      * Get the author's avatar URL
      */
-    public function getAvatarUrlAttribute(): string
+    public function getAvatarUrlAttribute(): ?string
     {
-        if ($this->avatar) {
-            return asset('storage/' . $this->avatar);
+        if ($this->hasImage('avatar')) {
+            return $this->image('avatar', 'default');
         }
         
-        // Return default avatar if no custom avatar is set
-        return asset('assets/img/default-avatar.png');
+        // Return null if no avatar is set (views will handle default display)
+        return null;
     }
 
     /**

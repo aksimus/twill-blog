@@ -22,6 +22,7 @@ class BlogPost extends Model
 		'settings',
 		'hide_on_post_page',
 		'hide_description_on_post_page',
+		'show_toc',
 		'blog_category_id',
 		'blog_author_id',
 		'blogCategory',

@@ -17,7 +17,7 @@
     :description="$seo['meta_description'] ?? strip_tags($post->description ?? '')"
     :keywords="$seo['meta_keywords'] ?? ''"
     type="article"
-    :author="$post->author->name ?? ''"
+    :author="$post->author->full_name ?? ''"
     :publishedTime="$post->created_at?->toISOString()"
     :modifiedTime="$post->updated_at?->toISOString()"
     :image="$post->hasImage('cover') ? $post->image('cover') : null"
@@ -175,16 +175,21 @@
                 </div>
                 <div class="card-footer py-4">
                   @if($relatedPost->author)
-                    <a href="#" class="d-flex align-items-center fw-bold text-dark text-decoration-none">
-                      @if($relatedPost->author->avatar)
-                        <img src="{{ $relatedPost->author->avatar }}" class="rounded-circle me-3" width="48" alt="{{ $relatedPost->author->name }}">
+                    <div class="d-flex align-items-center">
+                      @if($relatedPost->author->avatar_url)
+                        <img src="{{ $relatedPost->author->avatar_url }}" class="rounded-circle me-3" width="48" height="48" alt="{{ $relatedPost->author->full_name }}" style="object-fit: cover;">
                       @else
                         <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
                           <i class="bx bx-user fs-4 text-white"></i>
                         </div>
                       @endif
-                      {{ $relatedPost->author->name }}
-                    </a>
+                      <div>
+                        <div class="fw-bold text-dark">{{ $relatedPost->author->full_name }}</div>
+                        @if($relatedPost->author->job_title)
+                          <div class="text-muted fs-sm">{{ $relatedPost->author->job_title }}</div>
+                        @endif
+                      </div>
+                    </div>
                   @endif
                 </div>
               </article>

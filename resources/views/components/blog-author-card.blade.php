@@ -4,12 +4,13 @@
 <div class="blog-author-card border rounded-lg p-4 bg-light mb-4">
     <div class="d-flex align-items-center">
         <div class="me-3">
-            @if($author->avatar)
-                <img src="{{ $author->getAvatarUrlAttribute() }}" 
+            @if($author->avatar_url)
+                <img src="{{ $author->avatar_url }}" 
                      class="rounded-circle" 
                      width="64" 
                      height="64" 
-                     alt="{{ $author->full_name }}">
+                     alt="{{ $author->full_name }}"
+                     style="object-fit: cover;">
             @else
                 <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" 
                      style="width: 64px; height: 64px;">

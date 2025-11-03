@@ -24,8 +24,8 @@
   </div>
   @if($post->author)
     <div class="d-flex align-items-center position-relative ps-md-3 pe-lg-5 mb-2">
-      @if($post->author->avatar)
-        <img src="{{ $post->author->avatar }}" class="rounded-circle" width="60" alt="{{ $post->author->name }}">
+      @if($post->author->avatar_url)
+        <img src="{{ $post->author->avatar_url }}" class="rounded-circle" width="60" height="60" alt="{{ $post->author->full_name }}" style="object-fit: cover;">
       @else
         <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
           <i class="bx bx-user fs-4 text-white"></i>
@@ -33,7 +33,12 @@
       @endif
       <div class="ps-3">
         <h6 class="mb-1">Author</h6>
-        <a href="#" class="fw-semibold stretched-link">{{ $post->author->name }}</a>
+        <div>
+          <span class="fw-semibold d-block">{{ $post->author->full_name }}</span>
+          @if($post->author->job_title)
+            <span class="text-muted fs-sm">{{ $post->author->job_title }}</span>
+          @endif
+        </div>
       </div>
     </div>
   @else

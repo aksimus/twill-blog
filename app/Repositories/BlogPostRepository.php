@@ -34,6 +34,10 @@ class BlogPostRepository extends ModuleRepository
 				'relation' => 'category',
 				'moduleName' => 'blogCategories',
 			],
+			'blogAuthor' => [
+				'relation' => 'author',
+				'moduleName' => 'blogAuthors',
+			],
 			'blogTags' => [
 				'relation' => 'blogTags',
 				'moduleName' => 'blogTags',

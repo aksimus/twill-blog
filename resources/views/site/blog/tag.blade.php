@@ -1,9 +1,13 @@
 @extends('layouts.blog-layout')
 
+@php
+    $seo = $tag->seo ?? [];
+@endphp
+
 @section('title', __('Tag') . ': ' . $tag->title)
 
-@section('meta')
-<meta name="description" content="{{ $tag->description }}">
+@section('seo')
+<x-seo-meta />
 @endsection
 
 @section('content')
@@ -29,7 +33,7 @@
     <!-- Page title + Tag info -->
     <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
       <div class="col-lg-8 col-md-6">
-        <h1 class="mb-2 mb-md-0">{{ __('Tag') }}: {{ $tag->title }}</h1>
+        <h1 class="mb-2 mb-md-0">{{ ($seo['h1_header'] ?? null) ?: __('Tag') . ': ' . $tag->title }}</h1>
         @if($tag->description)
           <p class="text-muted mb-3">{!! $tag->description !!}</p>
         @endif

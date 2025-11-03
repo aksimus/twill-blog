@@ -8,4 +8,8 @@ use App\Models\BlogTag;
 class BlogTagTranslation extends Model
 {
 	protected $baseModuleModel = BlogTag::class;
+
+	protected $casts = [
+		'seo' => 'array',
+	];
 } 

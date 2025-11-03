@@ -34,6 +34,31 @@ class BlogCategoryController extends BaseModuleController
 			Wysiwyg::make()->name('description')->label('Description')->translatable()
 		);
 
+		// SEO Section
+		$form->add(
+			Input::make()
+				->name('seo.h1_header')
+				->label('H1 Header')
+				->translatable()
+				->note('Leave empty to use title as H1')
+		);
+
+		$form->add(
+			Input::make()
+				->name('seo.meta_description')
+				->label('Meta Description')
+				->translatable()
+				->note('Recommended: 150-160 characters for optimal SEO')
+		);
+
+		$form->add(
+			Input::make()
+				->name('seo.meta_keywords')
+				->label('Meta Keywords')
+				->translatable()
+				->note('Comma-separated keywords (optional but useful for internal search)')
+		);
+
 		$form->add(
 			BlockEditor::make()
 		);

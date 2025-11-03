@@ -28,6 +28,7 @@ class BlogPost extends Model
 		'blogCategory',
 		'blogAuthor',
 		'blogTags',
+		'seo',
 	];
 
 	protected $casts = [
@@ -62,6 +63,7 @@ class BlogPost extends Model
 	public $translatedAttributes = [
 		'title',
 		'description',
+		'seo',
 	];
 
 	public $slugAttributes = [

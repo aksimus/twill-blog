@@ -2,8 +2,8 @@
 
 @section('title', __('Tags'))
 
-@section('meta')
-<meta name="description" content="{{ __('Browse all blog tags and discover content by topic.') }}">
+@section('seo')
+<x-seo-meta />
 @endsection
 
 @section('content')

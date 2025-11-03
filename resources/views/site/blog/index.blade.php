@@ -2,8 +2,8 @@
 
 @section('title', __('Blog'))
 
-@section('meta')
-<meta name="description" content="{{ __('Discover our latest articles, insights, and stories.') }}">
+@section('seo')
+<x-seo-meta />
 @endsection
 
 @push('styles')

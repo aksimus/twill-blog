@@ -1,9 +1,13 @@
+@php
+    $seo = $category->seo ?? [];
+@endphp
+
 @extends('layouts.blog-layout')
 
 @section('title', $category->title)
 
-@section('meta')
-<meta name="description" content="{{ $category->description }}">
+@section('seo')
+<x-seo-meta />
 @endsection
 
 @section('content')
@@ -26,7 +30,7 @@
     <!-- Page title + Category info -->
     <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
       <div class="col-lg-8 col-md-6">
-        <h1 class="mb-2 mb-md-0">{{ $category->title }}</h1>
+        <h1 class="mb-2 mb-md-0">{{ ($seo['h1_header'] ?? null) ?: $category->title }}</h1>
         @if($category->description)
           <p class="text-muted mb-3">{!! $category->description !!}</p>
         @endif

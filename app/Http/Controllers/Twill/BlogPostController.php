@@ -66,6 +66,31 @@ class BlogPostController extends BaseModuleController
                 ->label('Show Table of Contents at top of the post')
         );
 
+		// SEO Section
+		$form->add(
+			Input::make()
+				->name('seo.h1_header')
+				->label('Display H1 header (overridden title)')
+				->translatable()
+				->note('Leave empty to use title as H1')
+		);
+
+		$form->add(
+			Input::make()
+				->name('seo.meta_description')
+				->label('Meta Description')
+				->translatable()
+				->note('Recommended: 150-160 characters for optimal SEO')
+		);
+
+		$form->add(
+			Input::make()
+				->name('seo.meta_keywords')
+				->label('Meta Keywords')
+				->translatable()
+				->note('Comma-separated keywords (optional but useful for internal search)')
+		);
+
 		$form->add(
 			Browser::make()
 				->modules(['blogCategories'])

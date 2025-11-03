@@ -28,6 +28,7 @@ class BlogAuthor extends Model implements Sortable
         'linkedin',
         'github',
         'avatar',
+        'seo',
     ];
     
     public $translatedAttributes = [
@@ -35,6 +36,7 @@ class BlogAuthor extends Model implements Sortable
         'description',
         'bio',
         'job_title',
+        'seo',
     ];
     
     public $slugAttributes = [

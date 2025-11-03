@@ -201,6 +201,30 @@ class SeoMetaService
     }
 
     /**
+     * Sanitize meta value by stripping HTML tags and escaping special characters
+     */
+    protected function sanitizeMetaValue(mixed $value): string
+    {
+        if (empty($value)) {
+            return '';
+        }
+        
+        // Convert to string if not already
+        if (!is_string($value)) {
+            $value = (string) $value;
+        }
+        
+        // Strip HTML tags and decode HTML entities
+        $value = strip_tags($value);
+        $value = html_entity_decode($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        
+        // Escape for HTML attribute content
+        $value = htmlspecialchars($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        
+        return $value;
+    }
+
+    /**
      * Generate HTML meta tags from meta data
      */
     public function generateMetaTags(array $metaData): string
@@ -209,28 +233,34 @@ class SeoMetaService
 
         // Basic Meta Tags (don't generate title tag - it's handled by layout)
         if (!empty($metaData['title'])) {
-            $html .= "<meta name=\"title\" content=\"{$metaData['title']}\">\n";
+            $title = $this->sanitizeMetaValue($metaData['title']);
+            $html .= "<meta name=\"title\" content=\"{$title}\">\n";
         }
 
         if (!empty($metaData['description'])) {
-            $html .= "<meta name=\"description\" content=\"{$metaData['description']}\">\n";
+            $description = $this->sanitizeMetaValue($metaData['description']);
+            $html .= "<meta name=\"description\" content=\"{$description}\">\n";
         }
 
         if (!empty($metaData['keywords'])) {
-            $html .= "<meta name=\"keywords\" content=\"{$metaData['keywords']}\">\n";
+            $keywords = $this->sanitizeMetaValue($metaData['keywords']);
+            $html .= "<meta name=\"keywords\" content=\"{$keywords}\">\n";
         }
 
         if (!empty($metaData['author'])) {
-            $html .= "<meta name=\"author\" content=\"{$metaData['author']}\">\n";
+            $author = $this->sanitizeMetaValue($metaData['author']);
+            $html .= "<meta name=\"author\" content=\"{$author}\">\n";
         }
 
         // Open Graph Meta Tags
         if (!empty($metaData['title'])) {
-            $html .= "<meta property=\"og:title\" content=\"{$metaData['title']}\">\n";
+            $title = $this->sanitizeMetaValue($metaData['title']);
+            $html .= "<meta property=\"og:title\" content=\"{$title}\">\n";
         }
 
         if (!empty($metaData['description'])) {
-            $html .= "<meta property=\"og:description\" content=\"{$metaData['description']}\">\n";
+            $description = $this->sanitizeMetaValue($metaData['description']);
+            $html .= "<meta property=\"og:description\" content=\"{$description}\">\n";
         }
 
         $type = $metaData['type'] ?? 'website';
@@ -238,47 +268,56 @@ class SeoMetaService
         $html .= "<meta property=\"og:url\" content=\"" . request()->url() . "\">\n";
 
         if (!empty($metaData['image'])) {
-            $html .= "<meta property=\"og:image\" content=\"{$metaData['image']}\">\n";
+            $image = $this->sanitizeMetaValue($metaData['image']);
+            $html .= "<meta property=\"og:image\" content=\"{$image}\">\n";
         }
 
         // Twitter Card Meta Tags
         $html .= "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
         
         if (!empty($metaData['title'])) {
-            $html .= "<meta name=\"twitter:title\" content=\"{$metaData['title']}\">\n";
+            $title = $this->sanitizeMetaValue($metaData['title']);
+            $html .= "<meta name=\"twitter:title\" content=\"{$title}\">\n";
         }
 
         if (!empty($metaData['description'])) {
-            $html .= "<meta name=\"twitter:description\" content=\"{$metaData['description']}\">\n";
+            $description = $this->sanitizeMetaValue($metaData['description']);
+            $html .= "<meta name=\"twitter:description\" content=\"{$description}\">\n";
         }
 
         if (!empty($metaData['image'])) {
-            $html .= "<meta name=\"twitter:image\" content=\"{$metaData['image']}\">\n";
+            $image = $this->sanitizeMetaValue($metaData['image']);
+            $html .= "<meta name=\"twitter:image\" content=\"{$image}\">\n";
         }
 
         // Article Specific Meta Tags
         if ($type === 'article') {
             if (!empty($metaData['publishedTime'])) {
-                $html .= "<meta property=\"article:published_time\" content=\"{$metaData['publishedTime']}\">\n";
+                $publishedTime = $this->sanitizeMetaValue($metaData['publishedTime']);
+                $html .= "<meta property=\"article:published_time\" content=\"{$publishedTime}\">\n";
             }
             
             if (!empty($metaData['modifiedTime'])) {
-                $html .= "<meta property=\"article:modified_time\" content=\"{$metaData['modifiedTime']}\">\n";
+                $modifiedTime = $this->sanitizeMetaValue($metaData['modifiedTime']);
+                $html .= "<meta property=\"article:modified_time\" content=\"{$modifiedTime}\">\n";
             }
             
             if (!empty($metaData['author'])) {
-                $html .= "<meta property=\"article:author\" content=\"{$metaData['author']}\">\n";
+                $author = $this->sanitizeMetaValue($metaData['author']);
+                $html .= "<meta property=\"article:author\" content=\"{$author}\">\n";
             }
         }
 
         // Canonical URL
         if (!empty($metaData['canonical'])) {
-            $html .= "<link rel=\"canonical\" href=\"{$metaData['canonical']}\" />\n";
+            $canonical = $this->sanitizeMetaValue($metaData['canonical']);
+            $html .= "<link rel=\"canonical\" href=\"{$canonical}\" />\n";
         }
 
         // Alternate Language Links (Hreflang)
         if (!empty($metaData['hreflang'])) {
             foreach ($metaData['hreflang'] as $locale => $url) {
+                $url = $this->sanitizeMetaValue($url);
                 $html .= "<link rel=\"alternate\" hreflang=\"{$locale}\" href=\"{$url}\" />\n";
             }
         }

@@ -29,10 +29,11 @@ trait HasSeoMeta
      */
     protected function getBlogPostSeoMeta($post, array $additionalMeta = []): array
     {
+        $seo = $post->seo ?? [];
         $meta = [
             'title' => $post->title ?? '',
-            'description' => $post->meta_description ?? $post->description ?? '',
-            'keywords' => $post->meta_keywords ?? '',
+            'description' => $seo['meta_description'] ?? $post->description ?? '',
+            'keywords' => $seo['meta_keywords'] ?? '',
             'type' => 'article',
             'publishedTime' => $post->created_at?->toISOString(),
             'modifiedTime' => $post->updated_at?->toISOString(),
@@ -54,10 +55,11 @@ trait HasSeoMeta
      */
     protected function getBlogCategorySeoMeta($category, array $additionalMeta = []): array
     {
+        $seo = $category->seo ?? [];
         $meta = [
             'title' => $category->title ?? '',
-            'description' => $category->meta_description ?? $category->description ?? '',
-            'keywords' => $category->meta_keywords ?? '',
+            'description' => $seo['meta_description'] ?? $category->description ?? '',
+            'keywords' => $seo['meta_keywords'] ?? '',
             'type' => 'website',
         ];
 
@@ -73,10 +75,11 @@ trait HasSeoMeta
      */
     protected function getBlogTagSeoMeta($tag, array $additionalMeta = []): array
     {
+        $seo = $tag->seo ?? [];
         $meta = [
             'title' => $tag->title ?? '',
-            'description' => $tag->meta_description ?? $tag->description ?? '',
-            'keywords' => $tag->meta_keywords ?? '',
+            'description' => $seo['meta_description'] ?? $tag->description ?? '',
+            'keywords' => $seo['meta_keywords'] ?? '',
             'type' => 'website',
         ];
 

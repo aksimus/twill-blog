@@ -52,17 +52,46 @@
           <div class="col pb-3 tag-item" data-tag-name="{{ strtolower($tag->title) }}">
             <article class="card border-0 shadow-sm h-100">
               <div class="position-relative">
-                <!-- Tag Icon Background -->
-                <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                  <div class="text-center text-white">
-                    <i class="bx bx-purchase-tag fs-1 mb-2"></i>
-                    <div class="h5 mb-0">{{ $tag->title }}</div>
+                <!-- Tag Image -->
+                @php $hasHero = $tag->hasImage('hero', 'list_desktop'); @endphp
+                @if($hasHero)
+                  <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+                    <picture>
+                      {{-- Mobile: 2:1 ratio (400x200px) --}}
+                      <source media="(max-width: 576px)"
+                        srcset="
+                          {{ $tag->image('hero','list_mobile',['w'=>400,'h'=>200,'fit'=>'crop']) }} 1x,
+                          {{ $tag->image('hero','list_mobile',['w'=>800,'h'=>400,'fit'=>'crop']) }} 2x
+                        ">
+                      {{-- Desktop: 2:1 ratio (416x200px) --}}
+                      <img
+                        src="{{ $tag->image('hero','list_desktop',['w'=>416,'h'=>200,'fit'=>'crop']) }}"
+                        srcset="
+                          {{ $tag->image('hero','list_desktop',['w'=>416,'h'=>200,'fit'=>'crop']) }} 1x,
+                          {{ $tag->image('hero','list_desktop',['w'=>832,'h'=>400,'fit'=>'crop']) }} 2x
+                        "
+                        alt="{{ optional($tag->medias('hero')->first())->alt_text ?? $tag->title }}"
+                        width="416" height="200"
+                        class="w-100 h-100" style="object-fit:cover" loading="lazy" decoding="async">
+                    </picture>
+                    <a href="{{ route('blog.tag', $tag->getSlug()) }}" class="position-absolute top-0 start-0 w-100 h-100" aria-label="View posts"></a>
+                    <div class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3">
+                      <i class="bx bx-collection"></i>
+                    </div>
                   </div>
-                </div>
-                <a href="{{ route('blog.tag', $tag->getSlug()) }}" class="position-absolute top-0 start-0 w-100 h-100" aria-label="View posts"></a>
-                <div class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3">
-                  <i class="bx bx-collection"></i>
-                </div>
+                @else
+                  <!-- Fallback: Tag Icon Background -->
+                  <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="text-center text-white">
+                      <i class="bx bx-purchase-tag fs-1 mb-2"></i>
+                      <div class="h5 mb-0">{{ $tag->title }}</div>
+                    </div>
+                  </div>
+                  <a href="{{ route('blog.tag', $tag->getSlug()) }}" class="position-absolute top-0 start-0 w-100 h-100" aria-label="View posts"></a>
+                  <div class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3">
+                    <i class="bx bx-collection"></i>
+                  </div>
+                @endif
               </div>
               <div class="card-body pb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">

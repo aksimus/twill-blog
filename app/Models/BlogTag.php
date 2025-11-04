@@ -18,6 +18,23 @@ class BlogTag extends Model
 		'seo',
 	];
 
+	public $mediasParams = [
+		'hero' => [
+			'default' => [
+				[
+					'name' => 'default',
+					'ratio' => 2,
+				],
+			],
+			'list_desktop' => [
+				['name' => 'list_desktop', 'ratio' => 2],    // 2:1 - Desktop list view (416x200px)
+			],
+			'list_mobile' => [
+				['name' => 'list_mobile', 'ratio' => 2],    // 2:1 - Mobile list view
+			],
+		],
+	];
+
 	public $translatedAttributes = [
 		'title',
 		'description',

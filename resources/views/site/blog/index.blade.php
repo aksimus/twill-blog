@@ -75,8 +75,24 @@
             @foreach($allCategories as $category)
               <div class="col-lg-3 col-md-4 col-sm-6">
                 <a href="{{ route('blog.category', $category->getSlug()) }}" class="card border-0 bg-secondary text-decoration-none h-100 category-card">
+                  @php $hasHero = $category->hasImage('hero', 'list_desktop'); @endphp
+                  @if($hasHero)
+                    <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                      <img
+                        src="{{ $category->image('hero','list_desktop',['w'=>300,'h'=>150,'fit'=>'crop']) }}"
+                        srcset="
+                          {{ $category->image('hero','list_desktop',['w'=>300,'h'=>150,'fit'=>'crop']) }} 1x,
+                          {{ $category->image('hero','list_desktop',['w'=>600,'h'=>300,'fit'=>'crop']) }} 2x
+                        "
+                        alt="{{ optional($category->medias('hero')->first())->alt_text ?? $category->title }}"
+                        width="300" height="150"
+                        class="w-100 h-100" style="object-fit:cover" loading="lazy" decoding="async">
+                    </div>
+                  @endif
                   <div class="card-body p-3 text-center">
-                    <i class="bx bx-folder fs-2 text-primary mb-2"></i>
+                    @if(!$hasHero)
+                      <i class="bx bx-folder fs-2 text-primary mb-2"></i>
+                    @endif
                     <h6 class="mb-1">{{ $category->title }}</h6>
                     <small class="text-muted">{{ $category->posts_count ?? 0 }} {{ __('posts') }}</small>
                   </div>

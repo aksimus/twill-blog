@@ -6,6 +6,7 @@ use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use A17\Twill\Models\Contracts\TwillModelContract;
 use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fields\Input;
+use A17\Twill\Services\Forms\Fields\Medias;
 use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Listings\Columns\Text;
@@ -28,6 +29,10 @@ class BlogTagController extends BaseModuleController
 
 		$form->add(
 			Input::make()->name('title')->label('Title')->translatable()
+		);
+
+		$form->add(
+			Medias::make()->name('hero')->label('Hero Image')->max(1)
 		);
 
 		$form->add(

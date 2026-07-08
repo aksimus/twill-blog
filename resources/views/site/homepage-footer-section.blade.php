@@ -47,7 +47,7 @@ $faq = [
     ],
     [
         'question' => 'How do i track my IFTA miles?',
-        'answer' => '<ul><li>Keep a notebook and write the odometer when you cross state borders.</li><li>Use a GPS or other device that records state by state miles per quarter.</li><li>Use routing software that tracks state miles.</li></ul>'
+        'answer' => '<ul><li>Keep a notebook and write the odometer when you cross state borders.</li><li>Use a GPS or other device that records state by state miles per quarter.</li><li>Use routing software that tracks state miles.</li><li>Or use our <a href="/ifta-mileage-tracker">IFTA Mileage Tracker app</a>, which logs your state-by-state miles automatically.</li></ul>'
     ],
     [
         'question' => 'What is IFTA reporting period?',
@@ -141,7 +141,7 @@ $faq = [
     ],
     [
         'question' => '¿Cómo llevo el control de mis millas IFTA?',
-        'answer' => '<ul><li>Escribiendo en un cuaderno el odómetro cada vez que cruzas de estado.</li><li>Usando GPS u otro dispositivo que guarde millas por estado y por trimestre.</li><li>Con software de ruteo que calcule millas por estado.</li></ul>'
+        'answer' => '<ul><li>Escribiendo en un cuaderno el odómetro cada vez que cruzas de estado.</li><li>Usando GPS u otro dispositivo que guarde millas por estado y por trimestre.</li><li>Con software de ruteo que calcule millas por estado.</li><li>O usa nuestra <a href="/ifta-mileage-tracker">IFTA Mileage Tracker app</a>, que registra tus millas por estado automáticamente.</li></ul>'
     ],
     [
         'question' => '¿Cuál es el período de reporte IFTA?',
@@ -235,7 +235,7 @@ $faq = [
         ],
         [
             'question' => 'Как отслеживать мои мили IFTA?',
-            'answer' => '<ul><li>Ведите блокнот и записывайте одометр при пересечении границ штатов.</li><li>Используйте GPS или другое устройство, которое записывает мили по штатам за квартал.</li><li>Используйте программное обеспечение для маршрутизации, которое отслеживает мили по штатам.</li></ul>'
+            'answer' => '<ul><li>Ведите блокнот и записывайте одометр при пересечении границ штатов.</li><li>Используйте GPS или другое устройство, которое записывает мили по штатам за квартал.</li><li>Используйте программное обеспечение для маршрутизации, которое отслеживает мили по штатам.</li><li>Или используйте наше приложение <a href="/ifta-mileage-tracker">IFTA Mileage Tracker app</a>, которое автоматически считает мили по штатам.</li></ul>'
         ],
         [
             'question' => 'Какой период отчетности IFTA?',

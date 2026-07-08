@@ -5,6 +5,7 @@
       <div class="col-12 pt-4 pt-md-1 pt-lg-0">
         <!-- Desktop: 1 row layout -->
         <ul class="nav justify-content-center d-none d-lg-flex flex-wrap">
+          <li class="nav-item me-4"><a href="@localizedUrl('ifta-mileage-tracker')" class="nav-link px-0 py-2">IFTA Tracker</a></li>
           <li class="nav-item me-4"><a href="/mileage/login" class="nav-link px-0 py-2">Log in</a></li>
           <li class="nav-item me-4"><a href="/mileage/register" class="nav-link px-0 py-2">Create free account</a></li>
           <li class="nav-item me-4"><a href="/terms" class="nav-link px-0 py-2">Terms &amp; Conditions</a></li>
@@ -16,6 +17,7 @@
         <!-- Mobile: 1 column layout -->
         <div class="d-lg-none text-center">
           <ul class="nav flex-column align-items-center">
+            <li class="nav-item"><a href="@localizedUrl('ifta-mileage-tracker')" class="nav-link px-0 py-2">IFTA Tracker</a></li>
             <li class="nav-item"><a href="/mileage/login" class="nav-link px-0 py-2">Log in</a></li>
             <li class="nav-item"><a href="/mileage/register" class="nav-link px-0 py-2">Create free account</a></li>
             <li class="nav-item"><a href="/terms" class="nav-link px-0 py-2">Terms &amp; Conditions</a></li>

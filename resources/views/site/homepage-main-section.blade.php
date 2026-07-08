@@ -10,15 +10,11 @@ $widgets = [
         ],
         [
             'title' => 'Time saving', 
-            'content' => 'No more constant tracking of miles or manual calculations - you input some basic information about your trips and fuel and we do the rest.',
+            'content' => 'No more manual tracking of miles — enter your trips and we do the math.',
         ],
         [
             'title' => 'Report generation',
             'content' => 'Your quarterly tax reports are generated just in one click and can be downloaded in a necessary format at any moment.',
-        ],
-        [
-            'title' => 'AI data extraction',
-            'content' => 'Upload your Rate Confirmation PDF to instantly get your trip data',
         ]
     ],
     'es' => [
@@ -28,15 +24,11 @@ $widgets = [
     ],
     [
         'title' => 'Ahorra tiempo',
-        'content' => 'Olvídate de llevar la cuenta de las millas o de hacer cálculos manuales — solo ingresas la información básica de tus viajes y del combustible, y nosotros hacemos el resto.',
+        'content' => 'Olvídate del conteo manual de millas — ingresa tus viajes y nosotros hacemos los cálculos.',
     ],
     [
         'title' => 'Generación de reportes',
         'content' => 'Tus reportes trimestrales de impuestos IFTA se generan con un solo clic y los puedes descargar en el formato que necesites en cualquier momento.',
-    ],
-    [
-        'title' => 'Extracción de datos con IA',
-        'content' => 'Sube tu PDF de Rate Confirmation y obtén al instante los datos de tu viaje.',
     ]
 ],  
     'ru' => [
@@ -46,15 +38,11 @@ $widgets = [
         ],
         [
             'title' => 'Экономия времени',
-            'content' => 'Больше никакого постоянного отслеживания миль или ручных расчетов - вы вводите начало и конец трипа и информацию о приобретенном топливе, а калькулятор делает все остальное.',
+            'content' => 'Больше никакого ручного отслеживания миль — вводите трипы, а расчёты мы берём на себя.',
         ],
         [
             'title' => 'Генерация отчетов',
             'content' => 'Ваши квартальные налоговые отчеты генерируются одним кликом и могут быть загружены в PDF или Excel формате',
-        ],
-        [
-            'title' => 'AI-извлечение данных',
-            'content' => 'Загрузите PDF-файл Rate Confirmation, чтобы извлечь данные о трипе и избежать ручного ввода данных',
         ]
     ]
 ];
@@ -111,7 +99,35 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
       <p>{!! $widget['content'] !!}</p>
     </div>
     @endforeach
+
+    <a href="/ifta-mileage-tracker" class="front-page__widget front-page__widget--tracker">
+      <h4>IFTA Mileage Tracker App</h4>
+      <p>Your phone logs every state line you cross automatically — no more manual mileage sheets.</p>
+      <span class="front-page__tracker-cta">Try the IFTA tracker app &rarr;</span>
+    </a>
   </div>
+
+  <style>
+    .front-page__widget--tracker {
+      display: block;
+      text-decoration: none;
+      border: 1px solid hsl(210, 82%, 82%);
+      border-radius: 12px;
+      padding: 20px;
+      background: hsl(210, 82%, 97%);
+      transition: box-shadow .15s ease, transform .15s ease;
+    }
+    .front-page__widget--tracker:hover {
+      text-decoration: none;
+      box-shadow: 0 10px 24px hsla(210, 82%, 40%, .15);
+      transform: translateY(-2px);
+    }
+    .front-page__tracker-cta {
+      display: inline-block;
+      font-weight: 600;
+      color: hsl(210, 82%, 42%) !important;
+    }
+  </style>
 </div>
 
 <!-- YouTube Video Lazy Loading JavaScript -->

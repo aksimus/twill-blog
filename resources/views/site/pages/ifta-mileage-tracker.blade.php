@@ -62,12 +62,6 @@
 
 <div class="imt">
 
-    {{-- Seasonal deadline banner --}}
-    <div class="imt-banner">
-        <span aria-hidden="true">🕒</span>
-        Q3 2026 IFTA filing deadline: Oct 31 — start logging your trips now.
-    </div>
-
     {{-- ================= HERO (H1 + first H2) ================= --}}
     <section class="imt-hero" id="top">
         <div class="imt-hero__copy">
@@ -363,17 +357,6 @@
     margin: 0 auto;
     padding: 0 16px 48px;
     color: #1a1a18;
-}
-
-.imt-banner {
-    margin: 16px 0 8px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    background: hsl(210, 82%, 96%);
-    color: hsl(210, 82%, 30%);
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
 }
 
 .imt-h1 {

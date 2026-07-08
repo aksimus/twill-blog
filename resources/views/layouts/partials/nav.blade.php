@@ -2,6 +2,9 @@
 <li class="nav-item">
     <a href="@localizedUrl('rates')" class="nav-link">{{ __('IFTA tax rates') }}</a>
   </li>
+  <li class="nav-item">
+    <a href="@localizedUrl('ifta-mileage-tracker')" class="nav-link">{{ __('IFTA Tracker') }}</a>
+  </li>
   @if(!in_array(app()->environment(), ['production', 'local']))
   <!-- Home -->
   <li class="nav-item">

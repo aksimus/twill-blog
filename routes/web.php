@@ -70,6 +70,10 @@ Route::group([
 	// Page routes
 	Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
 	//Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('home'); // Alias for home
+
+	// Custom landing pages (must be declared before the catch-all {slug} route)
+	Route::get('/ifta-mileage-tracker', [\App\Http\Controllers\PageDisplayController::class, 'iftaTracker'])->name('frontend.ifta-tracker');
+
 	Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
 });
 

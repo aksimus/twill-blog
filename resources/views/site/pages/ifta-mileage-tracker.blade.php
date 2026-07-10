@@ -12,8 +12,7 @@
     $utm = 'utm_source=organic&utm_medium=landing&utm_campaign=ifta_tracker';
     $withUtm = fn (string $url) => $url . (str_contains($url, '?') ? '&' : '?') . $utm;
 
-    $iosUrl = $withUtm('https://apps.apple.com/us/app/ifta-calculator-driver-app/id6759822043');
-    $androidUrl = $withUtm('https://play.google.com/store/apps/details?id=pro.aksoft.gpstracker');
+    $storeUrl = $withUtm('https://tracker.ifta-calculator.com/app/auth');
     $startFreeUrl = $withUtm('/mileage/register');
     $calculatorUrl = url('/');
 
@@ -77,10 +76,10 @@
             </div>
 
             <div class="imt-stores" aria-label="Download the app">
-                <a href="{{ $iosUrl }}" class="imt-store" target="_blank" rel="noopener">
+                <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                     <i class="bx bxl-apple" aria-hidden="true"></i>&nbsp;App Store
                 </a>
-                <a href="{{ $androidUrl }}" class="imt-store" target="_blank" rel="noopener">
+                <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                     <i class="bx bxl-play-store" aria-hidden="true"></i>&nbsp;Google Play
                 </a>
             </div>
@@ -161,10 +160,10 @@
         </ul>
 
         <div class="imt-stores">
-            <a href="{{ $iosUrl }}" class="imt-store" target="_blank" rel="noopener">
+            <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                 <i class="bx bxl-apple" aria-hidden="true"></i>&nbsp;App Store
             </a>
-            <a href="{{ $androidUrl }}" class="imt-store" target="_blank" rel="noopener">
+            <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                 <i class="bx bxl-play-store" aria-hidden="true"></i>&nbsp;Google Play
             </a>
         </div>
@@ -266,10 +265,10 @@
             <a href="{{ $startFreeUrl }}" class="imt-btn imt-btn--primary">Start tracking free</a>
         </div>
         <div class="imt-stores imt-stores--center">
-            <a href="{{ $iosUrl }}" class="imt-store" target="_blank" rel="noopener">
+            <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                 <i class="bx bxl-apple" aria-hidden="true"></i>&nbsp;App Store
             </a>
-            <a href="{{ $androidUrl }}" class="imt-store" target="_blank" rel="noopener">
+            <a href="{{ $storeUrl }}" class="imt-store" target="_blank" rel="noopener">
                 <i class="bx bxl-play-store" aria-hidden="true"></i>&nbsp;Google Play
             </a>
         </div>
@@ -311,7 +310,7 @@
     'applicationCategory' => 'BusinessApplication',
     'description' => 'IFTA mileage tracker app that logs state-by-state miles automatically by GPS and sends them to your IFTA report.',
     'url' => 'https://ifta-calculator.com/ifta-mileage-tracker',
-    'installUrl' => $iosUrl,
+    'installUrl' => $storeUrl,
     'offers' => [
         '@type' => 'Offer',
         'price' => '0',

@@ -5,7 +5,7 @@
       slot="image-section"
       class="front-page__demo"
     >
-      <h4 class="front-page__demo-title">Try online calculator</h4>
+      <h4 class="front-page__demo-title">Try IFTA calculator</h4>
 
       <div class="front-page__demo-stops">
         <div class="front-page__demo-stop">

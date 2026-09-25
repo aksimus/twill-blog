@@ -11,6 +11,14 @@
   .front-page__video > * + * {
     margin-top: 16px;
   }
+
+  .front-page__video > .front-page__video-subtitle {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #2C323A;
+  }
   
   .front-page__video-container {
     position: relative;

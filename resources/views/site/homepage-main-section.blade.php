@@ -5,44 +5,44 @@
 $widgets = [
     'en' => [
         [
-            'title' => 'Easy to use',
-            'content' => 'In just a few clicks all necessary information for reports generation is at hand per all the equipment you have or just per one unit.',
+            'title' => '1. IFTA Mileage Calculator',
+            'content' => 'Enter or import your trips and get state-by-state miles for your truck.',
         ],
         [
-            'title' => 'Time saving', 
-            'content' => 'No more manual tracking of miles — enter your trips and we do the math.',
+            'title' => '2. Fuel Purchases',
+            'content' => 'Enter or import fuel purchases by state. IFTA tax rates are already built in.',
         ],
         [
-            'title' => 'Report generation',
-            'content' => 'Your quarterly tax reports are generated just in one click and can be downloaded in a necessary format at any moment.',
+            'title' => '3. IFTA Tax Report',
+            'content' => 'Generate reports for a single truck or your entire fleet. Get a filing-ready PDF.',
         ]
     ],
     'es' => [
     [
-        'title' => 'Fácil de usar',
-        'content' => 'Con solo unos clics tienes toda la información que necesitas para tus reportes, ya sea de toda tu flota o de un solo camión.',
+        'title' => 'Calculadora de millas',
+        'content' => 'Introduce tus viajes y obtén el kilometraje de tu camión por cada estado.',
     ],
     [
-        'title' => 'Ahorra tiempo',
-        'content' => 'Olvídate del conteo manual de millas — ingresa tus viajes y nosotros hacemos los cálculos.',
+        'title' => 'Compras de combustible',
+        'content' => 'Introduce o importa tus compras de combustible por estado. Las tasas de impuestos IFTA ya están incluidas.',
     ],
     [
-        'title' => 'Generación de reportes',
-        'content' => 'Tus reportes trimestrales de impuestos IFTA se generan con un solo clic y los puedes descargar en el formato que necesites en cualquier momento.',
+        'title' => 'Informe de impuestos IFTA',
+        'content' => 'Genera informes para un solo camión o para toda tu flota. Obtén un PDF listo para presentar.',
     ]
 ],  
     'ru' => [
         [
-            'title' => 'Простота использования',
-            'content' => 'Всего за несколько кликов вся необходимая информация для составления отчетов доступна для всего вашего флота или только для одного юнита.',
+            'title' => 'Калькулятор пробега',
+            'content' => 'Добавьте поездки и получите пробег вашего грузовика по каждому штату.',
         ],
         [
-            'title' => 'Экономия времени',
-            'content' => 'Больше никакого ручного отслеживания миль — вводите трипы, а расчёты мы берём на себя.',
+            'title' => 'Покупки топлива',
+            'content' => 'Добавляйте или импортируйте покупки топлива по штатам. Ставки налогов IFTA уже включены.',
         ],
         [
-            'title' => 'Генерация отчетов',
-            'content' => 'Ваши квартальные налоговые отчеты генерируются одним кликом и могут быть загружены в PDF или Excel формате',
+            'title' => 'Налоговый отчёт IFTA',
+            'content' => 'Создавайте отчёты для одного грузовика или всего автопарка. Получайте PDF, готовый для подачи.',
         ]
     ]
 ];
@@ -55,6 +55,7 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
 <div>
   <div class="front-page__video">
     <h4>{{ __('homepage.video.title') }}</h4>
+    <p class="front-page__video-subtitle">{{ __('homepage.video.subtitle') }}</p>
     <div class="front-page__video-container" data-yt-id="LjUtSkVyAp0">
       <div class="youtube-video-placeholder" style="position:relative; width:560px; max-width:100%; cursor:pointer;">
         <img
@@ -101,7 +102,7 @@ $currentWidgets = $widgets[$currentLocale] ?? $widgets['en'];
     @endforeach
 
     <a href="/ifta-mileage-tracker" class="front-page__widget front-page__widget--tracker">
-      <h4>IFTA Mileage Tracker App</h4>
+      <h4>Bonus: IFTA Mileage Tracker</h4>
       <p>Your phone logs every state line you cross automatically — no more manual mileage sheets.</p>
       <span class="front-page__tracker-cta">Try the IFTA tracker app &rarr;</span>
     </a>

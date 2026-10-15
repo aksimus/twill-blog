@@ -29,8 +29,8 @@
       </div>
     </div>
     <p class="nav d-block fs-xs text-center pb-2 pb-lg-0 mb-0">
-      <span class="text-light opacity-50">Powered by</span>
-      <a class="nav-link d-inline-block p-0" href="#" target="_blank" rel="noopener">AKsoft.pro - tailored software for logistics</a>
+      <span class="text-light opacity-50">IFTA Calculator is a product of  </span>
+      <a class="nav-link d-inline-block p-0" href="https://transintelsafety.com" target="_blank" rel="noopener">TransIntel Safety Inc. - Trucking compliance on autopilot</a>
     </p>
   </div>
 </footer> 

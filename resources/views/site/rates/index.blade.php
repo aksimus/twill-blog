@@ -62,8 +62,7 @@
                 <tr class="c-table__tdrow c-table__tdrow--striped">
                     <td colspan="6" class="c-table__td text-center">
                         <div class="text-muted">
-                            <p>{{ __('No rates available') }}</p>
-                            <small>{{ __('Rates are being loaded from external source. Please try again in a moment.') }}</small>
+                            <p>{{ __('These rates have not been published by the IFTA yet.') }}</p>
                         </div>
                     </td>
                 </tr>
